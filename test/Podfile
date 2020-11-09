@@ -22,7 +22,8 @@ pod 'Firebase/Database'
 pod 'Firebase/Functions'
 pod 'Firebase/Storage'
 pod 'Firebase/Auth'
-# add pods for any other desired Firebase products# https://firebase.google.com/docs/ios/setup#available-pods
+pod 'Firebase/Firestore'
+# add pods for any other desired Firebae products# https://firebase.google.com/docs/ios/setup#available-pods
 
 
 
