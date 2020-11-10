@@ -25,6 +25,8 @@ class ViewController: UIViewController {
         
         userNameField.delegate = self
         passwordField.delegate = self
+        
+        passwordField.isSecureTextEntry = true
     }
     
    
