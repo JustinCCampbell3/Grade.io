@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import FirebaseFirestore
+
+let COLLECTION = "Teacher"
+let FIELD = "Password"
+let WELCOME_INTRO = "Welcome, "
+
 
 class ViewController: UIViewController {
 
@@ -17,8 +23,6 @@ class ViewController: UIViewController {
     
     //TextBox input variable
     @IBOutlet weak var textView: UITextView!;
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +37,28 @@ class ViewController: UIViewController {
     
    //function prints username and password to screen once "View Results" is hit
     @IBAction func enterTapped(_ sender: Any) {
+        
         textView.text = "UserName: \(userNameField.text!)\nPassword: \(passwordField.text!)"
+        
+        let db = Firestore.firestore()
+        
+        let userRef = db.collection(COLLECTION).document(userNameField.text!)
+        
+        userRef.getDocument { (document, error) in
+            if let document = document
+            {
+                let pwd = document.get(FIELD) as? String
+                if pwd == self.passwordField.text
+                {
+                    self.textView.text = WELCOME_INTRO + self.userNameField.text!
+                }
+                else
+                {
+                    self.textView.text = "⛔"
+                }
+            }
+        }
     }
-   
 }
 
 extension ViewController : UITextFieldDelegate{
