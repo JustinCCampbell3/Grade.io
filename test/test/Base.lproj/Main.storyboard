@@ -28,17 +28,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elm-z1-bvK">
-                                <rect key="frame" x="774" y="1133" width="230" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <state key="normal" title="View results"/>
-                                <connections>
-                                    <action selector="enterTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Ka-MV-ArV"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5se-X7-lFG">
-                                <rect key="frame" x="325" y="1023" width="374" height="176"/>
+                                <rect key="frame" x="325" y="1170" width="374" height="176"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -52,13 +43,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noW-4s-2Pq">
-                                <rect key="frame" x="20" y="113" width="372" height="96"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elm-z1-bvK">
+                                <rect key="frame" x="456" y="977" width="118" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                <state key="normal" title="Peri's Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="FRS-up-APn" kind="presentation" modalPresentationStyle="fullScreen" id="ATY-gP-8C4"/>
+                                    <action selector="enterTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wDc-1X-lEQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -77,6 +68,7 @@
                         <outlet property="passwordField" destination="SgJ-yA-iVX" id="mRO-m5-Nav"/>
                         <outlet property="textView" destination="5se-X7-lFG" id="5eI-wc-26M"/>
                         <outlet property="userNameField" destination="G22-9H-jVk" id="MYK-ev-cGt"/>
+                        <segue destination="FRS-up-APn" kind="presentation" identifier="TeacherView" modalPresentationStyle="fullScreen" id="JWG-Hs-0os"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -86,7 +78,7 @@
         <!--View Controller-->
         <scene sceneID="oMB-lE-mxy">
             <objects>
-                <viewController id="FRS-up-APn" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeacherView" id="FRS-up-APn" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qhO-em-COP" customClass="GradientView" customModule="test" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -257,6 +249,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <navigationItem key="navigationItem" id="mlB-Qn-Ovg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqL-Yu-tgn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

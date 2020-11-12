@@ -12,9 +12,12 @@ let COLLECTION = "Teacher"
 let FIELD = "Password"
 let WELCOME_INTRO = "Welcome, "
 
-
 class ViewController: UIViewController {
 
+    
+        
+    
+    
     //Variable to hold username
     @IBOutlet weak var userNameField: UITextField!
     
@@ -51,6 +54,7 @@ class ViewController: UIViewController {
                 if pwd == self.passwordField.text
                 {
                     self.textView.text = WELCOME_INTRO + self.userNameField.text!
+                    self.performSegue(withIdentifier: "TeacherView", sender: self)
                 }
                 else
                 {
@@ -59,6 +63,7 @@ class ViewController: UIViewController {
             }
         }
     }
+
 }
 
 extension ViewController : UITextFieldDelegate{
