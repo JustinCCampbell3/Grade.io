@@ -11,7 +11,11 @@ target 'Grade.IO' do
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Functions'
-  target 'Grade.IOTests' do
+  
+  pod 'FirebaseUI/Auth'
+  pod 'FirebaseUI/Google'
+  pod 'FirebaseUI/Email'  
+  target 'Grade.IOTests' do
     inherit! :search_paths
     # Pods for testing
   end

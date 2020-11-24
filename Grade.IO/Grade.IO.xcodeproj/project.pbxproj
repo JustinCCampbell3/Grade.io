@@ -188,6 +188,7 @@
 				4FE698C4256A8ADB00E1AC7A /* Frameworks */,
 				4FE698C5256A8ADB00E1AC7A /* Resources */,
 				FF1309BA731BC55B8EDA9756 /* [CP] Embed Pods Frameworks */,
+				C401F124CF9CAE61F1353D35 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -226,6 +227,7 @@
 				4FE698E5256A8ADC00E1AC7A /* Frameworks */,
 				4FE698E6256A8ADC00E1AC7A /* Resources */,
 				B5C8EA11B36D91874ADC8575 /* [CP] Embed Pods Frameworks */,
+				3A7DEA20B0C31789775CA99B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -310,6 +312,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3A7DEA20B0C31789775CA99B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Grade.IO-Grade.IOUITests/Pods-Grade.IO-Grade.IOUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Grade.IO-Grade.IOUITests/Pods-Grade.IO-Grade.IOUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Grade.IO-Grade.IOUITests/Pods-Grade.IO-Grade.IOUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		415D85697D3FB2780138AED0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -369,6 +388,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Grade.IO-Grade.IOUITests/Pods-Grade.IO-Grade.IOUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C401F124CF9CAE61F1353D35 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Grade.IO/Pods-Grade.IO-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Grade.IO/Pods-Grade.IO-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Grade.IO/Pods-Grade.IO-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FEC52AD3D2A41180963465FD /* [CP] Check Pods Manifest.lock */ = {
