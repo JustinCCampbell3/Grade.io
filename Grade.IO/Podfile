@@ -1,0 +1,27 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Grade.IO' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Grade.IO
+
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Functions'
+  
+  pod 'FirebaseUI/Auth'
+  pod 'FirebaseUI/Google'
+  pod 'FirebaseUI/Email'  
+  target 'Grade.IOTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'Grade.IOUITests' do
+    # Pods for testing
+  end
+
+end
