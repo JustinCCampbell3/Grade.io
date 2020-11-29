@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		44F479CD21FC752A99D10B1F /* Pods_Grade_IO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B247ACFAFA2093FC7882BE05 /* Pods_Grade_IO.framework */; };
+		4F28F7722573A9D800F69695 /* AuthCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28F7712573A9D800F69695 /* AuthCommands.swift */; };
 		4FE698CB256A8ADB00E1AC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE698CA256A8ADB00E1AC7A /* AppDelegate.swift */; };
 		4FE698CD256A8ADB00E1AC7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE698CC256A8ADB00E1AC7A /* SceneDelegate.swift */; };
 		4FE698CF256A8ADB00E1AC7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE698CE256A8ADB00E1AC7A /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		2BBA089776B2A8DFA1B39E3B /* Pods-Grade.IO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade.IO.release.xcconfig"; path = "Target Support Files/Pods-Grade.IO/Pods-Grade.IO.release.xcconfig"; sourceTree = "<group>"; };
+		4F28F7712573A9D800F69695 /* AuthCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCommands.swift; sourceTree = "<group>"; };
 		4FE698C7256A8ADB00E1AC7A /* Grade.IO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grade.IO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FE698CA256A8ADB00E1AC7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FE698CC256A8ADB00E1AC7A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F28F7682573A7A400F69695 /* Authorize */ = {
+			isa = PBXGroup;
+			children = (
+				4F28F7712573A9D800F69695 /* AuthCommands.swift */,
+			);
+			path = Authorize;
+			sourceTree = "<group>";
+		};
 		4FE698BE256A8ADB00E1AC7A = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +132,7 @@
 		4FE698C9256A8ADB00E1AC7A /* Grade.IO */ = {
 			isa = PBXGroup;
 			children = (
+				4F28F7682573A7A400F69695 /* Authorize */,
 				4FE69906256AA8E400E1AC7A /* GoogleService-Info.plist */,
 				4FE698CA256A8ADB00E1AC7A /* AppDelegate.swift */,
 				4FE698CC256A8ADB00E1AC7A /* SceneDelegate.swift */,
@@ -454,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FE698CF256A8ADB00E1AC7A /* ViewController.swift in Sources */,
+				4F28F7722573A9D800F69695 /* AuthCommands.swift in Sources */,
 				4FE698CB256A8ADB00E1AC7A /* AppDelegate.swift in Sources */,
 				6DCDAC73256C6A560033DFB3 /* GradientView.swift in Sources */,
 				4FE698CD256A8ADB00E1AC7A /* SceneDelegate.swift in Sources */,

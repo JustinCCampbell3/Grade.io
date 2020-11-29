@@ -29,6 +29,7 @@ class ViewController: UIViewController {
      //there are two variables that can be accessed here
      //Email: "emailField.text!"
      //Password: "passwordField.text
+        AuthCommands.signOutWithErrorCatch()
     }
     
     //this function handles input on the create an account page
@@ -43,18 +44,6 @@ class ViewController: UIViewController {
     /// calls to make on ViewDidLoad for google auth
     func googleOnStartLoginWork() {
         GIDSignIn.sharedInstance()?.presentingViewController = self
-    }
-    
-    /// Call to sign out.. Could there be an AuthHelper class to put this in?
-    func signOutWithErrorCatch() {
-        do {
-            try Auth.auth().signOut()
-        }
-        catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-        
-        print ("Signed out successfully")
     }
 }
 
