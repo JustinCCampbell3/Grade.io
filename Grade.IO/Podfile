@@ -24,4 +24,6 @@ target 'Grade.IO' do
     # Pods for testing
   end
 
+  pod 'FSCalendar'
+
 end

@@ -273,7 +273,7 @@
         <!--Student Homepage-->
         <scene sceneID="W2L-Nx-Lch">
             <objects>
-                <viewController title="Student Homepage" id="vNe-Sk-PMF" sceneMemberID="viewController">
+                <viewController title="Student Homepage" id="vNe-Sk-PMF" customClass="Homepage" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zqf-ZW-JXX" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -312,31 +312,31 @@
                                     <segue destination="wai-ue-tp6" kind="push" id="wvU-RS-FGF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e59-no-esz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e59-no-esz">
                                 <rect key="frame" x="662" y="64" width="94" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Sign Out">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Student View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qT-PP-v0B">
-                                <rect key="frame" x="35" y="75" width="117" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qT-PP-v0B">
+                                <rect key="frame" x="35.5" y="70" width="117" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFC-ci-cox">
-                                <rect key="frame" x="35" y="139" width="149" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfp-pr-J7a">
+                                <rect key="frame" x="189.5" y="141" width="169" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfp-pr-J7a">
-                                <rect key="frame" x="192" y="139" width="169" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rp6-Tm-mcb" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="218" width="768" height="308"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFC-ci-cox">
+                                <rect key="frame" x="35" y="116" width="149" height="92"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -345,12 +345,25 @@
                         <viewLayoutGuide key="safeArea" id="5Z3-yV-lDq"/>
                         <constraints>
                             <constraint firstItem="XUo-OZ-7fG" firstAttribute="centerX" secondItem="Zqf-ZW-JXX" secondAttribute="centerX" constant="110" id="5Ex-gp-zFI"/>
+                            <constraint firstItem="rp6-Tm-mcb" firstAttribute="centerY" secondItem="Zqf-ZW-JXX" secondAttribute="centerY" constant="-140" id="6Cz-xW-dEW"/>
                             <constraint firstItem="XUo-OZ-7fG" firstAttribute="centerY" secondItem="Zqf-ZW-JXX" secondAttribute="centerY" constant="80" id="6JO-Kh-fZ1"/>
+                            <constraint firstItem="dFC-ci-cox" firstAttribute="centerY" secondItem="Zqf-ZW-JXX" secondAttribute="centerY" constant="-350" id="C5R-HH-u8Z"/>
+                            <constraint firstItem="dFC-ci-cox" firstAttribute="centerX" secondItem="Zqf-ZW-JXX" secondAttribute="centerX" constant="-280" id="HUl-qh-l3H"/>
+                            <constraint firstItem="rp6-Tm-mcb" firstAttribute="leading" secondItem="5Z3-yV-lDq" secondAttribute="leading" id="JMT-4p-HGS"/>
+                            <constraint firstItem="e59-no-esz" firstAttribute="centerY" secondItem="Zqf-ZW-JXX" secondAttribute="centerY" constant="-427" id="LpY-2r-W3p"/>
                             <constraint firstItem="LRW-mD-K9V" firstAttribute="centerY" secondItem="Zqf-ZW-JXX" secondAttribute="centerY" constant="221" id="NaB-NF-Ofn"/>
                             <constraint firstItem="JO3-5t-hgZ" firstAttribute="centerX" secondItem="Zqf-ZW-JXX" secondAttribute="centerX" constant="-180" id="QB6-ke-kGr"/>
                             <constraint firstItem="LRW-mD-K9V" firstAttribute="centerX" secondItem="Zqf-ZW-JXX" secondAttribute="centerX" constant="110" id="TSD-zZ-iMc"/>
+                            <constraint firstItem="Xfp-pr-J7a" firstAttribute="centerY" secondItem="Zqf-ZW-JXX" secondAttribute="centerY" constant="-350" id="UEA-R2-ysP"/>
+                            <constraint firstItem="2qT-PP-v0B" firstAttribute="centerY" secondItem="Zqf-ZW-JXX" secondAttribute="centerY" constant="-430" id="WWV-jj-Bn9"/>
+                            <constraint firstItem="rp6-Tm-mcb" firstAttribute="centerX" secondItem="Zqf-ZW-JXX" secondAttribute="centerX" id="XCG-fw-pJT"/>
                             <constraint firstItem="clU-gy-Hpg" firstAttribute="centerX" secondItem="Zqf-ZW-JXX" secondAttribute="centerX" constant="-180" id="dhL-4h-HRp"/>
                             <constraint firstItem="JO3-5t-hgZ" firstAttribute="centerY" secondItem="Zqf-ZW-JXX" secondAttribute="centerY" constant="221" id="eAU-iB-c5l"/>
+                            <constraint firstItem="rp6-Tm-mcb" firstAttribute="trailing" secondItem="5Z3-yV-lDq" secondAttribute="trailing" id="ewb-nz-9CR"/>
+                            <constraint firstItem="Xfp-pr-J7a" firstAttribute="centerX" secondItem="Zqf-ZW-JXX" secondAttribute="centerX" constant="-110" id="gn3-kj-IaG"/>
+                            <constraint firstItem="rp6-Tm-mcb" firstAttribute="top" secondItem="Xfp-pr-J7a" secondAttribute="bottom" constant="35" id="keu-00-tOO"/>
+                            <constraint firstItem="e59-no-esz" firstAttribute="centerX" secondItem="Zqf-ZW-JXX" secondAttribute="centerX" constant="325" id="oDV-H8-hwx"/>
+                            <constraint firstItem="2qT-PP-v0B" firstAttribute="centerX" secondItem="Zqf-ZW-JXX" secondAttribute="centerX" constant="-290" id="ovD-1w-jCw"/>
                             <constraint firstItem="clU-gy-Hpg" firstAttribute="centerY" secondItem="Zqf-ZW-JXX" secondAttribute="centerY" constant="80" id="yDt-zQ-G4z"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -363,10 +376,13 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="m4F-Do-6iq"/>
+                    <connections>
+                        <outlet property="calendarView" destination="rp6-Tm-mcb" id="JXz-p3-Vtw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WB9-hW-cmJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="616" y="966"/>
+            <point key="canvasLocation" x="615.625" y="965.62499999999989"/>
         </scene>
         <!--Srudent Grades Page-->
         <scene sceneID="ylk-ah-gB1">
