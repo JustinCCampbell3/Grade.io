@@ -29,7 +29,6 @@ class ViewController: UIViewController {
      //there are two variables that can be accessed here
      //Email: "emailField.text!"
      //Password: "passwordField.text
-        AuthCommands.signOutWithErrorCatch()
     }
     
     //this function handles input on the create an account page
