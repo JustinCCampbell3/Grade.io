@@ -52,6 +52,11 @@ class ViewController: UIViewController{
     // MATT 11/29/2020 : I don't think we need this anymore.
     @IBAction func googleSignInPressed(_ sender: Any) {}
     
+    /// calls to make on ViewDidLoad for google auth
+    func googleOnStartLoginWork() {
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+    }
+    
 }
 
 extension ViewController : UITextFieldDelegate{
