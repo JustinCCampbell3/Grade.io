@@ -1,0 +1,13 @@
+
+///CODE SNIPPETS
+
+// TO CREATE USER WITH EMAIL
+//Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { authResult, error in
+//}   To create user
+
+// TO SIGN IN  WITH EMAIL
+//Auth.auth().signIn(withEmail:  emailField.text!, password: passwordField.text!) { [weak self] authResult, error in
+// guard let strongSelf = self else { return }        
+
+// auto sign-in for Google users that signed with google previously
+GIDSignIn.sharedInstance().signIn()

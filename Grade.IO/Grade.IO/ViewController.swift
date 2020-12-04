@@ -24,9 +24,7 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         emailField.delegate = self
         passwordField.delegate = self
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance().signIn()
-        
+        googleOnStartLoginWork()
         super.viewDidLoad()
         
         //setupCalendar()
@@ -43,25 +41,20 @@ class ViewController: UIViewController{
      //there are two variables that can be accessed here
      //Email: "emailField.text!"
      //Password: "passwordField.text
-        
-        //Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { authResult, error in
-        //}   To create user
-        //Auth.auth().signIn(withEmail:  emailField.text!, password: passwordField.text!) { [weak self] authResult, error in
-        // guard let strongSelf = self else { return }
-        // print("Fuck")
-        //} To sign in
     }
     
     //this function handles input on the create an account page
     @IBAction func createAccountPressed(_ sender: Any) {
      //variables are being funky on this page so they will be soon to come
-        
     }
     
     //this function handles when the google sign in is pressed
-    @IBAction func googleSignInPressed(_ sender: Any) {
-        
-        
+    // MATT 11/29/2020 : I don't think we need this anymore.
+    @IBAction func googleSignInPressed(_ sender: Any) {}
+    
+    /// calls to make on ViewDidLoad for google auth
+    func googleOnStartLoginWork() {
+        GIDSignIn.sharedInstance()?.presentingViewController = self
     }
     
 }
@@ -72,8 +65,6 @@ extension ViewController : UITextFieldDelegate{
         textField.resignFirstResponder()
         return true
     }
-    
-    
 }
 
 //extension ViewController : FSCalendarDelegate{
