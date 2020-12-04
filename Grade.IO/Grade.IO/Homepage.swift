@@ -22,9 +22,18 @@ class Homepage : UIViewController {
 
     func setupCalendar(){
         calendarView.delegate = self
+        calendarView.dataSource = self
     }
 }
 
+//datasource extension
+extension Homepage : FSCalendarDataSource{
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        return Date()
+    }
+}
+
+//delegate extension
 extension Homepage : FSCalendarDelegate{
     //allows user to select a date and then will run the code inside of it
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

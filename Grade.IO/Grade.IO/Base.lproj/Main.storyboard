@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ap2-hu-QAN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWH-p0-Iz3">
-                                <rect key="frame" x="210" y="823" width="349" height="54"/>
+                                <rect key="frame" x="210" y="824" width="349" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.83137254900000002" blue="0.45882352939999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
@@ -44,6 +44,7 @@
                                 </state>
                                 <connections>
                                     <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wgN-Si-VTG"/>
+                                    <segue destination="vNe-Sk-PMF" kind="presentation" modalPresentationStyle="fullScreen" id="6ud-iE-DSt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5o-Dy-pOv" customClass="FUIAuthSignInButton">
@@ -278,36 +279,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clU-gy-Hpg">
-                                <rect key="frame" x="157" y="568" width="94" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clU-gy-Hpg">
+                                <rect key="frame" x="148.5" y="574" width="111.5" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Grades"/>
+                                <state key="normal" title="Grades" image="pencil" catalog="system">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
                                 <connections>
                                     <segue destination="c7S-Wq-bIY" kind="push" id="Q1G-1z-117"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRW-mD-K9V">
-                                <rect key="frame" x="439.5" y="709" width="109" height="48"/>
+                                <rect key="frame" x="409.5" y="703" width="169" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Account">
-                                    <color key="titleColor" systemColor="linkColor"/>
+                                <state key="normal" title="Account" image="ic_account_circle.png">
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
                                     <segue destination="j4Y-uL-eyx" kind="push" id="dSH-sY-6B9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUo-OZ-7fG">
-                                <rect key="frame" x="423" y="568" width="142" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUo-OZ-7fG">
+                                <rect key="frame" x="412" y="574" width="164" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Messaging"/>
+                                <state key="normal" title="Messaging" image="message.fill" catalog="system">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
                                 <connections>
                                     <segue destination="yb6-bM-U7R" kind="push" id="pSu-nD-dFN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JO3-5t-hgZ">
-                                <rect key="frame" x="166" y="709" width="76" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JO3-5t-hgZ">
+                                <rect key="frame" x="154" y="715" width="100.5" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Zoom"/>
+                                <state key="normal" title="Zoom" image="camera.fill" catalog="system">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
                                 <connections>
                                     <segue destination="wai-ue-tp6" kind="push" id="wvU-RS-FGF"/>
                                 </connections>
@@ -389,7 +396,7 @@
             <objects>
                 <viewController title="Srudent Grades Page" id="c7S-Wq-bIY" customClass="ViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mRS-vk-aaz" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="M5h-8C-b01"/>
                         <userDefinedRuntimeAttributes>
@@ -413,7 +420,7 @@
             <objects>
                 <viewController title="Student Zoom Page" id="wai-ue-tp6" customClass="ViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fSY-59-afe" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="YJD-5S-KwS"/>
                         <userDefinedRuntimeAttributes>
@@ -437,7 +444,7 @@
             <objects>
                 <viewController title="Student Messaging" id="yb6-bM-U7R" customClass="ViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hQk-f0-g0t" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Fze-V1-sJ4"/>
                         <userDefinedRuntimeAttributes>
@@ -461,7 +468,7 @@
             <objects>
                 <viewController title="Student Account Page" id="j4Y-uL-eyx" customClass="ViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Otj-Xr-nSA" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="ybM-0v-3tv"/>
                         <userDefinedRuntimeAttributes>
@@ -482,18 +489,20 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="6ud-iE-DSt"/>
         <segue reference="gha-cY-JpO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Left_Carrot-512" width="512" height="512"/>
         <image name="Screen_Shot_2020-11-11_at_10.43.48_AM-removebg-preview" width="794" height="270"/>
+        <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="google.png" width="18" height="18"/>
+        <image name="ic_account_circle.png" width="60" height="60"/>
+        <image name="message.fill" catalog="system" width="128" height="113"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="png-clipart-check-mark-computer-icons-wrong-miscellaneous-angle" width="900" height="799"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
