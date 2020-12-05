@@ -395,6 +395,7 @@
                     <navigationItem key="navigationItem" id="m4F-Do-6iq"/>
                     <connections>
                         <outlet property="calendarView" destination="rp6-Tm-mcb" id="JXz-p3-Vtw"/>
+                        <outlet property="name" destination="Xfp-pr-J7a" id="qSs-up-OE3"/>
                         <outlet property="signOutButton" destination="e59-no-esz" id="UP3-5o-eSC"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToMenuFromHomepage" modalPresentationStyle="fullScreen" id="tgB-y8-c7U"/>
                     </connections>

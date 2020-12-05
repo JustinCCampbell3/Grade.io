@@ -13,15 +13,12 @@ class Homepage : UIViewController {
     //variable for calendar function
     @IBOutlet var calendarView:FSCalendar!
     @IBOutlet weak var signOutButton:UIButton!
+    @IBOutlet weak var name:UILabel!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         setupCalendar()
-        
-        print(Auth.auth().currentUser?.email)
-        
+        name.text = Auth.auth().currentUser?.email?.components(separatedBy: "@")[0];
     }
 
     func setupCalendar(){
