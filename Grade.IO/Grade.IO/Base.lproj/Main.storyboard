@@ -44,7 +44,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wgN-Si-VTG"/>
-                                    <segue destination="vNe-Sk-PMF" kind="presentation" modalPresentationStyle="fullScreen" id="6ud-iE-DSt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5o-Dy-pOv" customClass="FUIAuthSignInButton">
@@ -105,6 +104,7 @@
                     <connections>
                         <outlet property="emailField" destination="cYl-2o-G5m" id="MtK-eF-QYS"/>
                         <outlet property="passwordField" destination="WlK-i8-RoI" id="DBG-To-pR4"/>
+                        <segue destination="vNe-Sk-PMF" kind="presentation" identifier="signInToHomeScreen_STUDENT" modalPresentationStyle="fullScreen" id="v2X-6N-eaU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -114,7 +114,7 @@
         <!--Create an Account-->
         <scene sceneID="jDZ-LF-L0b">
             <objects>
-                <viewController title="Create an Account" id="6rN-DM-P7T" sceneMemberID="viewController">
+                <viewController title="Create an Account" id="6rN-DM-P7T" customClass="CreateAccount" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i2x-QQ-w0B" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,6 +164,7 @@
                                 </state>
                                 <connections>
                                     <action selector="createAccountPressed:" destination="em7-vT-po8" eventType="touchUpInside" id="aeH-hp-nNp"/>
+                                    <action selector="createAccountPressed:" destination="6rN-DM-P7T" eventType="touchUpInside" id="n5c-3j-7mV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dg0-pS-Wu1">
@@ -186,6 +187,12 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="createAccountButton" destination="BQP-3V-4Kg" id="EWW-vF-e4a"/>
+                        <outlet property="emailField" destination="JCZ-ae-R08" id="cRo-rA-1AA"/>
+                        <outlet property="passwordField" destination="H8f-2U-3QV" id="jD3-2B-QFU"/>
+                        <segue destination="vNe-Sk-PMF" kind="presentation" identifier="createAccountToHome" modalPresentationStyle="fullScreen" id="s28-6o-0B4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCo-FX-Bmq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="em7-vT-po8" userLabel="Exit" sceneMemberID="exit"/>
@@ -274,8 +281,8 @@
         <!--Student Homepage-->
         <scene sceneID="W2L-Nx-Lch">
             <objects>
-                <viewController title="Student Homepage" id="vNe-Sk-PMF" customClass="Homepage" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Zqf-ZW-JXX" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
+                <viewController storyboardIdentifier="HomePage" title="Student Homepage" modalPresentationStyle="fullScreen" id="vNe-Sk-PMF" customClass="Homepage" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleAspectFill" id="Zqf-ZW-JXX" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -325,6 +332,9 @@
                                 <state key="normal" title="Sign Out">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="signOutPressed:" destination="vNe-Sk-PMF" eventType="touchUpInside" id="eUJ-fM-dkJ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qT-PP-v0B">
                                 <rect key="frame" x="35.5" y="70" width="117" height="24"/>
@@ -342,8 +352,8 @@
                                 <rect key="frame" x="0.0" y="218" width="768" height="308"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFC-ci-cox">
-                                <rect key="frame" x="35" y="116" width="149" height="92"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFC-ci-cox">
+                                <rect key="frame" x="29.5" y="141" width="149" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -385,6 +395,8 @@
                     <navigationItem key="navigationItem" id="m4F-Do-6iq"/>
                     <connections>
                         <outlet property="calendarView" destination="rp6-Tm-mcb" id="JXz-p3-Vtw"/>
+                        <outlet property="signOutButton" destination="e59-no-esz" id="UP3-5o-eSC"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToMenuFromHomepage" modalPresentationStyle="fullScreen" id="tgB-y8-c7U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WB9-hW-cmJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -489,8 +501,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6ud-iE-DSt"/>
-        <segue reference="gha-cY-JpO"/>
+        <segue reference="s28-6o-0B4"/>
+        <segue reference="tgB-y8-c7U"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Left_Carrot-512" width="512" height="512"/>

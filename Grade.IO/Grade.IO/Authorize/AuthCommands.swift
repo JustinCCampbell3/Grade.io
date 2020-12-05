@@ -16,8 +16,13 @@ class AuthCommands
         catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-        
-        print ("Signed out successfully")
+    }
+    
+    static func createUserWithEmail(email: String, password: String)
+    {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            /// error handling
+        }
     }
 }
 

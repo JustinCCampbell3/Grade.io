@@ -7,10 +7,12 @@
 
 import UIKit
 import FSCalendar
+import FirebaseAuth
 
 class Homepage : UIViewController {
     //variable for calendar function
     @IBOutlet var calendarView:FSCalendar!
+    @IBOutlet weak var signOutButton:UIButton!
     
     override func viewDidLoad() {
         
@@ -23,6 +25,11 @@ class Homepage : UIViewController {
     func setupCalendar(){
         calendarView.delegate = self
         calendarView.dataSource = self
+    }
+
+    @IBAction func signOutPressed(_ sender: Any) {
+        AuthCommands.signOutWithErrorCatch()
+        performSegue(withIdentifier: "backToMenuFromHomepage", sender: self)
     }
 }
 
