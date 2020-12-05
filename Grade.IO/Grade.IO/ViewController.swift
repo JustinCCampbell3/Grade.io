@@ -28,7 +28,6 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         //setupCalendar()
         checkCredentials()
-
     }
 
     //func setupCalendar(){
@@ -54,8 +53,8 @@ class ViewController: UIViewController{
     /// calls to make on ViewDidLoad for google auth
     func googleOnStartLoginWork() {
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance().signIn()
-        checkCredentials()
+        //GIDSignIn.sharedInstance().signIn()
+        //checkCredentials()
     }
     
     func checkCredentials() {

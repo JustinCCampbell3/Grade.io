@@ -20,6 +20,8 @@ class Homepage : UIViewController {
         
         setupCalendar()
         
+        print(Auth.auth().currentUser?.email)
+        
     }
 
     func setupCalendar(){
@@ -28,7 +30,14 @@ class Homepage : UIViewController {
     }
 
     @IBAction func signOutPressed(_ sender: Any) {
-        AuthCommands.signOutWithErrorCatch()
+        do
+        {
+             try Auth.auth().signOut()
+        }
+        catch let error as NSError
+        {
+             print(error.localizedDescription)
+        }
         performSegue(withIdentifier: "backToMenuFromHomepage", sender: self)
     }
 }
