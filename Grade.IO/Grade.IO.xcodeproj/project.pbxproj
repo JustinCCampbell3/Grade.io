@@ -10,16 +10,16 @@
 		44F479CD21FC752A99D10B1F /* Pods_Grade_IO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B247ACFAFA2093FC7882BE05 /* Pods_Grade_IO.framework */; };
 		4F28F7722573A9D800F69695 /* AuthCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28F7712573A9D800F69695 /* AuthCommands.swift */; };
 		4F78838225AAAA2100FCAF57 /* UserHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F78838125AAAA2100FCAF57 /* UserHelperTests.swift */; };
+		4F7883C325AAE8DD00FCAF57 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB2425AA71C1000DED98 /* DatabaseHelper.swift */; };
+		4F7883C725AAE8DD00FCAF57 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB2425AA71C1000DED98 /* DatabaseHelper.swift */; };
+		4F7883CB25AAE8E600FCAF57 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB1525AA5AF0000DED98 /* UserHelper.swift */; };
+		4F7883CF25AAE8E600FCAF57 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB1525AA5AF0000DED98 /* UserHelper.swift */; };
 		4F95AF43257B158300B8DA37 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F95AF42257B158300B8DA37 /* CreateAccount.swift */; };
 		4FC8DB1625AA5AF0000DED98 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB1525AA5AF0000DED98 /* UserHelper.swift */; };
 		4FC8DB1C25AA5B9E000DED98 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB1B25AA5B9E000DED98 /* BaseUser.swift */; };
 		4FC8DB2525AA71C1000DED98 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB2425AA71C1000DED98 /* DatabaseHelper.swift */; };
-		4FD85D1925AA9E310042A4C9 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB2425AA71C1000DED98 /* DatabaseHelper.swift */; };
-		4FD85D2125AA9E350042A4C9 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB2425AA71C1000DED98 /* DatabaseHelper.swift */; };
 		4FD85D2525AA9E3D0042A4C9 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB1B25AA5B9E000DED98 /* BaseUser.swift */; };
 		4FD85D2925AA9E3E0042A4C9 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB1B25AA5B9E000DED98 /* BaseUser.swift */; };
-		4FD85D2D25AA9E490042A4C9 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB1525AA5AF0000DED98 /* UserHelper.swift */; };
-		4FD85D3125AA9E490042A4C9 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB1525AA5AF0000DED98 /* UserHelper.swift */; };
 		4FE698CB256A8ADB00E1AC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE698CA256A8ADB00E1AC7A /* AppDelegate.swift */; };
 		4FE698CD256A8ADB00E1AC7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE698CC256A8ADB00E1AC7A /* SceneDelegate.swift */; };
 		4FE698CF256A8ADB00E1AC7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE698CE256A8ADB00E1AC7A /* ViewController.swift */; };
@@ -513,9 +513,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FD85D1925AA9E310042A4C9 /* DatabaseHelper.swift in Sources */,
-				4FD85D2D25AA9E490042A4C9 /* UserHelper.swift in Sources */,
 				4F78838225AAAA2100FCAF57 /* UserHelperTests.swift in Sources */,
+				4F7883C325AAE8DD00FCAF57 /* DatabaseHelper.swift in Sources */,
+				4F7883CB25AAE8E600FCAF57 /* UserHelper.swift in Sources */,
 				4FD85D2525AA9E3D0042A4C9 /* BaseUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,9 +524,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FD85D2125AA9E350042A4C9 /* DatabaseHelper.swift in Sources */,
-				4FD85D3125AA9E490042A4C9 /* UserHelper.swift in Sources */,
+				4F7883C725AAE8DD00FCAF57 /* DatabaseHelper.swift in Sources */,
 				4FD85D2925AA9E3E0042A4C9 /* BaseUser.swift in Sources */,
+				4F7883CF25AAE8E600FCAF57 /* UserHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

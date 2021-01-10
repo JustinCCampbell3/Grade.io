@@ -32,24 +32,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4FE698E7256A8ADC00E1AC7A"
-               BuildableName = "Grade.IOUITests.xctest"
-               BlueprintName = "Grade.IOUITests"
-               ReferencedContainer = "container:Grade.IO.xcodeproj">
-            </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "DBHelperTests">
-               </Test>
-               <Test
-                  Identifier = "test">
-               </Test>
-            </SkippedTests>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "4FE698DC256A8ADC00E1AC7A"
                BuildableName = "Grade.IOTests.xctest"
                BlueprintName = "Grade.IOTests"

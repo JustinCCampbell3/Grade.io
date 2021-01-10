@@ -18,7 +18,12 @@ class Homepage : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCalendar()
-        name.text = Auth.auth().currentUser?.email?.components(separatedBy: "@")[0];
+        name.text = CurrentUser.FirstName
+        CurrentUser.SetFirstName(newFirstName: "CHECKFIRSTNAMECANBESETINDATABASE")
+        CurrentUser.SetLastName(newLastName: "CHECKLASTNAMECANBESETINDATABASE")
+        CurrentUser.SetBio(newBio: "Hey there, my name is Matt and I've been working on this for too long <3")
+        CurrentUser.SetEmail(newEmail: "MattsNewEmail@gmail.com")
+        CurrentUser.SetID(newID: "NEWID")
     }
 
     func setupCalendar(){

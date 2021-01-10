@@ -5,16 +5,9 @@
 //  Created by user183542 on 1/9/21.
 //
 
-import Foundation
-import FirebaseFirestore
+import Firebase
 public class DatabaseHelper {
-    public static func IsInDatabase(collection:String, document:String) -> Bool {
-        var result = false
-        GetDBReference().collection(collection).document(document).getDocument() { (document,error) in
-            result = document?.exists != nil
-        }
-        return result;
-    }
+    
     public static func GetDBReference() -> Firestore {
         return Firestore.firestore()
     }

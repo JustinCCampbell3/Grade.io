@@ -6,6 +6,8 @@
 //
 
 import XCTest
+import FirebaseFirestore
+@testable import Grade_IO
 
 var user = BaseUser()
 
@@ -25,6 +27,7 @@ class DBHelperTests: XCTestCase {
     }
     
     func testGenerateUsername() {
-        XCTAssertEqual(UserHelper.GenerateUserName(), "GibbsMat")
+        //UserHelper.GenerateUserName(user:user){}
+        //XCTAssertEqual(user.ID, "gibbsmat")
     }
 }

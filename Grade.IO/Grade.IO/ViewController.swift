@@ -29,7 +29,6 @@ class ViewController: UIViewController{
         //setupCalendar()
         checkCredentials()
     }
-
     //func setupCalendar(){
         //calendarView.delegate = self
     //}
