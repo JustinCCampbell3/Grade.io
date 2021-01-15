@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o4i-3p-87n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o4i-3p-87n">
     <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -463,7 +463,7 @@
         <!--Teacher Tab Bar Controller-->
         <scene sceneID="SOJ-rU-sZO">
             <objects>
-                <tabBarController title="Teacher Tab Bar Controller" id="o4i-3p-87n" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="THomeTab" title="Teacher Tab Bar Controller" id="o4i-3p-87n" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fxK-W6-bWO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -471,8 +471,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="FSR-Ja-8L3" kind="relationship" relationship="viewControllers" id="3yH-g7-PUe"/>
-                        <segue destination="GsH-Xv-0pz" kind="relationship" relationship="viewControllers" id="9Wt-PL-WLd"/>
                         <segue destination="jay-gE-byf" kind="relationship" relationship="viewControllers" id="HmB-iG-mMB"/>
+                        <segue destination="lUM-3O-l7l" kind="relationship" relationship="viewControllers" id="Xn5-q4-g7O"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MDQ-cD-2TA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -482,7 +482,7 @@
         <!--Teacher Homepage Navigation Controller-->
         <scene sceneID="PGt-7E-5Yr">
             <objects>
-                <navigationController title="Teacher Homepage Navigation Controller" id="FSR-Ja-8L3" customClass="SideMenuNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="THNav" title="Teacher Homepage Navigation Controller" id="FSR-Ja-8L3" customClass="SideMenuNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" id="sKX-T5-8FG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J6b-Wv-ms2">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
@@ -502,36 +502,27 @@
             </objects>
             <point key="canvasLocation" x="2643" y="132"/>
         </scene>
-        <!--Teacher Zoom Navigation Controller-->
-        <scene sceneID="498-BM-zdL">
-            <objects>
-                <navigationController title="Teacher Zoom Navigation Controller" id="GsH-Xv-0pz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Zoom" id="R6n-ko-eBh"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ZO-Y7-1E8">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="lUM-3O-l7l" kind="relationship" relationship="rootViewController" id="q8r-Kz-jfC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ad1-Tn-Oe5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1994" y="814"/>
-        </scene>
         <!--Teacher Zoom Rooms-->
         <scene sceneID="etK-LN-edz">
             <objects>
                 <viewController title="Teacher Zoom Rooms" id="lUM-3O-l7l" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Bc9-bm-JXN">
+                    <view key="view" contentMode="scaleToFill" id="Bc9-bm-JXN" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Ojk-Rr-wuQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="FirstColor">
+                                <color key="value" red="1" green="0.80000000000000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="SecondColor">
+                                <color key="value" red="0.62745098040000002" green="0.87058823529999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Zoom Rooms" id="oPq-Gs-Gby"/>
+                    <tabBarItem key="tabBarItem" title="Zoom" id="oPq-Gs-Gby"/>
                     <navigationItem key="navigationItem" id="PuK-ey-1kN">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="zLF-rW-HK2">
+                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="zLF-rW-HK2">
                             <color key="tintColor" systemColor="systemBlueColor"/>
                         </barButtonItem>
                     </navigationItem>
@@ -575,7 +566,7 @@
         <!--Teacher Homepage-->
         <scene sceneID="yXT-9J-25R">
             <objects>
-                <viewController title="Teacher Homepage" id="xwZ-eV-Wfy" customClass="TeacherViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="THome" title="Teacher Homepage" id="xwZ-eV-Wfy" customClass="TeacherViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="31G-IR-Owj" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -696,8 +687,8 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" id="qVx-lW-IYA">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="nbM-ua-pOz">
+                    <navigationItem key="navigationItem" title="Home" id="qVx-lW-IYA">
+                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="nbM-ua-pOz">
                             <connections>
                                 <action selector="didTapMenu" destination="xwZ-eV-Wfy" id="bxd-ai-iPC"/>
                             </connections>
@@ -708,20 +699,65 @@
             </objects>
             <point key="canvasLocation" x="3372.65625" y="141.796875"/>
         </scene>
-        <!--Teacher Student List-->
+        <!--TeacherStudentList-->
         <scene sceneID="0Q1-yH-TIf">
             <objects>
-                <viewController title="Teacher Student List" id="uxu-aG-ABM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="c65-zb-7QH">
+                <viewController storyboardIdentifier="TStudentList" title="TeacherStudentList" id="uxu-aG-ABM" customClass="TeacherViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c65-zb-7QH" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="KJh-bn-tvM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="FirstColor">
+                                <color key="value" red="1" green="0.80000000000000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="SecondColor">
+                                <color key="value" red="0.62745098040000002" green="0.87058823529999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
+                    <navigationItem key="navigationItem" title="Student List" id="tWy-vS-ofh">
+                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="0tc-dI-E09">
+                            <connections>
+                                <action selector="didTapMenu" destination="uxu-aG-ABM" id="aqi-oC-5ND"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fes-YL-nPa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4041" y="142"/>
+            <point key="canvasLocation" x="6254.6875" y="-526.171875"/>
+        </scene>
+        <!--Files-->
+        <scene sceneID="yeS-p2-zmO">
+            <objects>
+                <viewController storyboardIdentifier="TFiles" id="ZPu-Sy-96A" customClass="TeacherViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gZi-Kk-vYR" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6vp-4O-6Ch"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="FirstColor">
+                                <color key="value" red="1" green="0.80000000000000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="SecondColor">
+                                <color key="value" red="0.62745098040000002" green="0.87058823529999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" title="Files" id="5I3-be-vZ8">
+                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="8o5-RC-ukI">
+                            <connections>
+                                <action selector="didTapMenu" destination="ZPu-Sy-96A" id="tYN-D0-2nj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EP4-t7-z1Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4784" y="142"/>
         </scene>
         <!--Student Tab Bar Controller-->
         <scene sceneID="eaq-ZZ-WQQ">
@@ -961,7 +997,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="aNV-eV-OQL"/>
-                    <navigationItem key="navigationItem" title="Homepage" id="m4F-Do-6iq"/>
+                    <navigationItem key="navigationItem" title="Home" id="m4F-Do-6iq"/>
                     <connections>
                         <outlet property="calendarView" destination="rp6-Tm-mcb" id="JXz-p3-Vtw"/>
                         <outlet property="name" destination="Xfp-pr-J7a" id="qSs-up-OE3"/>
@@ -1002,7 +1038,7 @@
             <objects>
                 <viewController title="Student Grades Page" id="c7S-Wq-bIY" customClass="ViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mRS-vk-aaz" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="M5h-8C-b01"/>
                         <userDefinedRuntimeAttributes>
@@ -1026,7 +1062,7 @@
             <objects>
                 <viewController title="Student Zoom Page" id="wai-ue-tp6" customClass="ZoomViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fSY-59-afe" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="iqU-TH-zao">
@@ -1034,7 +1070,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kWb-BE-HAJ">
-                                <rect key="frame" x="65" y="100" width="163" height="144"/>
+                                <rect key="frame" x="97" y="120" width="163" height="144"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="144" id="0vs-gg-ar9"/>
                                     <constraint firstAttribute="width" constant="163" id="g31-dP-QVG"/>
@@ -1042,7 +1078,7 @@
                                 <state key="normal" image="TestZoomBtn"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Math Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv9-AO-QTc">
-                                <rect key="frame" x="86" y="252" width="121" height="30"/>
+                                <rect key="frame" x="118" y="272" width="121" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="121" id="RRx-vT-Ph3"/>
                                     <constraint firstAttribute="height" constant="30" id="ot0-Q2-X5G"/>
@@ -1080,7 +1116,7 @@
             <objects>
                 <viewController title="Student Messaging" id="yb6-bM-U7R" customClass="ViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hQk-f0-g0t" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Fze-V1-sJ4"/>
                         <userDefinedRuntimeAttributes>
@@ -1104,7 +1140,7 @@
             <objects>
                 <viewController title="Student Account Page" id="j4Y-uL-eyx" customClass="ViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Otj-Xr-nSA" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="ybM-0v-3tv"/>
                         <userDefinedRuntimeAttributes>
@@ -1123,24 +1159,141 @@
             </objects>
             <point key="canvasLocation" x="544" y="908"/>
         </scene>
-        <!--View Controller-->
+        <!--Teacher Assignments Page-->
         <scene sceneID="sKh-0w-hvl">
             <objects>
-                <viewController id="68t-L9-A8l" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="FKi-N0-jxi">
+                <viewController storyboardIdentifier="TAssignment" title="Teacher Assignments Page" id="68t-L9-A8l" customClass="TeacherViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FKi-N0-jxi" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Y6Z-hP-4gm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="FirstColor">
+                                <color key="value" red="1" green="0.80000000000000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="SecondColor">
+                                <color key="value" red="0.62745098040000002" green="0.87058823529999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
+                    <navigationItem key="navigationItem" title="Assignments" id="MC6-GB-t7N">
+                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="K5M-Fv-ll5">
+                            <connections>
+                                <action selector="didTapMenu" destination="68t-L9-A8l" id="xcf-nG-Wds"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0r-bJ-1rQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4514" y="-533"/>
+            <point key="canvasLocation" x="7748.4375" y="151.7578125"/>
+        </scene>
+        <!--Teacher View Account-->
+        <scene sceneID="shG-aC-kNe">
+            <objects>
+                <viewController storyboardIdentifier="TAccount" title="Teacher View Account" id="ebR-eO-IcP" customClass="TeacherViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dwm-WW-aqY" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="rer-h5-L4L"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="FirstColor">
+                                <color key="value" red="1" green="0.80000000000000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="SecondColor">
+                                <color key="value" red="0.62745098040000002" green="0.87058823529999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" title="Account" id="5Kf-Ef-ihK">
+                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="GyO-my-m96">
+                            <connections>
+                                <action selector="didTapMenu" destination="ebR-eO-IcP" id="kSJ-1P-DkB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9nK-UN-o2T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6253.125" y="151.7578125"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZP4-Nc-KC7">
+            <objects>
+                <navigationController storyboardIdentifier="TSLNav" automaticallyAdjustsScrollViewInsets="NO" id="M1L-Yj-c5h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3sc-Ng-CHt">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uxu-aG-ABM" kind="relationship" relationship="rootViewController" id="6i3-pN-eRt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C6B-j1-dhf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5488.28125" y="-526.171875"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DYx-B1-aEM">
+            <objects>
+                <navigationController storyboardIdentifier="TFNav" automaticallyAdjustsScrollViewInsets="NO" id="SCx-B4-gxT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ehf-aB-rw1">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZPu-Sy-96A" kind="relationship" relationship="rootViewController" id="T7K-sa-XdI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMB-8t-6R9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4055" y="142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Qnz-c2-WCm">
+            <objects>
+                <navigationController storyboardIdentifier="TAcNav" automaticallyAdjustsScrollViewInsets="NO" id="iLd-tB-Rcc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BVZ-3P-XJM">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ebR-eO-IcP" kind="relationship" relationship="rootViewController" id="krg-PO-4cF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s1p-U4-XEa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5487.5" y="151.7578125"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MeV-AX-U00">
+            <objects>
+                <navigationController storyboardIdentifier="TAsNav" automaticallyAdjustsScrollViewInsets="NO" id="ew6-gH-yB5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Efi-SI-XeN">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="68t-L9-A8l" kind="relationship" relationship="rootViewController" id="csI-VC-Ydk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XhZ-UP-j6B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6982.8125" y="151.7578125"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="v2X-6N-eaU"/>
+        <segue reference="pYR-QJ-enn"/>
         <segue reference="O3g-Zm-5en"/>
         <segue reference="gha-cY-JpO"/>
     </inferredMetricsTieBreakers>
@@ -1153,6 +1306,7 @@
         <image name="TestZoomBtn" width="112.33333587646484" height="93.333335876464844"/>
         <image name="ZoomButtonImg" width="170.66667175292969" height="170.66667175292969"/>
         <image name="google.png" width="18" height="18"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="png-clipart-check-mark-computer-icons-wrong-miscellaneous-angle" width="900" height="799"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

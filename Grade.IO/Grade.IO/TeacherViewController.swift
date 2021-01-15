@@ -8,36 +8,96 @@
 import SideMenu
 import UIKit
 
-class TeacherViewController: UIViewController {
+class TeacherViewController: UIViewController, MenuControllerDelegate {
+    
     //variable for the slide out menu in the teacher view
-    var menu: SideMenuNavigationController?
+    private var sideMenu: SideMenuNavigationController?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menu = SideMenuNavigationController(rootViewController: MenuListController())
+        let menu = MenuListController()
+        menu.delegate = self
+        
+        sideMenu = SideMenuNavigationController(rootViewController: menu)
         //setting menu to open on the left side. without this it opens on the right
-        menu?.leftSide = true
+        sideMenu?.leftSide = true
         //hide the white bar at the top of the side menu to make it look better
-        //menu?.setNavigationBarHidden(true, animated: false)
+        //sideMenu?.setNavigationBarHidden(true, animated: false)
+        
         
         //tell the manager which side the menu is on
-        SideMenuManager.default.leftMenuNavigationController = menu
+        SideMenuManager.default.leftMenuNavigationController = sideMenu
         
         SideMenuManager.default.addPanGestureToPresent(toView: self.view)
     }
     
     @IBAction func didTapMenu(){
-        present(menu!, animated: true)
+        present(sideMenu!, animated: true)
     }
+    
+    func didSelectMenuItem(named: String) {
+        
+        //once menu has dismissed, go to that screen
+        sideMenu?.dismiss(animated: true, completion: {
+            if named == "Student List"{
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc: UINavigationController = storyBoard.instantiateViewController(withIdentifier: "TSLNav") as! UINavigationController
+                //let vc: UIViewController = storyBoard.instantiateViewController(withIdentifier: "TStudentList") as! UIViewController
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated:true, completion: nil)
+                //self.navigationController?.pushViewController(vc, animated: true)
+                
+            }
+            else if named == "Assignments"{
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc: UINavigationController = storyBoard.instantiateViewController(withIdentifier: "TAsNav") as! UINavigationController
+                //let vc: UIViewController = storyBoard.instantiateViewController(withIdentifier: "TAssignment") as! UIViewController
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated:true, completion: nil)
+                //self.navigationController?.pushViewController(vc, animated: true)
+            }
+            else if named == "Files"{
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc: UINavigationController = storyBoard.instantiateViewController(withIdentifier: "TFNav") as! UINavigationController
+                //let vc: UIViewController = storyBoard.instantiateViewController(withIdentifier: "TFiles") as! UIViewController
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated:true, completion: nil)
+                //self.navigationController?.pushViewController(vc, animated: true)
+            }
+            else if named == "Account"{
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc: UINavigationController = storyBoard.instantiateViewController(withIdentifier: "TAcNav") as! UINavigationController
+                //let vc: UIViewController = storyBoard.instantiateViewController(withIdentifier: "TAccount") as! UIViewController
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated:true, completion: nil)
+                //self.navigationController?.pushViewController(vc, animated: true)
+            }
+            else if named == "Home"{
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                //let vc: UIViewController = storyBoard.instantiateViewController(withIdentifier: "THome") as! UIViewController
+                let vc: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "THomeTab") as! UITabBarController
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated:true, completion: nil)
+                //self.navigationController?.pushViewController(vc, animated: true)
+            }
+        })
+    }
+
 }
 
+protocol MenuControllerDelegate{
+    func didSelectMenuItem(named: String);
+}
 
 class MenuListController: UITableViewController{
-    //array of items in our menu
-    var items = ["Student List", "Assignments", "Files", "Account"]
+    public var delegate: MenuControllerDelegate?
     
-    //set a variable for a color
+    //array of items in our menu
+    var items = ["Student List", "Assignments", "Files", "Account", "Home"]
+    
+    //set a variable for a color using RGB (alpha always 1, i think)
     let darkColor = UIColor(red: 33/255.0, green: 33/255.0, blue: 33/255.0, alpha: 1)
     
     override func viewDidLoad() {
@@ -67,5 +127,9 @@ class MenuListController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        //Relay to delegate about menu item selection
+        let selectedItem = items[indexPath.row]
+        delegate?.didSelectMenuItem(named: selectedItem)
     }
 }
