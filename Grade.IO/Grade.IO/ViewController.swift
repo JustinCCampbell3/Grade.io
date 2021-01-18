@@ -27,7 +27,6 @@ class ViewController: UIViewController{
         googleOnStartLoginWork()
         super.viewDidLoad()
         //setupCalendar()
-        checkCredentials()
     }
     //func setupCalendar(){
         //calendarView.delegate = self
@@ -58,7 +57,10 @@ class ViewController: UIViewController{
     
     func checkCredentials() {
         if (Auth.auth().currentUser != nil) {
-            showHomeScreen_Student()
+            UserHelper.GetUserByID(type:CurrentUser.UserType, id:CurrentUser.ID) { res in
+                CurrentUser = res
+                self.showHomeScreen_Student()
+            }
         }
     }
     

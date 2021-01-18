@@ -2,62 +2,70 @@
 //  BaseUser.swift
 //  Grade.IO
 //
-//  Created by matt on 1/9/21.
+//  Created by user183542 on 1/17/21.
 //
 
-import Foundation
 import FirebaseFirestore
 
-public class BaseUser
-{
-    public var ID : String
-    public var FirstName : String
-    public var LastName : String
-    public var Email : String
-    public var Bio : String
-
+public class BaseUser : IUser {
+    public var ID: String
+    public var FirstName: String
+    public var LastName: String
+    public var Email: String
+    public var Bio: String
+    public var PhotoPath: String
+    public var Pronouns: String
+    public var UserType:EUserType
+    
     public init() {
         ID = ""
         FirstName = ""
         LastName = ""
         Email = ""
         Bio = ""
+        PhotoPath = ""
+        Pronouns = ""
+        UserType = EUserType.NULL
     }
     
-    /// Set the FirstName property, and update the FirstName document in the database
-    public func SetFirstName(newFirstName:String) {
-        FirstName = newFirstName
-        SaveToDoc(key:"FirstName", value:FirstName)
+    public func SetFirstName(newFirstName: String) {
+        DatabaseHelper.SaveUserPropertyToDoc(user: self, key:Strings.FIRST_NAME, value: newFirstName)
     }
     
-    /// Set the LastName property, and update the LastName document in the database
-    public func SetLastName(newLastName:String) {
-        LastName = newLastName
-        SaveToDoc(key:"LastName", value:LastName)
+    public func SetLastName(newLastName: String) {
+        DatabaseHelper.SaveUserPropertyToDoc(user: self, key:Strings.LAST_NAME, value: newLastName)
     }
     
-    /// Set the Email property, and update the Email document in the database
-    public func SetEmail(newEmail:String) {
-        Email = newEmail
-        SaveToDoc(key:"Email", value:Email)
+    public func SetEmail(newEmail: String) {
+        DatabaseHelper.SaveUserPropertyToDoc(user: self, key:Strings.EMAIL, value: newEmail)
     }
     
-    /// Set the ID property, and update the ID document in the database
-    public func SetID(newID:String) {
-        ID = newID
-        SaveToDoc(key:"ID", value:ID)
+    public func SetBio(newBio: String) {
+        DatabaseHelper.SaveUserPropertyToDoc(user: self, key:Strings.BIO, value: newBio)
     }
     
-    /// Set the Bio property, and update the Bio document in the database
-    public func SetBio(newBio:String) {
-        Bio = newBio
-        SaveToDoc(key:"Bio", value:Bio)
+    public func SetPhotoPath(newPhotoPath: String) {
+        DatabaseHelper.SaveUserPropertyToDoc(user: self, key:Strings.PHOTO_PATH, value: newPhotoPath)
     }
     
-    // todo: move to DatabaseHelper? Add third (ugh) param to handle collection name? Or maybe just pass in a DocumentSnapshot
-    func SaveToDoc(key:String, value:String) {
-        DatabaseHelper.GetDocument(collectionName: "Student", documentName: ID).setData([
-            key : value
-        ], merge: true)
+    public func SetPronouns(newPronouns: String) {
+        DatabaseHelper.SaveUserPropertyToDoc(user: self, key:Strings.PRONOUNS, value: newPronouns)
+    }
+    
+    public func Listen() {
+        DatabaseHelper.GetDBReference().collection(String(describing: UserType)).document(ID).addSnapshotListener() { (snapshot, error) in
+            self.SetPropertiesFromDoc(doc: snapshot!)
+        }
+    }
+    
+    public func SetPropertiesFromDoc(doc:DocumentSnapshot)
+    {
+        self.FirstName = doc.get(Strings.FIRST_NAME) as! String
+        self.LastName = doc.get(Strings.LAST_NAME) as! String
+        self.Email = doc.get(Strings.EMAIL) as! String
+        self.Bio = doc.get(Strings.BIO) as! String
+        self.PhotoPath = doc.get(Strings.PHOTO_PATH) as! String
+        self.Pronouns = doc.get(Strings.PRONOUNS) as! String
+        print("HELOOOOO")
     }
 }

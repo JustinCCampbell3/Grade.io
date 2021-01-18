@@ -8,6 +8,7 @@
 import UIKit
 import FSCalendar
 import FirebaseAuth
+import FirebaseFirestore
 
 class Homepage : UIViewController {
     //variable for calendar function
@@ -19,11 +20,18 @@ class Homepage : UIViewController {
         super.viewDidLoad()
         setupCalendar()
         name.text = CurrentUser.FirstName
-        CurrentUser.SetFirstName(newFirstName: "CHECKFIRSTNAMECANBESETINDATABASE")
-        CurrentUser.SetLastName(newLastName: "CHECKLASTNAMECANBESETINDATABASE")
-        CurrentUser.SetBio(newBio: "Hey there, my name is Matt and I've been working on this for too long <3")
-        CurrentUser.SetEmail(newEmail: "MattsNewEmail@gmail.com")
-        CurrentUser.SetID(newID: "NEWID")
+        CurrentUser = Student()
+        CurrentUser.ID = "GibbsMa"
+        CurrentUser.SetPronouns(newPronouns: "He/Him")
+        CurrentUser.SetFirstName(newFirstName: "Natt")
+        CurrentUser.SetLastName(newLastName: "Nibbs")
+        CurrentUser.SetBio(newBio: "HJADGKMADG")
+        CurrentUser.SetEmail(newEmail: "adgadgadg")
+        CurrentUser.SetPhotoPath(newPhotoPath: "adgadgadg")
+        CurrentUser.SetPronouns(newPronouns: "Adgadgadgadg")
+        (CurrentUser as! Student).SetGPA(newGPA:4.0)
+        (CurrentUser as! Student).SetClassroom(newClass:"adgadg")
+        CurrentUser.Listen()
     }
 
     func setupCalendar(){
