@@ -24,6 +24,10 @@ target 'Grade.IO' do
     # Pods for testing
   end
 
+  #pod for calendar
   pod 'FSCalendar'
+
+  #pod for sidebar menu
+  pod 'SideMenu'
 
 end

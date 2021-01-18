@@ -19,6 +19,7 @@ class Homepage : UIViewController {
         super.viewDidLoad()
         setupCalendar()
         name.text = Auth.auth().currentUser?.email?.components(separatedBy: "@")[0];
+        title = "Homepage"
     }
 
     func setupCalendar(){
