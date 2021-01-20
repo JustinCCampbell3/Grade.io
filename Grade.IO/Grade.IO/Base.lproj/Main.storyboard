@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1374,13 +1374,36 @@
                     <view key="view" contentMode="scaleToFill" id="FKi-N0-jxi" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXM-m0-KM7">
+                                <rect key="frame" x="609" y="78" width="71" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="71" id="NFz-FW-HcR"/>
+                                    <constraint firstAttribute="height" constant="77" id="fIF-mQ-8G6"/>
+                                </constraints>
+                                <state key="normal" image="PlusSign"/>
+                                <connections>
+                                    <segue destination="FAO-rc-xol" kind="show" id="wqi-4X-56i"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Y6Z-hP-4gm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gXM-m0-KM7" firstAttribute="centerY" secondItem="FKi-N0-jxi" secondAttribute="centerY" constant="-395.5" id="TI7-2N-qCO"/>
+                            <constraint firstItem="gXM-m0-KM7" firstAttribute="centerX" secondItem="FKi-N0-jxi" secondAttribute="centerX" constant="260.5" id="mNd-gP-XMd"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="FirstColor">
                                 <color key="value" red="1" green="0.80000000000000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="SecondColor">
+                                <color key="value" red="0.62745098040000002" green="0.87058823529999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                <color key="value" red="1" green="0.80000000000000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
                                 <color key="value" red="0.62745098040000002" green="0.87058823529999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
@@ -1396,6 +1419,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0r-bJ-1rQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7748.4375" y="151.7578125"/>
+        </scene>
+        <!--Create Assignment-->
+        <scene sceneID="ioy-ma-uxY">
+            <objects>
+                <viewController id="FAO-rc-xol" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BiP-GL-8Np" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Z1G-l8-bhP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                <color key="value" red="1" green="0.80000000000000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                <color key="value" red="0.62745098040000002" green="0.87058823529999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Assignment" id="dM6-5w-Des"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AEm-5N-LpZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8484" y="152"/>
         </scene>
         <!--Teacher View Account-->
         <scene sceneID="shG-aC-kNe">
@@ -1510,6 +1557,7 @@
         <image name="GradeButtonImg" width="133.33332824707031" height="116.33333587646484"/>
         <image name="Left_Carrot-512" width="512" height="512"/>
         <image name="MessageButtonImg" width="341.33334350585938" height="341.33334350585938"/>
+        <image name="PlusSign" width="326.66665649414062" height="326.66665649414062"/>
         <image name="Screen_Shot_2020-11-11_at_10.43.48_AM-removebg-preview" width="794" height="270"/>
         <image name="TestZoomBtn" width="112.33333587646484" height="93.333335876464844"/>
         <image name="ZoomButtonImg" width="170.66667175292969" height="170.66667175292969"/>
