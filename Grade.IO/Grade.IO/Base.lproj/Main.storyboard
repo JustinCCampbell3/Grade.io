@@ -648,7 +648,7 @@
                         <outlet property="fLastName" destination="1b6-2j-pFM" id="JzD-R0-Ifd"/>
                         <outlet property="fParentCode" destination="N3L-gk-Xcw" id="10B-U3-dyQ"/>
                         <outlet property="fPassword" destination="RlW-v0-3Q0" id="EOw-OF-q9P"/>
-                        <segue destination="ap2-hu-QAN" kind="presentation" identifier="studentCreateToHome" id="Sv4-GY-Cnh"/>
+                        <segue destination="ap2-hu-QAN" kind="presentation" identifier="studentCreateToHome" modalPresentationStyle="fullScreen" id="Sv4-GY-Cnh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSd-dn-PNb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1682,8 +1682,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="H2T-Rs-T5r"/>
-        <segue reference="BcE-Zl-beu"/>
+        <segue reference="Sv4-GY-Cnh"/>
+        <segue reference="QKi-Mw-CgF"/>
         <segue reference="O3g-Zm-5en"/>
         <segue reference="tgB-y8-c7U"/>
     </inferredMetricsTieBreakers>
