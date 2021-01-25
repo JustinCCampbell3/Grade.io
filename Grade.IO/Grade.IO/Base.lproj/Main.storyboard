@@ -703,7 +703,7 @@
         <!--Teacher Tab Bar Controller-->
         <scene sceneID="SOJ-rU-sZO">
             <objects>
-                <tabBarController storyboardIdentifier="THomeTab" title="Teacher Tab Bar Controller" id="o4i-3p-87n" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="THomeTab" title="Teacher Tab Bar Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="o4i-3p-87n" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fxK-W6-bWO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -806,7 +806,7 @@
         <!--Teacher Homepage-->
         <scene sceneID="yXT-9J-25R">
             <objects>
-                <viewController storyboardIdentifier="THome" title="Teacher Homepage" id="xwZ-eV-Wfy" customClass="TeacherViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="THome" title="Teacher Homepage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xwZ-eV-Wfy" customClass="TeacherViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="31G-IR-Owj" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -855,17 +855,6 @@
                                     <action selector="signOutPressed:" destination="vNe-Sk-PMF" eventType="touchUpInside" id="mjX-8p-Qlo"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmk-4H-wlj" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="263" width="768" height="315"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Qk-Xd-tso" customClass="FSCalendar">
-                                        <rect key="frame" x="166" y="286" width="768" height="315"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BB6-pd-Ip1">
                                 <rect key="frame" x="402" y="621" width="324" height="318"/>
                                 <subviews>
@@ -896,31 +885,33 @@
                                     <constraint firstAttribute="width" constant="324" id="D23-SS-zuQ"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Twl-nx-uj5" customClass="FSCalendar">
+                                <rect key="frame" x="20" y="242" width="728" height="358"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Het-jt-Jp8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fmk-4H-wlj" firstAttribute="top" secondItem="NzG-ZI-Whb" secondAttribute="bottom" constant="43" id="3Ns-RV-3GN"/>
+                            <constraint firstItem="Twl-nx-uj5" firstAttribute="leading" secondItem="Het-jt-Jp8" secondAttribute="leading" constant="20" id="12v-4t-wdR"/>
                             <constraint firstItem="Wye-Yd-zXi" firstAttribute="centerY" secondItem="31G-IR-Owj" secondAttribute="centerY" constant="-423" id="6gZ-bT-TZy"/>
                             <constraint firstItem="pIT-Gm-XuY" firstAttribute="leading" secondItem="Het-jt-Jp8" secondAttribute="leading" constant="203" id="9ik-A3-X0K"/>
-                            <constraint firstItem="fmk-4H-wlj" firstAttribute="centerX" secondItem="31G-IR-Owj" secondAttribute="centerX" id="BUh-hj-srH"/>
                             <constraint firstItem="NzG-ZI-Whb" firstAttribute="leading" secondItem="pIT-Gm-XuY" secondAttribute="trailing" constant="16" id="CZo-ZF-4yf"/>
+                            <constraint firstItem="Twl-nx-uj5" firstAttribute="top" secondItem="pIT-Gm-XuY" secondAttribute="bottom" constant="22" id="DH6-xz-NyZ"/>
+                            <constraint firstItem="Twl-nx-uj5" firstAttribute="centerX" secondItem="31G-IR-Owj" secondAttribute="centerX" id="EBV-mc-xsB"/>
                             <constraint firstItem="Wye-Yd-zXi" firstAttribute="top" secondItem="Het-jt-Jp8" secondAttribute="top" constant="20" id="GBK-f8-N4S"/>
-                            <constraint firstItem="fmk-4H-wlj" firstAttribute="trailing" secondItem="Het-jt-Jp8" secondAttribute="trailing" id="J2Z-Jn-QhN"/>
                             <constraint firstItem="NzG-ZI-Whb" firstAttribute="centerY" secondItem="31G-IR-Owj" secondAttribute="centerY" constant="-313" id="KbA-4w-hv6"/>
                             <constraint firstItem="789-bI-dw9" firstAttribute="top" secondItem="Het-jt-Jp8" secondAttribute="top" constant="29" id="OxL-xQ-4Zj"/>
-                            <constraint firstItem="fmk-4H-wlj" firstAttribute="leading" secondItem="Het-jt-Jp8" secondAttribute="leading" id="QNk-VN-2Oj"/>
                             <constraint firstItem="BB6-pd-Ip1" firstAttribute="centerX" secondItem="31G-IR-Owj" secondAttribute="centerX" constant="180" id="UV6-L1-tw2"/>
-                            <constraint firstItem="Eqx-CO-1KH" firstAttribute="top" secondItem="fmk-4H-wlj" secondAttribute="bottom" constant="43" id="Veu-Wq-kDk"/>
                             <constraint firstItem="Eqx-CO-1KH" firstAttribute="centerX" secondItem="31G-IR-Owj" secondAttribute="centerX" constant="-186.5" id="XCo-0s-ybQ"/>
                             <constraint firstItem="789-bI-dw9" firstAttribute="centerY" secondItem="31G-IR-Owj" secondAttribute="centerY" constant="-421" id="cL6-Vt-ZmY"/>
-                            <constraint firstItem="BB6-pd-Ip1" firstAttribute="top" secondItem="fmk-4H-wlj" secondAttribute="bottom" constant="43" id="f7V-ga-qST"/>
+                            <constraint firstItem="Het-jt-Jp8" firstAttribute="trailing" secondItem="Twl-nx-uj5" secondAttribute="trailing" constant="20" id="eEm-Ia-rHT"/>
                             <constraint firstItem="Eqx-CO-1KH" firstAttribute="centerY" secondItem="31G-IR-Owj" secondAttribute="centerY" constant="268" id="f8T-fW-i4C"/>
                             <constraint firstItem="Wye-Yd-zXi" firstAttribute="centerX" secondItem="31G-IR-Owj" secondAttribute="centerX" constant="300.5" id="fVg-iB-o04"/>
-                            <constraint firstItem="fmk-4H-wlj" firstAttribute="centerY" secondItem="31G-IR-Owj" secondAttribute="centerY" constant="-91.5" id="gQ2-iN-RvI"/>
                             <constraint firstItem="pIT-Gm-XuY" firstAttribute="centerX" secondItem="31G-IR-Owj" secondAttribute="centerX" constant="-106.5" id="hWV-kj-TFk"/>
                             <constraint firstItem="NzG-ZI-Whb" firstAttribute="centerX" secondItem="31G-IR-Owj" secondAttribute="centerX" constant="68.5" id="nfW-bl-Jbn"/>
                             <constraint firstItem="pIT-Gm-XuY" firstAttribute="centerY" secondItem="31G-IR-Owj" secondAttribute="centerY" constant="-313" id="oyO-Q0-w0V"/>
+                            <constraint firstItem="BB6-pd-Ip1" firstAttribute="top" secondItem="Twl-nx-uj5" secondAttribute="bottom" constant="21" id="p0p-lH-1nJ"/>
                             <constraint firstItem="Het-jt-Jp8" firstAttribute="trailing" secondItem="NzG-ZI-Whb" secondAttribute="trailing" constant="231" id="qod-TC-iXy"/>
                             <constraint firstItem="BB6-pd-Ip1" firstAttribute="centerY" secondItem="31G-IR-Owj" secondAttribute="centerY" constant="268" id="vpZ-GU-vFb"/>
                             <constraint firstItem="789-bI-dw9" firstAttribute="centerX" secondItem="31G-IR-Owj" secondAttribute="centerX" constant="-290" id="zHx-pf-ZV1"/>
