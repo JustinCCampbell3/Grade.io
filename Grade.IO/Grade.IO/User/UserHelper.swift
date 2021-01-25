@@ -25,41 +25,38 @@ public class UserHelper {
             delegate(res?.isEmpty == true)
         }
     }
-    public static func GenerateUserName(user:BaseUser, type:String, completion:@escaping (String) -> Void) -> String {
+    public static func GenerateUserName(firstName:String, lastName:String, type:String, completion:@escaping (String) -> Void) {
+
         var indexFirstName = FIRST_NAME_INDEX_DEFAULT
         var indexLastName = LAST_NAME_INDEX_DEFAULT
-        var generatedName = String(user.LastName.prefix(indexLastName) + user.FirstName.prefix(indexFirstName))
+        var generatedName = String(lastName.prefix(indexLastName) + firstName.prefix(indexFirstName))
         var shouldGenerateNewName = false
-        while (shouldGenerateNewName)
-        {
-            UserNameExists(name: generatedName, type:type) { exists in
-                if (exists) {
-                    
+        generatedName = type.first?.lowercased() as! String + "_" + generatedName
+        DatabaseHelper.GetDBReference().collection(type).document(generatedName).getDocument() { res,err in
+            if (err != nil) {
+                completion(generatedName)
+            }
+            else {
+                if (res?.exists == true) {
+                    let number = Int.random(in: 0...1000)
+                    generatedName.append(String(describing: number))
                 }
-                else {
-                    shouldGenerateNewName = false
-                }
+                
+                completion(generatedName)
             }
         }
         
-       //         {
-       //             // S_GibbsMat user.ID = String(user.LastName.prefix(indexLastName) + user.FirstName.prefix(indexFirstName + 1))
-       //         }
-       //         else {
-       //         }
-      // }
-        
-        return generatedName
     }
     
     // TODO: There is a way to deserialize to custom class instances
-    public static func GetStudentByID(id:String, completion: @escaping (Student) -> ()) {
+    public static func GetStudentByID(id:String, isTempCode:Bool = false, completion: @escaping (Student) -> ()) {
+        
         var tempuser = Student()
-        DatabaseHelper.GetDocument(collectionName: "Student", documentName: id) { res in
-            tempuser.Bio = (res as! [String:Any])["Bio"] as! String
-            tempuser.FirstName = (res as! [String:Any])["FirstName"] as! String
-            tempuser.LastName = (res as! [String:Any])["LastName"] as! String
-            tempuser.Email = (res as! [String:Any])["Email"] as! String
+        DatabaseHelper.GetDocument(collectionName: Strings.STUDENT, documentName: id) { res in
+            if (isTempCode && (id.first != "x")) {
+                completion(Student())
+            }
+            GetUserHelper(res: res as! [String:Any], tempuser: tempuser)
             tempuser.ID = id
             completion(tempuser)
         }
@@ -70,41 +67,46 @@ public class UserHelper {
     // res, and builds it in each function (base user properties + extra properties from given class)
     public static func GetParentByID(id:String, completion: @escaping (Parent) -> ()) {
         var tempuser = Parent()
-        DatabaseHelper.GetDocument(collectionName: "Student", documentName: id) { res in
-            //tempuser.Bio = (res as! [String:Any])["Bio"] as! String
-            //tempuser.FirstName = (res as! [String:Any])["FirstName"] as! String
-            //tempuser.LastName = (res as! [String:Any])["LastName"] as! String
-            //tempuser.Email = (res as! [String:Any])["Email"] as! String
-            //tempuser.ID = id
+        DatabaseHelper.GetDocument(collectionName: Strings.PARENT, documentName: id) { res in
+            GetUserHelper(res: res as! [String:Any], tempuser: tempuser)
+            GetAdultHelper(res: res as! [String:Any], tempuser: tempuser)
+            tempuser.ID = id
             completion(tempuser)
         }
+    }
+    public static func GetAdultHelper(res:[String:Any], tempuser:BaseAdult) {
+        tempuser.Email = (res as [String:Any])[Strings.EMAIL] as! String
+        tempuser.PhoneNumber = (res as [String:Any])[Strings.PHONE] as! String
+    }
+    public static func GetUserHelper(res:[String:Any], tempuser:BaseUser) {
+        tempuser.FirstName = (res as [String:Any])[Strings.FIRST_NAME] as! String
+        tempuser.LastName = (res as [String:Any])[Strings.LAST_NAME] as! String
     }
     
     // same as above
     public static func GetTeacherByID(id:String, completion: @escaping (Teacher) -> ()) {
         var tempuser = Teacher()
-        DatabaseHelper.GetDocument(collectionName: "Student", documentName: id) { res in
-            tempuser.Bio = (res as! [String:Any])["Bio"] as! String
-            tempuser.FirstName = (res as! [String:Any])["FirstName"] as! String
-            tempuser.LastName = (res as! [String:Any])["LastName"] as! String
-            tempuser.Email = (res as! [String:Any])["Email"] as! String
+        DatabaseHelper.GetDocument(collectionName: Strings.TEACHER, documentName: id) { res in
+            tempuser.FirstName = (res as! [String:Any])[Strings.FIRST_NAME] as! String
+            tempuser.LastName = (res as! [String:Any])[Strings.LAST_NAME] as! String
+            tempuser.Email = (res as! [String:Any])[Strings.EMAIL] as! String
+            tempuser.PhoneNumber = (res as! [String:Any])[Strings.PHONE] as! String
             tempuser.ID = id
             completion(tempuser)
         }
     }
     
-    public static func GetUserByID(type:EUserType, id:String, completion:@escaping(IUser) -> ()) {
-        switch type {
-        case EUserType.Parent:
+    public static func GetUserByID(id:String, isTempCode:Bool = false, completion:@escaping(IUser) -> ()) {
+        switch id.first {
+        case "p":
             return GetParentByID(id:id) { (res) in
                 completion(res)
             }
-        case EUserType.Student:
-            return GetStudentByID(id: id) { res in
+        case "s", "x":
+            return GetStudentByID(id: id, isTempCode:isTempCode) { res in
                 completion(res)
             }
-        
-        case EUserType.Teacher:
+        case "t":
             return GetTeacherByID(id: id) { res in
                 completion(res)
             }

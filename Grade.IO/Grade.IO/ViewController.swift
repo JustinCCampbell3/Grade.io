@@ -24,7 +24,6 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         emailField.delegate = self
         passwordField.delegate = self
-        googleOnStartLoginWork()
         super.viewDidLoad()
         //setupCalendar()
     }
@@ -35,7 +34,7 @@ class ViewController: UIViewController{
     
     //this function handles input on the login screen
     @IBAction func loginPressed(_ sender: Any) {
-        signInWithEmail(email: emailField.text!, password: passwordField.text!)
+        signInWithEmail(email: emailField.text! + Strings.ARBITRARY_EMAIL, password: passwordField.text!)
         checkCredentials()
     }
     
@@ -44,21 +43,11 @@ class ViewController: UIViewController{
      //variables are being funky on this page so they will be soon to come
     }
     
-    //this function handles when the google sign in is pressed
-    // MATT 11/29/2020 : I don't think we need this anymore.
-    @IBAction func googleSignInPressed(_ sender: Any) {}
-    
-    /// calls to make on ViewDidLoad for google auth
-    func googleOnStartLoginWork() {
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        //GIDSignIn.sharedInstance().signIn()
-        //checkCredentials()
-    }
-    
     func checkCredentials() {
         if (Auth.auth().currentUser != nil) {
-            UserHelper.GetUserByID(type:CurrentUser.UserType, id:CurrentUser.ID) { res in
+            UserHelper.GetUserByID(id:emailField.text!) { res in
                 CurrentUser = res
+                CurrentUser.Listen()
                 self.showHomeScreen_Student()
             }
         }
