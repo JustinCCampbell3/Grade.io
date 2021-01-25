@@ -25,6 +25,7 @@ class ViewController: UIViewController{
         emailField.delegate = self
         passwordField.delegate = self
         super.viewDidLoad()
+        AuthCommands.signOutWithErrorCatch()
         //setupCalendar()
     }
     //func setupCalendar(){
@@ -48,15 +49,24 @@ class ViewController: UIViewController{
             UserHelper.GetUserByID(id:emailField.text!) { res in
                 CurrentUser = res
                 CurrentUser.Listen()
-                self.showHomeScreen_Student()
+                self.PerformSignInSegue()
             }
         }
     }
-    
-    func showHomeScreen_Student() {
-        performSegue(withIdentifier: "signInToHomeScreen_STUDENT", sender: self)
+    func PerformSignInSegue() {
+        switch CurrentUser.ID.first {
+        case "s" :
+            performSegue(withIdentifier: "signInToHomeScreen_STUDENT", sender: self)
+        case "t" :
+            performSegue(withIdentifier: "signInToHomeScreen_TEACHER", sender: self)
+        case "p" :
+            performSegue(withIdentifier: "signInToHomeScreen_PARENT", sender: self)
+        default:
+            break
+            
+        }
     }
-    
+
     // TO SIGN IN  WITH EMAIL
    func signInWithEmail(email: String, password: String) {
         Auth.auth().signIn(withEmail:  email, password: password) { [weak self] authResult, error in
