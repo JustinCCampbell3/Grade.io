@@ -14,7 +14,8 @@ target 'Grade.IO' do
   
   pod 'FirebaseUI/Auth'
   pod 'FirebaseUI/Google'
-  pod 'FirebaseUI/Email'  
+  pod 'FirebaseUI/Email'
+  pod 'FirebaseFirestoreSwift', '~> 7.0-beta'  
   target 'Grade.IOTests' do
     inherit! :search_paths
     # Pods for testing

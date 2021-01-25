@@ -15,7 +15,7 @@ public class Parent : BaseAdult {
         UserType = EUserType.Parent
     }
     public func AddStudent(id:String) {
-        UserHelper.GetStudentByID(id: id) { res in
+        UserHelper.GetUserByID(id:id) { res in
             if (res != nil) {
                 self.Students.append(id)
             }

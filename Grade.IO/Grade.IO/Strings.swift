@@ -35,4 +35,6 @@ final class Strings {
     public static var GRADE:String = "grade"
     public static var HELP_REQUIRED:String = "helpRequired"
     public static var PDF_LINK:String = "pdfLink"
+    
+    public static var ARBITRARY_EMAIL:String = "@ArbitraryEmail.com"
 }
