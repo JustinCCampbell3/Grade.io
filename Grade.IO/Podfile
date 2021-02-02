@@ -11,6 +11,7 @@ target 'Grade.IO' do
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Functions'
+  pod 'Firebase/Storage'
   
   pod 'FirebaseUI/Auth'
   pod 'FirebaseUI/Google'

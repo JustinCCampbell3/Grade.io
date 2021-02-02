@@ -1489,6 +1489,9 @@
                                 <state key="normal" title="Confirm">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="confirmQuizCreation" destination="FAO-rc-xol" eventType="touchDown" id="DbS-c8-M9d"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assignment Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXO-gh-6Mq">
                                 <rect key="frame" x="69" y="84" width="161" height="24"/>
@@ -1594,7 +1597,7 @@
                                     <action selector="selectFiles" destination="FAO-rc-xol" eventType="touchDown" id="NHY-tc-TqI"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctk-Nl-0gU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctk-Nl-0gU">
                                 <rect key="frame" x="183" y="683" width="239" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="BZC-rG-ApB"/>
@@ -1650,6 +1653,12 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="Create Assignment" id="dM6-5w-Des"/>
+                    <connections>
+                        <outlet property="assignDueDate" destination="emU-FC-JiQ" id="yHU-Xe-xSs"/>
+                        <outlet property="assignInstructions" destination="Hmc-Ni-wWg" id="nMI-hZ-CVf"/>
+                        <outlet property="assignName" destination="pNe-ev-JZZ" id="f4u-uc-hRp"/>
+                        <outlet property="fileNameLabel" destination="ctk-Nl-0gU" id="0tG-lA-API"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AEm-5N-LpZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
