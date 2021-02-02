@@ -17,6 +17,7 @@ public class DatabaseHelper {
     public static func GetDocumentReference(collectionName:String, documentName:String) -> DocumentReference {
         return GetCollection(collectionName: collectionName).document(documentName)
     }
+    
     public static func SaveUserPropertyToDoc(user:BaseUser, key:String, value:String) {
         DatabaseHelper.GetDocumentReference(collectionName: String(describing: user.UserType), documentName: user.ID).setData([
                 key : value

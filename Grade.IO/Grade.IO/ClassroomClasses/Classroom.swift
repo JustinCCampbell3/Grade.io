@@ -32,11 +32,12 @@ public class Classroom {
     }
     
     //set up your students
-    /*func setStudents(studentIDs: [String]){
-        var ref = Database.database().collection("Class")
-        
-        let enrolledStudents = ref.child("studentID").queryOrderedbyValue
-    }*/
+    func setStudents(newStudents: [String]){
+        DatabaseHelper.GetDocumentReference(collectionName: "Class", documentName: Strings.STUDENT_ID).setData([
+            Strings.STUDENT_ID : newStudents
+            ], merge: true
+        )
+    }
     
     public func SetName(newName: String) {
         DatabaseHelper.GetDocumentReference(collectionName: "Class", documentName: "className").setData([
@@ -54,6 +55,9 @@ public class Classroom {
     public func SetPropertiesFromDoc(doc:DocumentSnapshot)
     {
         self.Name = doc.get(Strings.NAME) as! String
+        
+        self.Students = doc.get(Strings.STUDENT_ID) as! [String]
+
         print("Hi there!")
     }
 
