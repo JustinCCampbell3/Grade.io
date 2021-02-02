@@ -86,8 +86,12 @@ class CreateAssignmentViewController: UIViewController, UIDocumentPickerDelegate
     @IBAction func confirmQuizCreation(){
         print("label name before: " + fileNameLabel.text!)
         //check if any field is empty, and if so, don't let them do any of the below
-        if(assignName.text == "" || assignDueDate.text == "" || assignInstructions.text == "" || fileNameLabel.text == ""){
-            print("inside")
+        if(assignName.text!.isEmpty || assignDueDate.text!.isEmpty || assignInstructions.text!.isEmpty || fileNameLabel.text!.isEmpty ){
+            //create an alert that tells the user they must fill out all fields
+            let emptyFieldsAlert = UIAlertController(title: "Empty", message: "All fields must filled, and a file with an accepted type uploaded, to confirm assignment creation", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler: {(action) -> Void in print("ok button pressed")})
+            emptyFieldsAlert.addAction(ok)
+            self.present(emptyFieldsAlert, animated: true, completion: nil)
         }
         else{
             //grabbing the text of the assignment name text field
@@ -105,6 +109,22 @@ class CreateAssignmentViewController: UIViewController, UIDocumentPickerDelegate
             //grabbing the text of the assignment file uploaded so it can be found later
             let fileNameLabelText: String? = fileNameLabel.text
             print("File Name from Label: " + fileNameLabelText!)
+            
+            //put all text fields and labels back to empty
+            assignName.text = ""
+            assignDueDate.text = ""
+            assignInstructions.text = ""
+            fileNameLabel.text = ""
+            
+            //put a popup that lets them know their file was created
+            let assignCreatedAlert = UIAlertController(title: "Created", message: "Your assignment was created", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler: {(action) -> Void in print("ok button pressed")})
+            assignCreatedAlert.addAction(ok)
+            self.present(assignCreatedAlert, animated: true, completion: nil)
+            
+            //in here you can now do whatever you need to do for grabbing the assignment information
+            //the fileNameLabelText is there because I thought it would help when trying to find the necessary file in storage
+            
         }
         
         
