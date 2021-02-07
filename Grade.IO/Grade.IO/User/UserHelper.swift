@@ -29,7 +29,7 @@ public class UserHelper {
 
         var indexFirstName = FIRST_NAME_INDEX_DEFAULT
         var indexLastName = LAST_NAME_INDEX_DEFAULT
-        var generatedName = String(lastName.prefix(indexLastName) + firstName.prefix(indexFirstName))
+        var generatedName = String(lastName.prefix(indexLastName) + firstName.prefix(indexFirstName)).lowercased()
         var shouldGenerateNewName = false
         generatedName = type.first?.lowercased() as! String + "_" + generatedName
         DatabaseHelper.GetDBReference().collection(type).document(generatedName).getDocument() { res,err in

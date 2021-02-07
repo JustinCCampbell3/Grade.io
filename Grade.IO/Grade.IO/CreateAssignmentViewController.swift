@@ -8,6 +8,7 @@ import UIKit
 import MobileCoreServices
 import UniformTypeIdentifiers
 import Firebase
+import FirebaseStorage
 
 class CreateAssignmentViewController: UIViewController, UIDocumentPickerDelegate{
     //variables for the text fields found on this page
@@ -17,6 +18,8 @@ class CreateAssignmentViewController: UIViewController, UIDocumentPickerDelegate
     
     //variable for the label that will hold the name of the file uploaded
     @IBOutlet weak var fileNameLabel: UILabel!
+    
+    var assignment = Assignment()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +43,6 @@ class CreateAssignmentViewController: UIViewController, UIDocumentPickerDelegate
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         print("inside didPickDocumentsAt")
         print(urls)
-        
-        
         
         //creation of an alert to show the user that their document was uploaded
         let fileAlert = UIAlertController(title: "Completed", message: "File has been successfully uploaded", preferredStyle: .alert)
@@ -80,6 +81,28 @@ class CreateAssignmentViewController: UIViewController, UIDocumentPickerDelegate
         //dismiss the document picker controller (file app)
         controller.dismiss(animated: true, completion: nil)
     }
+    func ClearFields() {
+        assignName.text = ""
+        assignDueDate.text = ""
+        assignInstructions.text = ""
+        fileNameLabel.text = ""
+    }
+    func GenerateAssignment() -> Bool{
+        assignment.GenerateID()
+        let success = assignment.SetDueDate(newDate: assignDueDate.text!)
+        if (success) {
+            assignment.SetName(newName: assignName.text!)
+            assignment.SetDescription(newDescription: assignInstructions.text!)
+            assignment.SetFilePath(newPath: fileNameLabel.text!)
+            assignment = Assignment()
+            return true
+        }
+        else {
+            DoAlert(title: "Incorrect Date Format", body: "Incorrect date format. Correct format is mm/dd/yyyy", vc: self)
+            assignment = Assignment()
+            return false
+        }
+    }
     
     //when the confirm button is clicked, grab the text from the text fields, throw it to the database
     //figure out how to get this and the uploaded file to then be grabbed together later
@@ -94,40 +117,16 @@ class CreateAssignmentViewController: UIViewController, UIDocumentPickerDelegate
             self.present(emptyFieldsAlert, animated: true, completion: nil)
         }
         else{
-            //grabbing the text of the assignment name text field
-            let assignNameText: String? = assignName.text
-            print("Assignment Name: " + assignNameText!)
-            
-            //grabbing the text of the assignment name text field
-            let assignDueDateText: String? = assignDueDate.text
-            print("Assignment Due Date: " + assignDueDateText!)
-            
-            //grabbing the text of the assignment name text field
-            let assignInstructionText: String? = assignInstructions.text
-            print("Assignment Instructions: " + assignInstructionText!)
-            
-            //grabbing the text of the assignment file uploaded so it can be found later
-            let fileNameLabelText: String? = fileNameLabel.text
-            print("File Name from Label: " + fileNameLabelText!)
-            
-            //put all text fields and labels back to empty
-            assignName.text = ""
-            assignDueDate.text = ""
-            assignInstructions.text = ""
-            fileNameLabel.text = ""
-            
-            //put a popup that lets them know their file was created
-            let assignCreatedAlert = UIAlertController(title: "Created", message: "Your assignment was created", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "Ok", style: .default, handler: {(action) -> Void in print("ok button pressed")})
-            assignCreatedAlert.addAction(ok)
-            self.present(assignCreatedAlert, animated: true, completion: nil)
-            
-            //in here you can now do whatever you need to do for grabbing the assignment information
-            //the fileNameLabelText is there because I thought it would help when trying to find the necessary file in storage
-            
+            let success = GenerateAssignment()
+            if (success)
+            {
+                ClearFields()
+                //put a popup that lets them know their file was created
+                let assignCreatedAlert = UIAlertController(title: "Created", message: "Your assignment was created", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Ok", style: .default, handler: {(action) -> Void in print("ok button pressed")})
+                assignCreatedAlert.addAction(ok)
+                self.present(assignCreatedAlert, animated: true, completion: nil)
+            }
         }
-        
-        
     }
-
 }

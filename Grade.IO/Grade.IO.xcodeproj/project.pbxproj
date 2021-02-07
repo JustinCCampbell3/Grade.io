@@ -39,6 +39,9 @@
 		4FE8B9EC25B25236000126CA /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE8B9EB25B25236000126CA /* Teacher.swift */; };
 		4FE8B9F125B252B1000126CA /* BaseAdult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE8B9F025B252B1000126CA /* BaseAdult.swift */; };
 		4FE8B9F625B256B4000126CA /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE8B9F525B256B4000126CA /* Student.swift */; };
+		4FF0DE5125CE4B3900106D07 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0DE4F25CE4B3900106D07 /* Assignment.swift */; };
+		4FF0DE5225CE4B3900106D07 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0DE5025CE4B3900106D07 /* Result.swift */; };
+		4FF0DE5725CE579400106D07 /* IListenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0DE5625CE579400106D07 /* IListenable.swift */; };
 		66ED802B1517B0F6C22FE74C /* Pods_Grade_IOTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82CF2B41FAE841DD5C5D3D7 /* Pods_Grade_IOTests.framework */; };
 		6D2A142425A53AAF00C8288E /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A142325A53AAF00C8288E /* ZoomViewController.swift */; };
 		6D6FF5FB2574E4F900A427E7 /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FF5FA2574E4F900A427E7 /* Homepage.swift */; };
@@ -97,6 +100,9 @@
 		4FE8B9EB25B25236000126CA /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		4FE8B9F025B252B1000126CA /* BaseAdult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAdult.swift; sourceTree = "<group>"; };
 		4FE8B9F525B256B4000126CA /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		4FF0DE4F25CE4B3900106D07 /* Assignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
+		4FF0DE5025CE4B3900106D07 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		4FF0DE5625CE579400106D07 /* IListenable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IListenable.swift; sourceTree = "<group>"; };
 		6D2A142325A53AAF00C8288E /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		6D6FF5FA2574E4F900A427E7 /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 		6D8C951825ACDD3B00833043 /* TeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +157,8 @@
 		4F7701C725B50BE800A48652 /* ClassroomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				4FF0DE4F25CE4B3900106D07 /* Assignment.swift */,
+				4FF0DE5025CE4B3900106D07 /* Result.swift */,
 				4F7701C825B50C0000A48652 /* Classroom.swift */,
 			);
 			path = ClassroomClasses;
@@ -235,6 +243,7 @@
 				4F70E1C025B5620600189C7F /* CreateAccountParent.swift */,
 				4F7D099925B7C7F6005A0C22 /* Alert.swift */,
 				6DD7CD0C25C13A9C00A59BAB /* CreateAssignmentViewController.swift */,
+				4FF0DE5625CE579400106D07 /* IListenable.swift */,
 			);
 			path = Grade.IO;
 			sourceTree = "<group>";
@@ -547,6 +556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FF0DE5225CE4B3900106D07 /* Result.swift in Sources */,
 				4F70E1C125B5620600189C7F /* CreateAccountParent.swift in Sources */,
 				4FE8B9EC25B25236000126CA /* Teacher.swift in Sources */,
 				4FE698CF256A8ADB00E1AC7A /* ViewController.swift in Sources */,
@@ -557,10 +567,12 @@
 				4FE698CB256A8ADB00E1AC7A /* AppDelegate.swift in Sources */,
 				4F7701C325B4FC4800A48652 /* Enums.swift in Sources */,
 				4FC8DB2525AA71C1000DED98 /* DatabaseHelper.swift in Sources */,
+				4FF0DE5125CE4B3900106D07 /* Assignment.swift in Sources */,
 				4FE8B9F625B256B4000126CA /* Student.swift in Sources */,
 				4F7701B425B4E5BF00A48652 /* IUser.swift in Sources */,
 				6DCDAC73256C6A560033DFB3 /* GradientView.swift in Sources */,
 				4F95AF43257B158300B8DA37 /* CreateAccount.swift in Sources */,
+				4FF0DE5725CE579400106D07 /* IListenable.swift in Sources */,
 				6D8C951925ACDD3B00833043 /* TeacherViewController.swift in Sources */,
 				4F70E1B725B561E600189C7F /* CreateAccountTeacher.swift in Sources */,
 				4FC8DB1625AA5AF0000DED98 /* UserHelper.swift in Sources */,

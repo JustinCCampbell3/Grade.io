@@ -5,28 +5,33 @@
 //  Created by user183542 on 2/5/21.
 //
 
-import Foundation
+import FirebaseFirestore
 
 public class Result {
-    var CompletionTime:TimeInterval
+    var StartTime:Date
+    var TimeTaken:Double
     var StudentID:String
     var AssignmentID:String
     var Grade:Float
     var IsSubmitted:Bool
     
     public init() {
-        CompletionTime = 0.0
+        StartTime = Date()
         Grade = 0.0
         IsSubmitted = false
         StudentID = ""
         AssignmentID = ""
+        TimeTaken = 0
     }
     
-    public func SetCompletionTime(newTime:TimeInterval) {
-        
+    public func StartTimer() {
+        StartTime = Date()
+    }
+    
+    public func StopTime() {
+        TimeTaken += StartTime.timeIntervalSinceNow
     }
     public func SetGrade(newGrade:Float) {
-        
     }
     public func SetStudentID(newStudentID:String) {
         
