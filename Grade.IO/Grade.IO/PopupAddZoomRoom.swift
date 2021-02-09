@@ -9,6 +9,7 @@ import UIKit
 
 class PopupAddZoomRoom: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    //where the picture will be seen by the teacher. Can replace with the button. Have to grab pic from here
     @IBOutlet var imageView: UIImageView!
     
     override func viewDidLoad() {
