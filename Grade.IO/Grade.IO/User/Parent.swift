@@ -5,23 +5,29 @@
 //  Created by user183542 on 1/15/21.
 //
 
-import Foundation
+import FirebaseFirestore
 public class Parent : BaseAdult {
 
     public var Students:[String] = []
 
     public override init() {
         super.init()
-        UserType = EUserType.Parent
+        self.UserType = EUserType.Parent
     }
     public func AddStudent(id:String) {
-        UserHelper.GetStudentByID(id: id) { res in
+        UserHelper.GetUserByID(id:id) { res in
             if (res != nil) {
                 self.Students.append(id)
             }
             else {
                 print("error")
             }
+        }
+    }
+    public override func SetPropertiesFromDoc(doc: DocumentSnapshot) {
+        super.SetPropertiesFromDoc(doc: doc)
+        if let temp = doc.get(Strings.STUDENTS) {
+            self.Students = temp as! [String]
         }
     }
 }

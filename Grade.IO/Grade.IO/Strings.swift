@@ -35,7 +35,18 @@ final class Strings {
     public static var GRADE:String = "grade"
     public static var HELP_REQUIRED:String = "helpRequired"
     public static var PDF_LINK:String = "pdfLink"
+
     
     //adding additional strings for meeting info
     public static var MEETING_INFO:String = "MeetingInfo"
+
+    public static var RESULTS:String = "results"
+    public static var PROBLEMS:String = "problems"
+    public static var DUE_DATE:String = "dueDate"
+    public static var FILE_PATH:String = "filePath"
+    public static var DESCRIPTION:String = "description"
+    public static var STUDENTS:String = "students"
+    
+    public static var ARBITRARY_EMAIL:String = "@ArbitraryEmail.com"
+
 }

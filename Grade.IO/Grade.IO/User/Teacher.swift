@@ -17,6 +17,8 @@ public class Teacher : BaseAdult
     }
     public override func SetPropertiesFromDoc(doc: DocumentSnapshot) {
         super.SetPropertiesFromDoc(doc: doc)
-        self.ClassID = doc.get(Strings.CLASS_ID) as! String
+        if let temp = doc.get(Strings.CLASS_ID) {
+            self.ClassID = temp as! String
+        }
     }
 }

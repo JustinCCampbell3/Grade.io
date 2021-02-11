@@ -31,7 +31,18 @@ class TeacherViewController: UIViewController, MenuControllerDelegate {
         SideMenuManager.default.leftMenuNavigationController = sideMenu
         
         SideMenuManager.default.addPanGestureToPresent(toView: self.view)
+        
+        //check if this is the homepage, and if so use the name variable to populate the label
+        if(self.restorationIdentifier == "THome"){
+            name.adjustsFontSizeToFitWidth = true
+            name.lineBreakMode = .byClipping
+            name.text = CurrentUser.ID
+        }
+        
+        
     }
+    
+    @IBOutlet weak var name: UILabel!
     
     @IBAction func didTapMenu(){
         present(sideMenu!, animated: true)

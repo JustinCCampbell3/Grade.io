@@ -237,6 +237,9 @@ PODS:
   - Firebase/Functions (7.0.0):
     - Firebase/CoreOnly
     - FirebaseFunctions (~> 7.0.0)
+  - Firebase/Storage (7.0.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 7.0.0)
   - FirebaseAnalytics (7.0.0):
     - FirebaseCore (~> 7.0)
     - FirebaseInstallations (~> 7.0)
@@ -272,6 +275,8 @@ PODS:
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 2.30906.0)
+  - FirebaseFirestoreSwift (7.4.0-beta):
+    - FirebaseFirestore (~> 7.0)
   - FirebaseFunctions (7.0.0):
     - FirebaseCore (~> 7.0)
     - GTMSessionFetcher/Core (~> 1.4)
@@ -280,6 +285,9 @@ PODS:
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
     - PromisesObjC (~> 1.2)
+  - FirebaseStorage (7.0.0):
+    - FirebaseCore (~> 7.0)
+    - GTMSessionFetcher/Core (~> 1.4)
   - FirebaseUI/Auth (9.0.0):
     - Firebase/Auth
     - GoogleUtilities/UserDefaults
@@ -366,6 +374,8 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Functions
+  - Firebase/Storage
+  - FirebaseFirestoreSwift (~> 7.0-beta)
   - FirebaseUI/Auth
   - FirebaseUI/Email
   - FirebaseUI/Google
@@ -383,8 +393,10 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseFirestore
+    - FirebaseFirestoreSwift
     - FirebaseFunctions
     - FirebaseInstallations
+    - FirebaseStorage
     - FirebaseUI
     - FSCalendar
     - GoogleAppMeasurement
@@ -410,8 +422,10 @@ SPEC CHECKSUMS:
   FirebaseCore: cf3122185fce1cf71cedbbc498ea84d2b3e7cb69
   FirebaseCoreDiagnostics: 5f4aa04fdb04923693cc704c7ef9158bdf41a48b
   FirebaseFirestore: 969dd448250bee681d0e2d0af89cbb76ef955bb0
+  FirebaseFirestoreSwift: dbffafc159c23d347193af22b5ec06e9534ba944
   FirebaseFunctions: 571aee227a021debe3e1092aa079f751623e233a
   FirebaseInstallations: c28d4bcbb5c6884d1a39afbc0bd7fc590e31e9b7
+  FirebaseStorage: ea52bc7a1cb540406ed1e1acfc2bf3946621ed34
   FirebaseUI: f0677a1cc235f6da602cbd5c9b5fbbd24544a6b3
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   GoogleAppMeasurement: 7790ef975d1d463c8614cd949a847e612edf087a
@@ -427,6 +441,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 21ba866c631fac8a7730772e43a976d0dc71e478
+PODFILE CHECKSUM: adcd1962c5a5352651d7b22fcaafcdcefbbaffc7
 
 COCOAPODS: 1.10.0

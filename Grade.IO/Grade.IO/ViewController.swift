@@ -24,8 +24,8 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         emailField.delegate = self
         passwordField.delegate = self
-        googleOnStartLoginWork()
         super.viewDidLoad()
+        AuthCommands.signOutWithErrorCatch()
         //setupCalendar()
     }
     //func setupCalendar(){
@@ -35,7 +35,7 @@ class ViewController: UIViewController{
     
     //this function handles input on the login screen
     @IBAction func loginPressed(_ sender: Any) {
-        signInWithEmail(email: emailField.text!, password: passwordField.text!)
+        signInWithEmail(email: emailField.text! + Strings.ARBITRARY_EMAIL, password: passwordField.text!)
         checkCredentials()
     }
     
@@ -44,30 +44,29 @@ class ViewController: UIViewController{
      //variables are being funky on this page so they will be soon to come
     }
     
-    //this function handles when the google sign in is pressed
-    // MATT 11/29/2020 : I don't think we need this anymore.
-    @IBAction func googleSignInPressed(_ sender: Any) {}
-    
-    /// calls to make on ViewDidLoad for google auth
-    func googleOnStartLoginWork() {
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        //GIDSignIn.sharedInstance().signIn()
-        //checkCredentials()
-    }
-    
     func checkCredentials() {
         if (Auth.auth().currentUser != nil) {
-            UserHelper.GetUserByID(type:CurrentUser.UserType, id:CurrentUser.ID) { res in
+            UserHelper.GetUserByID(id:emailField.text!) { res in
                 CurrentUser = res
-                self.showHomeScreen_Student()
+                CurrentUser.Listen()
+                self.PerformSignInSegue()
             }
         }
     }
-    
-    func showHomeScreen_Student() {
-        performSegue(withIdentifier: "signInToHomeScreen_STUDENT", sender: self)
+    func PerformSignInSegue() {
+        switch CurrentUser.ID.first {
+        case "s" :
+            performSegue(withIdentifier: "signInToHomeScreen_STUDENT", sender: self)
+        case "t" :
+            performSegue(withIdentifier: "signInToHomeScreen_TEACHER", sender: self)
+        case "p" :
+            performSegue(withIdentifier: "signInToHomeScreen_PARENT", sender: self)
+        default:
+            break
+            
+        }
     }
-    
+
     // TO SIGN IN  WITH EMAIL
    func signInWithEmail(email: String, password: String) {
         Auth.auth().signIn(withEmail:  email, password: password) { [weak self] authResult, error in

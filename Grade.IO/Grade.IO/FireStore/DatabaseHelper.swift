@@ -24,6 +24,12 @@ public class DatabaseHelper {
             ], merge: true
         )
     }
+    public static func SavePropertyToDatabase<T>(collection:String, document:String, key:String, value:T) {
+        DatabaseHelper.GetDocumentReference(collectionName: collection, documentName: document).setData([
+                key : value
+            ], merge: true
+        )
+    }
     
     public static func GetDocument(collectionName:String, documentName:String, completion:@escaping(([String:Any]?) -> Void)) {
         let docRef = DatabaseHelper.GetDocumentReference(collectionName:collectionName, documentName:documentName)

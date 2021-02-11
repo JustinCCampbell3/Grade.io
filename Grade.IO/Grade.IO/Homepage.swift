@@ -19,19 +19,8 @@ class Homepage : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCalendar()
-        name.text = CurrentUser.FirstName
-        CurrentUser = Student()
-        CurrentUser.ID = "GibbsMa"
-        CurrentUser.SetPronouns(newPronouns: "He/Him")
-        CurrentUser.SetFirstName(newFirstName: "Natt")
-        CurrentUser.SetLastName(newLastName: "Nibbs")
-        CurrentUser.SetBio(newBio: "HJADGKMADG")
-        CurrentUser.SetEmail(newEmail: "adgadgadg")
-        CurrentUser.SetPhotoPath(newPhotoPath: "adgadgadg")
-        CurrentUser.SetPronouns(newPronouns: "Adgadgadgadg")
-        (CurrentUser as! Student).SetGPA(newGPA:4.0)
-        (CurrentUser as! Student).SetClassroom(newClass:"adgadg")
-        CurrentUser.Listen()
+        name.text = CurrentUser.ID
+        
     }
 
     func setupCalendar(){

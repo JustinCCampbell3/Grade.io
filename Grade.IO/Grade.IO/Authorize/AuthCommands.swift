@@ -17,12 +17,25 @@ class AuthCommands
             print ("Error signing out: %@", signOutError)
         }
     }
-    
-    static func createUserWithEmail(email: String, password: String)
-    {
+    static func createUserWithEmail(email: String, password: String, completion:@escaping (Bool)->()) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            /// error handling
+            if (error != nil) {
+                completion(false)
+            }
+            else {
+                completion(true)
+            }
         }
+    }
+    static func passwordsAreSame(password:String, confirm:String) -> Bool {
+        return password == confirm
+    }
+    static func passwordsAreValid(password:String, confirm:String) -> Bool {
+        var longEnough = password.count > 7
+        return passwordsAreSame(password: password, confirm: confirm) && longEnough
+    }
+    static func passwordOK(password:String, confirm:String) -> Bool {
+        return passwordsAreValid(password: password, confirm: confirm) && passwordsAreSame(password: password, confirm: confirm)
     }
 }
 

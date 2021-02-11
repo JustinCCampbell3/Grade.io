@@ -27,21 +27,11 @@ public class Student : BaseUser {
         self.Class = Classroom()
         super.init()
         self.UserType = EUserType.Student
-        UserHelper.GetStudentByID(id: givenCode) { res in
-                self.ID = "GibbsMatt"
-                self.SetBio(newBio:res.Bio)
-                self.SetEmail(newEmail: res.Email)
-                self.SetClassroom(newClass: res.ClassID)
-                self.SetFirstName(newFirstName: res.FirstName)
-                self.SetLastName(newLastName: res.LastName)
-                self.SetBio(newBio: res.Bio)
-                self.SetGPA(newGPA: (res as Student).GPA)
-                self.SetPhotoPath(newPhotoPath: res.PhotoPath)
-                self.SetPronouns(newPronouns: res.Pronouns)
-                DatabaseHelper.DeleteDocument(collectionName: String(describing: self.UserType), documentName: givenCode)
-                completion(self)
+        UserHelper.GetUserByID(id: givenCode) { res in
+            completion(res as! Student)
         }
     }
+    
             
     public func SetGPA(newGPA:Float) {
         DatabaseHelper.SaveUserPropertyToDoc(user: self, key: Strings.GPA, value: newGPA.description)
@@ -51,9 +41,12 @@ public class Student : BaseUser {
     }
     public override func SetPropertiesFromDoc(doc:DocumentSnapshot) {
         super.SetPropertiesFromDoc(doc: doc)
-        var temp = doc.get(Strings.GPA) as! String
-        self.GPA = Float(temp) as! Float
-        self.ClassID = doc.get(Strings.CLASS_ID) as! String
+        if let temp = doc.get(Strings.GPA) {
+            self.GPA = Float(temp as! String) as! Float
+        }
+        if let temp = doc.get(Strings.CLASS_ID) {
+            self.ClassID = temp as! String
+            
+        }
     }
-    
 }

@@ -15,7 +15,7 @@ public class BaseUser : IUser {
     public var Bio: String
     public var PhotoPath: String
     public var Pronouns: String
-    public var UserType:EUserType
+    public var UserType: EUserType
     
     public init() {
         ID = ""
@@ -51,9 +51,21 @@ public class BaseUser : IUser {
     public func SetPronouns(newPronouns: String) {
         DatabaseHelper.SaveUserPropertyToDoc(user: self, key:Strings.PRONOUNS, value: newPronouns)
     }
+    public func GetUserType() -> EUserType {
+        switch ID.first {
+        case "s", "x":
+            return EUserType.Student
+        case "p" :
+            return EUserType.Parent
+        case "t" :
+            return EUserType.Teacher
+        default:
+            return EUserType.NULL
+        }
+    }
     
     public func Listen() {
-        DatabaseHelper.GetDBReference().collection(String(describing: UserType)).document(ID).addSnapshotListener() { (snapshot, error) in
+        DatabaseHelper.GetDBReference().collection(String(describing: GetUserType())).document(ID).addSnapshotListener() { (snapshot, error) in
             self.SetPropertiesFromDoc(doc: snapshot!)
         }
     }
@@ -62,10 +74,17 @@ public class BaseUser : IUser {
     {
         self.FirstName = doc.get(Strings.FIRST_NAME) as! String
         self.LastName = doc.get(Strings.LAST_NAME) as! String
-        self.Email = doc.get(Strings.EMAIL) as! String
-        self.Bio = doc.get(Strings.BIO) as! String
-        self.PhotoPath = doc.get(Strings.PHOTO_PATH) as! String
-        self.Pronouns = doc.get(Strings.PRONOUNS) as! String
-        print("HELOOOOO")
+        if let tempEmail = doc.get(Strings.EMAIL) {
+            self.Email = tempEmail as! String
+        }
+        if let tempBio = doc.get(Strings.BIO) {
+            self.Bio = tempBio as! String
+        }
+        if let tempPhotoPath = doc.get(Strings.PHOTO_PATH) {
+            self.PhotoPath = tempPhotoPath as! String
+        }
+        if let tempPronouns = doc.get(Strings.PRONOUNS) {
+            self.Pronouns = tempPronouns as! String
+        }
     }
 }
