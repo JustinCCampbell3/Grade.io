@@ -35,4 +35,7 @@ final class Strings {
     public static var GRADE:String = "grade"
     public static var HELP_REQUIRED:String = "helpRequired"
     public static var PDF_LINK:String = "pdfLink"
+    
+    //adding additional strings for meeting info
+    public static var MEETING_INFO:String = "MeetingInfo"
 }

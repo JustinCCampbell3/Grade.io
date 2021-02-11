@@ -18,9 +18,8 @@ public class Classroom {
     public var Assignments: [String]
     public var Name: String
     //tuple to keep the zoom link and the corresponding image.
-    public var MeetingInfo: [(Zoom: String, Image: String)]
-
-
+    //public var MeetingInfo: [(Zoom: String, Image: String)]
+    public var MeetingInfo: [String]
 
     public init() {
         ClassroomID = ""
@@ -28,20 +27,42 @@ public class Classroom {
         Students = ["", ""]
         Assignments = ["", ""]
         Name = ""
-        MeetingInfo = [("", "")]
+        MeetingInfo = ["", ""]
     }
     
-    //set up your students
+    public func SetClassroomID(newClassroomID: String) {
+        DatabaseHelper.GetDocumentReference(collectionName: "Class", documentName: "classID").setData([
+            Strings.CLASS_ID : newClassroomID
+            ], merge: true
+        )
+    }
+    public func SetClassroomID(newTeacherID: String) {
+        DatabaseHelper.GetDocumentReference(collectionName: "Class", documentName: "teacherID").setData([
+            Strings.TEACHER_ID : newTeacherID
+            ], merge: true
+        )
+    }
     func setStudents(newStudents: [String]){
         DatabaseHelper.GetDocumentReference(collectionName: "Class", documentName: Strings.STUDENT_ID).setData([
             Strings.STUDENT_ID : newStudents
             ], merge: true
         )
     }
-    
+    func setAssignments(newAssignments: [String]){
+        DatabaseHelper.GetDocumentReference(collectionName: "Class", documentName: Strings.ASSIGNMENT_ID).setData([
+            Strings.ASSIGNMENT_ID : newAssignments
+            ], merge: true
+        )
+    }
     public func SetName(newName: String) {
         DatabaseHelper.GetDocumentReference(collectionName: "Class", documentName: "className").setData([
             Strings.NAME : newName
+            ], merge: true
+        )
+    }
+    func setMeetingInfo(newMeetingInfo: [String]){
+        DatabaseHelper.GetDocumentReference(collectionName: "Class", documentName: Strings.MEETING_INFO).setData([
+            Strings.MEETING_INFO : newMeetingInfo
             ], merge: true
         )
     }
@@ -54,9 +75,12 @@ public class Classroom {
     
     public func SetPropertiesFromDoc(doc:DocumentSnapshot)
     {
-        self.Name = doc.get(Strings.NAME) as! String
-        
+        self.ClassroomID = doc.get(Strings.CLASS_ID) as! String
+        self.TeacherID = doc.get(Strings.TEACHER_ID) as! String
         self.Students = doc.get(Strings.STUDENT_ID) as! [String]
+        self.Assignments = doc.get(Strings.ASSIGNMENT_ID) as! [String]
+        self.Name = doc.get(Strings.NAME) as! String
+        self.MeetingInfo = doc.get(Strings.MEETING_INFO) as! [String]
 
         print("Hi there!")
     }
