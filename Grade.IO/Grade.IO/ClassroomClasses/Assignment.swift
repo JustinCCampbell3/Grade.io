@@ -14,7 +14,7 @@ public struct Problem {
 
 public class Assignment : IListenable {
     public var Results:[Result]
-    public var Problems:[Problem]
+    public var Problems:[String:Any]
     public var DueDate:Date
     public var ID:String
     public var ClassID:String
@@ -24,7 +24,7 @@ public class Assignment : IListenable {
     
     public init() {
         Results = []
-        Problems = []
+        Problems = [:]
         DueDate = Date.init()
         ID = ""
         ClassID = ""
@@ -71,11 +71,8 @@ public class Assignment : IListenable {
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: ID, key: Strings.RESULTS, value: Results)
     }
     public func AddProblem(question:String, answer:String) {
-        var temp = Problem()
-        temp.Answer = answer
-        temp.Question = question
-        Problems.append(temp)
-        DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: ID, key: Strings.PROBLEMS, value: Problems
+        self.Problems[question] = answer
+        DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: ID, key: Strings.PROBLEMS, value: self.Problems
         )
     }
     
@@ -99,12 +96,21 @@ public class Assignment : IListenable {
         }
     }
     public func SetPropertiesFromDoc(doc: DocumentSnapshot) {
-        self.Results = doc.get(Strings.RESULTS) as! [Result]
-        self.Problems = doc.get(Strings.PROBLEMS) as! [Problem]
-        self.DueDate = doc.get(Strings.DUE_DATE) as! Date
-        self.ClassID = doc.get(Strings.CLASS_ID) as! String
-        self.FilePath = doc.get(Strings.FILE_PATH) as! String
-        self.Description = doc.get(Strings.DESCRIPTION) as! String
+        if let problems = doc.get(Strings.PROBLEMS) {
+            self.Problems = problems as! [String:Any]
+        }
+        if let date = doc.get(Strings.DUE_DATE) {
+            self.DueDate = (date as! Timestamp).dateValue()
+        }
+        if let classID = doc.get(Strings.CLASS_ID) {
+            self.ClassID = classID as! String
+        }
+        if let filePath = doc.get(Strings.FILE_PATH) {
+            self.FilePath = filePath as! String
+        }
+        if let description = doc.get(Strings.DESCRIPTION) {
+            self.Description = description as! String
+        }
     }
 
 }
