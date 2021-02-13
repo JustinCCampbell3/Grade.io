@@ -39,6 +39,11 @@ class TeacherViewController: UIViewController, MenuControllerDelegate {
             name.text = CurrentUser.ID
         }
         
+        var stuff = Result()
+        stuff.AssignmentID = "t_gibbsmat355_645"
+        stuff.IsSubmitted = true
+        stuff.Grade = 3.5
+        stuff.SetStudentID(newStudentID: "")
         
     }
     
