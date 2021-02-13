@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-public protocol IUser
+public protocol IUser : IListenable
 {
     var ID : String { get set }
     var FirstName : String { get set }
@@ -26,6 +26,5 @@ public protocol IUser
     func SetPhotoPath(newPhotoPath:String)
     func SetPronouns(newPronouns:String)
     
-    func Listen()
-    func SetPropertiesFromDoc(doc:DocumentSnapshot)
+    
 }

@@ -17,8 +17,15 @@ public class DatabaseHelper {
     public static func GetDocumentReference(collectionName:String, documentName:String) -> DocumentReference {
         return GetCollection(collectionName: collectionName).document(documentName)
     }
+    
     public static func SaveUserPropertyToDoc(user:BaseUser, key:String, value:String) {
         DatabaseHelper.GetDocumentReference(collectionName: String(describing: user.UserType), documentName: user.ID).setData([
+                key : value
+            ], merge: true
+        )
+    }
+    public static func SavePropertyToDatabase<T>(collection:String, document:String, key:String, value:T) {
+        DatabaseHelper.GetDocumentReference(collectionName: collection, documentName: document).setData([
                 key : value
             ], merge: true
         )
