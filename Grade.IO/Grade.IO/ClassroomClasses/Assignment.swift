@@ -32,6 +32,9 @@ public class Assignment : IListenable {
         Description = ""
         Name = ""
     }
+    
+    /// Given string, set due date of  assignment, with return value being success
+    
     public func SetDueDate(newDate:String) -> Bool {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy"
@@ -44,10 +47,16 @@ public class Assignment : IListenable {
             return false
         }
     }
+    
+    /// Generate ID of assignment. Set this variable, and then call listen, and you'll get an object full of info from the DB. (if the ID matches one in the DB)
+    
     public func GenerateID() {
         let firstPart = CurrentUser.ID + "_"
         ID = firstPart + String(Int.random(in: 0...1000))
     }
+    
+    /// setters
+    
     public func SetClassID(newClassID:String) {
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: ID, key: Strings.CLASS_ID, value: newClassID)
     }
@@ -67,14 +76,20 @@ public class Assignment : IListenable {
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: ID, key: Strings.PROBLEMS, value: newProblems)
     }
     public func AddResult(newResult:Result) {
-        Results.append(newResult)
-        DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: ID, key: Strings.RESULTS, value: Results)
+        let ref = DatabaseHelper.GetDBReference().collection(Strings.ASSIGNMENT).document(ID)
+        ref.updateData([
+            Strings.RESULTS : FieldValue.arrayUnion([newResult.getDictionary()])
+        ])
     }
     public func AddProblem(question:String, answer:String) {
         self.Problems[question] = answer
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: ID, key: Strings.PROBLEMS, value: self.Problems
         )
     }
+    
+    /// helpers
+    
+    /// Average time over all results of assignment
     
     public func GetAverageTime() -> Double {
         
@@ -90,12 +105,18 @@ public class Assignment : IListenable {
         return 0
     }
     
+    /// Call this once to automatically keep object up to date with DB
+    
     public func Listen() {
         DatabaseHelper.GetDBReference().collection(Strings.ASSIGNMENT).document(ID).addSnapshotListener() { (snapshot, error) in
             self.SetPropertiesFromDoc(doc: snapshot!)
         }
     }
+    
+    /// Keeps object up to date with DB. Triggered on Database update of corresponding instance
+    
     public func SetPropertiesFromDoc(doc: DocumentSnapshot) {
+        
         if let problems = doc.get(Strings.PROBLEMS) {
             self.Problems = problems as! [String:Any]
         }
