@@ -76,8 +76,10 @@ public class Assignment : IListenable {
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: ID, key: Strings.PROBLEMS, value: newProblems)
     }
     public func AddResult(newResult:Result) {
-        Results.append(newResult)
-        DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: ID, key: Strings.RESULTS, value: Results)
+        let ref = DatabaseHelper.GetDBReference().collection(Strings.ASSIGNMENT).document(ID)
+        ref.updateData([
+            Strings.RESULTS : FieldValue.arrayUnion([newResult.getDictionary()])
+        ])
     }
     public func AddProblem(question:String, answer:String) {
         self.Problems[question] = answer
@@ -114,6 +116,7 @@ public class Assignment : IListenable {
     /// Keeps object up to date with DB. Triggered on Database update of corresponding instance
     
     public func SetPropertiesFromDoc(doc: DocumentSnapshot) {
+        
         if let problems = doc.get(Strings.PROBLEMS) {
             self.Problems = problems as! [String:Any]
         }
