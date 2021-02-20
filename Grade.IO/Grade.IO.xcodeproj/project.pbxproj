@@ -181,6 +181,7 @@
 		4FC8DB1A25AA5B87000DED98 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				4F28F7682573A7A400F69695 /* Authorize */,
 				4F7701B325B4E5BF00A48652 /* IUser.swift */,
 				4FC8DB1525AA5AF0000DED98 /* UserHelper.swift */,
 				4FE8B9E625B2522B000126CA /* Parent.swift */,
@@ -229,7 +230,6 @@
 				4F7701C725B50BE800A48652 /* ClassroomClasses */,
 				4FC8DB2325AA71AD000DED98 /* FireStore */,
 				4FC8DB1A25AA5B87000DED98 /* User */,
-				4F28F7682573A7A400F69695 /* Authorize */,
 				4FE69906256AA8E400E1AC7A /* GoogleService-Info.plist */,
 				4FE698CA256A8ADB00E1AC7A /* AppDelegate.swift */,
 				4FE698CC256A8ADB00E1AC7A /* SceneDelegate.swift */,

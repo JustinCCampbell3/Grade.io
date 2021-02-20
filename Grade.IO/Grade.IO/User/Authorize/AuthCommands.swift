@@ -7,7 +7,7 @@
 
 import FirebaseAuth
 
-class AuthCommands
+public class AuthCommands
 {
     static func signOutWithErrorCatch() {
         do {

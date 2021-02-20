@@ -52,5 +52,16 @@ public class DatabaseHelper {
             }
         }
     }
+    public static func GetListOfListenables(list:[String]) -> [IListenable] {
+        var returnList:[IListenable] = []
+        for id in list {
+            let newObj = Student()
+            newObj.ID = id
+            newObj.Listen()
+            returnList.append(newObj as IListenable)
+        }
+        return returnList
+    }
+
 }
 
