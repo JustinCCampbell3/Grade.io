@@ -32,4 +32,7 @@ target 'Grade.IO' do
   #pod for sidebar menu
   pod 'SideMenu'
 
+  #pod for auto layout
+  pod 'TinyConstraints'
+
 end

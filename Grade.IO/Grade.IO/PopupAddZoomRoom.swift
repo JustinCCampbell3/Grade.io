@@ -11,6 +11,12 @@ class PopupAddZoomRoom: UIViewController, UIImagePickerControllerDelegate, UINav
 
     //where the picture will be seen by the teacher. Can replace with the button. Have to grab pic from here
     @IBOutlet var imageView: UIImageView!
+    //for the name of the zoom room
+    @IBOutlet weak var zoomName: UITextField!
+    //for the url associated with the zoom room
+    @IBOutlet weak var zoomURL: UITextField!
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +38,7 @@ class PopupAddZoomRoom: UIViewController, UIImagePickerControllerDelegate, UINav
         
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
             imageView.image = image
+            print("image: ", image)
         }
         
         picker.dismiss(animated: true, completion: nil)
@@ -40,4 +47,12 @@ class PopupAddZoomRoom: UIViewController, UIImagePickerControllerDelegate, UINav
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-}
+    
+    //for clicking the confirm button
+    @IBAction func confirmAddZRoom(){
+        let roomName: String? = zoomName.text
+        let roomURL: String? = zoomURL.text
+        print("Name: ", roomName)
+        print("URL: ", roomURL)
+        
+    }}

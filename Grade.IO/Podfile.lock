@@ -368,6 +368,7 @@ PODS:
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.11)
   - SideMenu (6.5.0)
+  - TinyConstraints (4.0.1)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -381,6 +382,7 @@ DEPENDENCIES:
   - FirebaseUI/Google
   - FSCalendar
   - SideMenu
+  - TinyConstraints
 
 SPEC REPOS:
   trunk:
@@ -411,6 +413,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SideMenu
+    - TinyConstraints
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -440,7 +443,8 @@ SPEC CHECKSUMS:
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: adcd1962c5a5352651d7b22fcaafcdcefbbaffc7
+PODFILE CHECKSUM: 51795e86f251148a89827b58f79cb377e2f857e9
 
 COCOAPODS: 1.10.0
