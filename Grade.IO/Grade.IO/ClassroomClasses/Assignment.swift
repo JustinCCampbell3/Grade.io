@@ -82,9 +82,10 @@ public class Assignment : Decodable, Encodable, IListenable {
         ])
     }
     public func AddProblem(question:String, answer:String) {
-        
-        DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: id!, key: Strings.PROBLEMS, value: self.problems
-        )
+        let washingtonRef = DatabaseHelper.GetDBReference().collection(Strings.ASSIGNMENT).document(id!)
+        washingtonRef.updateData([
+            Strings.PROBLEMS : FieldValue.arrayUnion([Problem(Question: question, Answer: answer).getDictionary()])
+        ])
     }
     
     /// helpers
