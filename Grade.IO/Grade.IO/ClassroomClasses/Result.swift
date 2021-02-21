@@ -27,17 +27,8 @@ public struct Result : Encodable, Decodable {
     public mutating func StartTimer() {
         self.StartTime = Date()
     }
-    
     public mutating func StopTime() {
         TimeTaken += StartTime.timeIntervalSinceNow
-    }
-    public func SetGrade(newGrade:Float) {
-    }
-    public func SetStudentID(newStudentID:String) {
-        DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: AssignmentID, key: Strings.RESULTS, value: getDictionary())
-    }
-    public func SetAssignmentID(newAssignmentID:String) {
-        
     }
 }
 extension Encodable {

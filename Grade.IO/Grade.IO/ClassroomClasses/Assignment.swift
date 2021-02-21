@@ -34,7 +34,6 @@ public class Assignment : Decodable, Encodable, IListenable {
     }
     
     /// Given string, set due date of  assignment, with return value being success
-    
     public func SetDueDate(newDate:String) -> Bool {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy"
@@ -49,13 +48,13 @@ public class Assignment : Decodable, Encodable, IListenable {
     }
     
     /// Generate ID of assignment. Set this variable, and then call listen, and you'll get an object full of info from the DB. (if the ID matches one in the DB)
-    
     public func GenerateID() {
-        //let firstPart = CurrentUser.ID + "_"
-        //id = firstPart + String(Int.random(in: 0...1000))
+        let firstPart = CurrentUser.ID ?? "" + "_"
+        id = firstPart + String(Int.random(in: 0...1000))
     }
     
-    /// setters
+    /// setters.
+    ///     **   These guys all update the DB. Make sure you call Listen() when you first make your Assignment object to ensure you always have up to date information!!     **
     
     public func SetClassID(newClassID:String) {
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: id!, key: Strings.CLASS_ID, value: newClassID)
@@ -91,19 +90,16 @@ public class Assignment : Decodable, Encodable, IListenable {
     /// helpers
     
     /// Average time over all results of assignment
-    
     public func GetAverageTime() -> Double {
-        
-       /* if (results.count > 0)
+        if (results?.count ?? 0 > 0) // do we have any results yet?
         {
             var sum = 0.0
-            for result in results {
-                sum += result.TimeTaken
+            for result in results! {
+                sum += result.TimeTaken // tabulate each results' time to complete
             }
-            return (sum/(Double(results.count)))
+            return (sum/(Double(results!.count))) // return result
         }
-        */
-        return 0
+        return 0  // nothing found
     }
     
     /// Call this once to automatically keep object up to date with DB
@@ -118,13 +114,19 @@ public class Assignment : Decodable, Encodable, IListenable {
     
     public func SetPropertiesFromDoc(doc: DocumentSnapshot) {
         
+        // the assignment has changed in the DB! We have a snapshot of the DB, lets extract data. Same below in Results block
+        // here we are getting our list of problems from the DB. Actually problem objects, too.
         if let pL = doc.get(Strings.PROBLEMS) as? [[String:Any]] {
             problems = []
             for p in pL {
+                // dictionary: p  here is taking the dictionary p, and converting it to a Problem automagically! Same below in the Results block.
                 var problem = Problem(dictionary: p)
-                problems!.append(problem!)
+                problems!.append(problem!) // add to array, same below in Results block
             }
         }
+        
+        // just a copy of the block above but now we're getting our list of results
+        // here we are getting our list of results from the DB.
         if let rL = doc.get(Strings.RESULTS) as? [[String:Any]] {
             results = []
             for r in rL {
@@ -132,6 +134,9 @@ public class Assignment : Decodable, Encodable, IListenable {
                 results!.append(result!)
             }
         }
+        
+        // infinitely easier types to convert
+        
         if let date = doc.get(Strings.DUE_DATE) {
             self.dueDate = (date as! Timestamp).dateValue()
         }
