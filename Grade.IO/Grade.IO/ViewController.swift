@@ -26,20 +26,6 @@ class ViewController: UIViewController{
         passwordField.delegate = self
         super.viewDidLoad()
         AuthCommands.signOutWithErrorCatch()
-        DatabaseHelper.GetAssignmentsFromClassID(classID: "testClass") { res in
-            var count = 0
-            for a in res {
-                for i in 1...10 {
-                    a.AddProblem(question: String(i) + " + " + String(i+1)+"?", answer: String(i + (i + 1)))
-                    //a.SetProblems(newProblems: [])
-                }
-                count += 1
-                a.SetDescription(newDescription: "this was the " + String(count) + "th assignment!" )
-                a.SetName(newName: "1."+String(count))
-            }
-        }
-        
-                
     }
     
     //this function handles input on the login screen
