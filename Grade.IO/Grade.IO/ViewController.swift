@@ -26,12 +26,7 @@ class ViewController: UIViewController{
         passwordField.delegate = self
         super.viewDidLoad()
         AuthCommands.signOutWithErrorCatch()
-        //setupCalendar()
     }
-    //func setupCalendar(){
-        //calendarView.delegate = self
-    //}
-
     
     //this function handles input on the login screen
     @IBAction func loginPressed(_ sender: Any) {
@@ -53,6 +48,7 @@ class ViewController: UIViewController{
             }
         }
     }
+    
     func PerformSignInSegue() {
         switch CurrentUser.ID.first {
         case "s" :
@@ -63,7 +59,6 @@ class ViewController: UIViewController{
             performSegue(withIdentifier: "signInToHomeScreen_PARENT", sender: self)
         default:
             break
-            
         }
     }
 

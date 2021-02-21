@@ -7,6 +7,7 @@
 
 import SideMenu
 import UIKit
+import FirebaseStorage
 
 class TeacherViewController: UIViewController, MenuControllerDelegate {
     
@@ -38,8 +39,6 @@ class TeacherViewController: UIViewController, MenuControllerDelegate {
             name.lineBreakMode = .byClipping
             name.text = CurrentUser.ID
         }
-        
-        
     }
     
     @IBOutlet weak var name: UILabel!
