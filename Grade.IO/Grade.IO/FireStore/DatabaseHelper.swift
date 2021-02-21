@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import FirebaseFirestoreSwift
 public class DatabaseHelper {
     
     public static func GetDBReference() -> Firestore {
@@ -19,7 +20,7 @@ public class DatabaseHelper {
     }
     
     public static func SaveUserPropertyToDoc(user:BaseUser, key:String, value:String) {
-        DatabaseHelper.GetDocumentReference(collectionName: String(describing: user.UserType), documentName: user.ID).setData([
+        DatabaseHelper.GetDocumentReference(collectionName: String(describing: user.UserType), documentName: user.ID ?? "").setData([
                 key : value
             ], merge: true
         )
@@ -52,16 +53,19 @@ public class DatabaseHelper {
             }
         }
     }
-    public static func GetListOfListenables(list:[String]) -> [IListenable] {
-        var returnList:[IListenable] = []
-        for id in list {
-            let newObj = Student()
-            newObj.ID = id
-            newObj.Listen()
-            returnList.append(newObj as IListenable)
+    public static func GetAssignmentsFromClassID(classID:String, completion: @escaping ([Assignment])->()) {
+        DatabaseHelper.GetDBReference().collection(Strings.ASSIGNMENT).whereField(Strings.CLASS_ID, isEqualTo: "testClass").getDocuments { (snapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                var assignments:[Assignment] = []
+                for document in snapshot!.documents {
+                    var temp = Assignment(dictionary: document.data())
+                    temp?.Listen()
+                    assignments.append(temp!)
+                }
+                completion(assignments)
+            }
         }
-        return returnList
     }
-
 }
-

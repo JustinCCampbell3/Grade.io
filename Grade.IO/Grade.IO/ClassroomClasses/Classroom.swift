@@ -55,12 +55,6 @@ public class Classroom : IListenable {
         self.Students.append(newStudent)
         setStudents(newStudents: Students)
     }
-    public func GetAssignmentObjects() -> [Assignment] {
-        return DatabaseHelper.GetListOfListenables(list:Assignments) as! [Assignment]
-    }
-    public func GetStudentObjects() -> [Student] {
-        return DatabaseHelper.GetListOfListenables(list:Students) as! [Student]
-    }
     public func Listen() {
         DatabaseHelper.GetDBReference().collection(Strings.CLASS).document(ID).addSnapshotListener(){
                 (snapshot, error) in self.SetPropertiesFromDoc(doc: snapshot!)

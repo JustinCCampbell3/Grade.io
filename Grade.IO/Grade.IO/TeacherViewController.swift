@@ -39,9 +39,6 @@ class TeacherViewController: UIViewController, MenuControllerDelegate {
             name.lineBreakMode = .byClipping
             name.text = CurrentUser.ID
         }
-        
-        var stuff = 
-        
     }
     
     @IBOutlet weak var name: UILabel!
