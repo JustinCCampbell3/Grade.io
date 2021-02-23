@@ -2807,6 +2807,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="completeLabel" destination="eGd-S1-eYw" id="38R-P5-1PG"/>
+                        <outlet property="completeScrollView" destination="VFj-tT-dHO" id="M9V-jr-nbM"/>
+                        <outlet property="todoLabel" destination="bRv-L0-1LG" id="eyD-WG-qRE"/>
+                        <outlet property="todoScrollView" destination="PgB-Bq-op1" id="KNO-SU-Us6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eoh-BH-Jjp" sceneMemberID="firstResponder"/>
             </objects>
@@ -2851,7 +2857,7 @@
         <!--Student Messaging-->
         <scene sceneID="7rU-SJ-wqv">
             <objects>
-                <viewController title="Student Messaging" id="yb6-bM-U7R" customClass="ZoomViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Student Messaging" id="yb6-bM-U7R" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hQk-f0-g0t" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3805,7 +3811,7 @@
         <segue reference="H2T-Rs-T5r"/>
         <segue reference="QKi-Mw-CgF"/>
         <segue reference="Zz2-zY-KCZ"/>
-        <segue reference="j7S-fI-lzO"/>
+        <segue reference="Cuc-ZE-TdR"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AccountButtonImg" width="170.66667175292969" height="170.66667175292969"/>
