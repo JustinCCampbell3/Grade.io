@@ -15,7 +15,7 @@ public struct Problem : Decodable, Encodable {
 public class Assignment : Decodable, Encodable, IListenable {
     public var results:[Result]?
     public var problems:[Problem]?
-    public var dueDate:Date?
+    public var dueDate:Timestamp?
     public var id:String?
     public var classID:String?
     public var filePath:String?
@@ -25,7 +25,7 @@ public class Assignment : Decodable, Encodable, IListenable {
     public init() {
         results = []
         problems = []
-        dueDate = Date.init()
+        dueDate = Timestamp.init()
         id = ""
         classID = ""
         filePath = ""
@@ -82,11 +82,15 @@ public class Assignment : Decodable, Encodable, IListenable {
     }
     public func AddProblem(question:String, answer:String) {
         let washingtonRef = DatabaseHelper.GetDBReference().collection(Strings.ASSIGNMENT).document(id!)
-        washingtonRef.updateData([
-            Strings.PROBLEMS : FieldValue.arrayUnion([Problem(Question: question, Answer: answer).getDictionary()])
-        ])
+        let problem = Problem(Question: question, Answer: answer)
+
+        washingtonRef.setData([
+            Strings.PROBLEMS : FieldValue.arrayUnion([problem.getDictionary()])
+        ], merge: true)
     }
-    
+    public func GetDate() -> Date? {
+        return dueDate?.dateValue()
+    }
     /// helpers
     
     /// Average time over all results of assignment
@@ -138,7 +142,7 @@ public class Assignment : Decodable, Encodable, IListenable {
         // infinitely easier types to convert
         
         if let date = doc.get(Strings.DUE_DATE) {
-            self.dueDate = (date as! Timestamp).dateValue()
+            self.dueDate = (date as! Timestamp)
         }
         if let classID = doc.get(Strings.CLASS_ID) {
             self.classID = classID as! String
