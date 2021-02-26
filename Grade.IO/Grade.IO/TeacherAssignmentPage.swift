@@ -35,6 +35,13 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
     //var that will hold the assignments
     var listAssignments: [Assignment] = []
     
+    //variable to hold assignment array index that was clicked
+    var clickedAssignment: Int = 0
+    
+    var curAssign: Assignment!
+    
+    var assignIndex: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -153,18 +160,27 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
             
             
             //lines that allow the view to be tapped
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.sendToAssignment(_sender:)))
+            let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(_:)))
+            gesture.assignIndex = curIndex
             i.addGestureRecognizer(gesture)
+            
             
             curIndex+=1
         }
     }
     
     //send the user to the assignment page when they click a UIView
-    @objc func sendToAssignment(_sender:UITapGestureRecognizer){
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc: UIViewController = storyBoard.instantiateViewController(withIdentifier: "TAssignSpec") as! UIViewController
+    @objc func sendToAssignment(_ sender:TapGesture){
+        clickedAssignment = sender.assignIndex
+        curAssign = listAssignments[sender.assignIndex]
+        print("Clicked assignment is: ", clickedAssignment)
+        //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //let vc = storyBoard.instantiateViewController(withIdentifier: "TAssignSpec") as! UIViewController
+        let vc = storyboard?.instantiateViewController(identifier: "TAssignSpec") as! TeacherAssignmentOverview
+        //let vc = TeacherAssignmentOverview()
+        
         vc.modalPresentationStyle = .fullScreen
+        vc.assignIndex = clickedAssignment
         self.present(vc, animated:true, completion: nil)
     }
     
@@ -222,6 +238,10 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
         })
     }
 
+}
+
+class TapGesture: UITapGestureRecognizer{
+    var assignIndex = Int()
 }
 
 
