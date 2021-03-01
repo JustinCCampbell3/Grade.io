@@ -11,6 +11,7 @@ import FirebaseFirestore
 public class Student : BaseUser {
     public var gpa:Float?
     public var classID:String?
+    public var parentID:String?
     
     public override init () {
         gpa = 0.0
@@ -41,6 +42,9 @@ public class Student : BaseUser {
     }
     public func SetClassroom(newClass:String) {
         DatabaseHelper.SaveUserPropertyToDoc(user: self, key: Strings.CLASS_ID, value: newClass.description)
+    }
+    public func SetParentID(newParentID:String) {
+        DatabaseHelper.SaveUserPropertyToDoc(user: self, key: Strings.CLASS_ID, value: newParentID)
     }
     public override func SetPropertiesFromDoc(doc:DocumentSnapshot) {
         super.SetPropertiesFromDoc(doc: doc)

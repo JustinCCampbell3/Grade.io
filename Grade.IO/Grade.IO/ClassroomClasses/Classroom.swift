@@ -16,10 +16,8 @@ public class Classroom : Encodable, Decodable, IListenable {
     public var teacherID: String?
     //list of Student ID's.
     public var studentIDs: [String]?
-    public var students: [Student]?
     //list of AssignmentID's
     public var assignmentIDs: [String]?
-    public var assignments:[Assignment]?
     public var name: String?
     //tuple to keep the zoom link and the corresponding image.
     //public var MeetingInfo: [(Zoom: String, Image: String)]
@@ -61,13 +59,11 @@ public class Classroom : Encodable, Decodable, IListenable {
     }
     public func GetStudentObjects(completion:@escaping ([Student]) -> ()) {
         DatabaseHelper.StudentsFromKeyValue(key: Strings.CLASS_ID, value: self.id!) { res in
-            self.students = res
             completion(res)
         }
     }
     public func GetAssignmentObjects(completion:@escaping ([Assignment]) -> ()) {
         DatabaseHelper.AssignmentsFromKeyValue(key: Strings.CLASS_ID, value: self.id!) { res in
-            self.assignments = res
             completion(res)
         }
     }

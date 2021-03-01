@@ -30,7 +30,7 @@ public class Parent : BaseAdult {
         UserHelper.GetUserByID(id:id) { res in
             if (res != nil) {
                 self.students!.append(id)
-                DatabaseHelper.SavePropertyToDatabase(collection: Strings.[are], document: <#T##String#>, key: <#T##String#>, value: <#T##T#>)
+                //DatabaseHelper.SavePropertyToDatabase(collection: Strings.[are], document: <#T##String#>, key: <#T##String#>, value: <#T##T#>)
             }
             else {
                 print("error")
