@@ -19,7 +19,7 @@ class Homepage : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCalendar()
-        name.text = CurrentUser.ID
+        name.text = CurrentUser.id
         
     }
 

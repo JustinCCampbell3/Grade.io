@@ -37,7 +37,7 @@ class CreateAccountParent : UIViewController {
                     }
                     else {
                         CurrentUser = Parent()
-                        CurrentUser.ID = newUserName
+                        CurrentUser.id = newUserName
                         CurrentUser.SetEmail(newEmail: self.fEmail.text!)
                         CurrentUser.SetFirstName(newFirstName: self.fFirstName.text!)
                         CurrentUser.SetLastName(newLastName: self.fLastName.text!)

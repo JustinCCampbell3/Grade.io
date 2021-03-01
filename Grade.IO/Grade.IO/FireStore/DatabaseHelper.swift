@@ -20,7 +20,7 @@ public class DatabaseHelper {
     }
     
     public static func SaveUserPropertyToDoc(user:BaseUser, key:String, value:String) {
-        DatabaseHelper.GetDocumentReference(collectionName: String(describing: user.UserType), documentName: user.ID ?? "").setData([
+        DatabaseHelper.GetDocumentReference(collectionName: String(describing: user.userType), documentName: user.id ?? "").setData([
                 key : value
             ], merge: true
         )
@@ -54,6 +54,40 @@ public class DatabaseHelper {
         }
     }
     
+    /// Get all assignments from the DB that have a field classID which equals the one passed in as a param to the function
+    /// Ex: GetAssignmentsFromClassID(classID:"myClass") will get you the array of all assignments that have a field equal to classID:myClass
+    public static func GetDocsFromKeyValue(collection:String, key:String, value:String, completion: @escaping ([QueryDocumentSnapshot])->()) {
+        DatabaseHelper.GetDBReference().collection(Strings.STUDENT).whereField(key, isEqualTo: value).getDocuments { (snapshot, error) in
+            if let error = error {
+                // There aint no assignments that have a 'classID' equal to the parameter classID
+                print("Error getting documents: \(error)")
+            } else {
+                completion(snapshot!.documents)  // res
+            }
+        }
+    }
+    public static func StudentsFromKeyValue(key:String, value:String, completion: @escaping ([Student])->()) {
+        var students:[Student] = []
+        GetDocsFromKeyValue(collection: Strings.STUDENT, key: key, value: value) { res in
+            for d in res {
+                let student = Student(dictionary: d.data())
+                student?.Listen()
+                students.append(student!)
+            }
+            completion(students)
+        }
+    }
+    public static func AssignmentsFromKeyValue(key:String, value:String, completion: @escaping ([Assignment])->()) {
+        var assignments:[Assignment] = []
+        GetDocsFromKeyValue(collection: Strings.ASSIGNMENT, key: key, value: value) { res in
+            for d in res {
+                let assignment = Assignment(dictionary: d.data())
+                assignment?.Listen()
+                assignments.append(assignment!)
+            }
+            completion(assignments)
+        }
+    }
     /// Get all assignments from the DB that have a field classID which equals the one passed in as a param to the function
     /// Ex: GetAssignmentsFromClassID(classID:"myClass") will get you the array of all assignments that have a field equal to classID:myClass
     public static func GetAssignmentsFromClassID(classID:String, completion: @escaping ([Assignment])->()) {

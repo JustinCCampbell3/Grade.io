@@ -49,13 +49,16 @@ public class Assignment : Decodable, Encodable, IListenable {
     
     /// Generate ID of assignment. Set this variable, and then call listen, and you'll get an object full of info from the DB. (if the ID matches one in the DB)
     public func GenerateID() {
-        let firstPart = CurrentUser.ID ?? "" + "_"
+        let firstPart = CurrentUser.id ?? "" + "_"
         id = firstPart + String(Int.random(in: 0...1000))
     }
     
     /// setters.
     ///     **   These guys all update the DB. Make sure you call Listen() when you first make your Assignment object to ensure you always have up to date information!!     **
-    
+    public func SetID(newID:String) {
+        id = newID
+        DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: id!, key: Strings.ID, value: newID)
+    }
     public func SetClassID(newClassID:String) {
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: id!, key: Strings.CLASS_ID, value: newClassID)
     }

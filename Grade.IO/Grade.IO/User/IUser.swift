@@ -10,14 +10,14 @@ import FirebaseFirestore
 
 public protocol IUser : IListenable
 {
-    var ID : String { get set }
-    var FirstName : String { get set }
-    var LastName : String { get set }
-    var Email : String { get set }
-    var Bio : String { get set }
-    var PhotoPath: String { get set }
-    var Pronouns:String { get set }
-    var UserType:EUserType { get set }
+    var id : String? { get set }
+    var firstName : String? { get set }
+    var lastName : String? { get set }
+    var email : String? { get set }
+    var bio : String? { get set }
+    var photoPath: String? { get set }
+    var pronouns:String? { get set }
+    var userType:String? { get set }
     
     func SetFirstName(newFirstName:String)
     func SetLastName(newLastName:String)

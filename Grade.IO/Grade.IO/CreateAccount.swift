@@ -20,13 +20,13 @@ class CreateAccount : UIViewController {
     
     
     @IBAction func bParentClicked(_ sender: Any) {
-        CurrentUser.UserType = EUserType.Parent
+        CurrentUser.userType = Strings.PARENT
     }
     @IBAction func bStudentClicked(_ sender: Any) {
-        CurrentUser.UserType = EUserType.Student
+        CurrentUser.userType = Strings.STUDENT
     }
     @IBAction func bTeacherClicked(_ sender: Any) {
-        CurrentUser.UserType = EUserType.Teacher
+        CurrentUser.userType = Strings.TEACHER
     }
     
     override func viewDidLoad() {

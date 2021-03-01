@@ -28,7 +28,7 @@ class CreateAccountStudent : UIViewController {
                 }
                 else {
                     CurrentUser = Student();
-                    CurrentUser.ID = newUserName
+                    CurrentUser.id = newUserName
                     CurrentUser.SetFirstName(newFirstName: self.fFirstName.text!)
                     CurrentUser.SetLastName(newLastName: self.fLastName.text!)
                     //userNameAlert(vc: self)
@@ -41,29 +41,27 @@ class CreateAccountStudent : UIViewController {
     
     @IBAction func signUpParentCodePressed(_ sender: Any) {
         Student(givenCode:fParentCode.text!) { res in
-            if (res.FirstName == "") {
+            if (res.firstName == "") {
                 DoAlert(title: "error", body: "code not found, or student already registered", vc: self)
                 return
             }
             
             CurrentUser = res
             
-            UserHelper.GenerateUserName(firstName:res.FirstName, lastName:res.LastName, type: "Student") { id in
-                CurrentUser.ID = "s_"+id
-                CurrentUser.SetBio(newBio:res.Bio)
-                CurrentUser.SetEmail(newEmail: res.Email)
-                (CurrentUser as! Student).SetClassroom(newClass: res.ClassID)
-                CurrentUser.SetFirstName(newFirstName: res.FirstName)
-                CurrentUser.SetLastName(newLastName: res.LastName)
-                CurrentUser.SetBio(newBio: res.Bio)
-                (CurrentUser as! Student).SetGPA(newGPA: (res as Student).GPA)
-                CurrentUser.SetPhotoPath(newPhotoPath: res.PhotoPath)
-                CurrentUser.SetPronouns(newPronouns: res.Pronouns)
+            UserHelper.GenerateUserName(firstName:res.firstName ?? "", lastName:res.lastName ?? "", type: "Student") { id in
+                CurrentUser.id = "s_"+id
+                CurrentUser.SetBio(newBio:res.bio ?? "")
+                CurrentUser.SetEmail(newEmail: res.email ?? "")
+                (CurrentUser as! Student).SetClassroom(newClass: res.classID ?? "")
+                CurrentUser.SetFirstName(newFirstName: res.firstName ?? "")
+                CurrentUser.SetLastName(newLastName: res.lastName ?? "")
+                (CurrentUser as! Student).SetGPA(newGPA: (res as Student).gpa ?? 0.0)
+                CurrentUser.SetPhotoPath(newPhotoPath: res.photoPath ?? "")
+                CurrentUser.SetPronouns(newPronouns: res.pronouns ?? "")
                 CurrentUser.Listen()
                 DatabaseHelper.DeleteDocument(collectionName: Strings.STUDENT, documentName: self.fParentCode.text!)
                 //userNameAlert(vc: self)
                 self.performSegue(withIdentifier:"studentCreateToHome", sender: self)
-
             }
         }
     }
