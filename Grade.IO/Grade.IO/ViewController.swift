@@ -26,6 +26,8 @@ class ViewController: UIViewController{
         passwordField.delegate = self
         super.viewDidLoad()
         AuthCommands.signOutWithErrorCatch()
+        passwordField.isSecureTextEntry = true
+    
     }
     
     //this function handles input on the login screen
@@ -50,7 +52,7 @@ class ViewController: UIViewController{
     }
     
     func PerformSignInSegue() {
-        switch CurrentUser.ID.first {
+        switch CurrentUser.id?.first {
         case "s" :
             performSegue(withIdentifier: "signInToHomeScreen_STUDENT", sender: self)
         case "t" :

@@ -17,7 +17,7 @@ func DoAlert(title:String, body:String, vc:UIViewController) {
 }
 
 func userNameAlert(vc:UIViewController) {
-    DoAlert(title: CurrentUser.ID , body: "Your username is above. You will use it to log in. Don't forget to write it down!", vc: vc)
+    DoAlert(title: CurrentUser.id ?? "" , body: "Your username is above. You will use it to log in. Don't forget to write it down!", vc: vc)
 }
 
 

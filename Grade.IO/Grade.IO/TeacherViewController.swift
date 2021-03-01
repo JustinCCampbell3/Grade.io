@@ -37,7 +37,7 @@ class TeacherViewController: UIViewController, MenuControllerDelegate {
         if(self.restorationIdentifier == "THome"){
             name.adjustsFontSizeToFitWidth = true
             name.lineBreakMode = .byClipping
-            name.text = CurrentUser.ID
+            name.text = CurrentUser.id
         }
     }
     

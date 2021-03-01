@@ -57,7 +57,7 @@ public class UserHelper {
                 completion(Student())
             }
             GetUserHelper(res: res as! [String:Any], tempuser: tempuser)
-            tempuser.ID = id
+            tempuser.id = id
             completion(tempuser)
         }
     }
@@ -70,28 +70,28 @@ public class UserHelper {
         DatabaseHelper.GetDocument(collectionName: Strings.PARENT, documentName: id) { res in
             GetUserHelper(res: res as! [String:Any], tempuser: tempuser)
             GetAdultHelper(res: res as! [String:Any], tempuser: tempuser)
-            tempuser.ID = id
+            tempuser.id = id
             completion(tempuser)
         }
     }
     public static func GetAdultHelper(res:[String:Any], tempuser:BaseAdult) {
-        tempuser.Email = (res as [String:Any])[Strings.EMAIL] as! String
-        tempuser.PhoneNumber = (res as [String:Any])[Strings.PHONE] as! String
+        tempuser.email = (res as [String:Any])[Strings.EMAIL] as! String
+        tempuser.phoneNumber = (res as [String:Any])[Strings.PHONE] as! String
     }
     public static func GetUserHelper(res:[String:Any], tempuser:BaseUser) {
-        tempuser.FirstName = (res as [String:Any])[Strings.FIRST_NAME] as! String
-        tempuser.LastName = (res as [String:Any])[Strings.LAST_NAME] as! String
+        tempuser.firstName = (res as [String:Any])[Strings.FIRST_NAME] as! String
+        tempuser.lastName = (res as [String:Any])[Strings.LAST_NAME] as! String
     }
     
     // same as above
     public static func GetTeacherByID(id:String, completion: @escaping (Teacher) -> ()) {
         var tempuser = Teacher()
         DatabaseHelper.GetDocument(collectionName: Strings.TEACHER, documentName: id) { res in
-            tempuser.FirstName = (res as! [String:Any])[Strings.FIRST_NAME] as! String
-            tempuser.LastName = (res as! [String:Any])[Strings.LAST_NAME] as! String
-            tempuser.Email = (res as! [String:Any])[Strings.EMAIL] as! String
-            tempuser.PhoneNumber = (res as! [String:Any])[Strings.PHONE] as! String
-            tempuser.ID = id
+            tempuser.firstName = (res as! [String:Any])[Strings.FIRST_NAME] as! String
+            tempuser.lastName = (res as! [String:Any])[Strings.LAST_NAME] as! String
+            tempuser.email = (res as! [String:Any])[Strings.EMAIL] as! String
+            tempuser.phoneNumber = (res as! [String:Any])[Strings.PHONE] as! String
+            tempuser.id = id
             completion(tempuser)
         }
     }
