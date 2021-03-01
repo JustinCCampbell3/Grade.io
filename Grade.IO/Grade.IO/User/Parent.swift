@@ -9,6 +9,7 @@ import FirebaseFirestore
 public class Parent : BaseAdult {
 
     public var students:[String]?
+    public var studentObjects:[Student]?
 
     public override init() {
         super.init()
@@ -29,12 +30,14 @@ public class Parent : BaseAdult {
         UserHelper.GetUserByID(id:id) { res in
             if (res != nil) {
                 self.students!.append(id)
+                DatabaseHelper.SavePropertyToDatabase(collection: Strings.[are], document: <#T##String#>, key: <#T##String#>, value: <#T##T#>)
             }
             else {
                 print("error")
             }
         }
     }
+    
     public override func SetPropertiesFromDoc(doc: DocumentSnapshot) {
         super.SetPropertiesFromDoc(doc: doc)
         if let temp = doc.get(Strings.STUDENTS) {

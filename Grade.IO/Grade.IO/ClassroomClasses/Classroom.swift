@@ -8,6 +8,8 @@
 import Foundation
 import FirebaseFirestore
 
+var currentClassroom = Classroom()
+
 public class Classroom : Encodable, Decodable, IListenable {
     
     public var id: String?
