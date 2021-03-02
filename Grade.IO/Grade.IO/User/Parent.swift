@@ -40,7 +40,7 @@ public class Parent : BaseAdult {
     
     //get all of the children of each unique parent. using StudentsFromKeyValue
     public func GetChildren(completion:@escaping ([Student]) -> ()) {
-        DatabaseHelper.StudentsFromKeyValue(key: Strings.PARENT, values: students!) {
+        DatabaseHelper.StudentsFromKeyValue(key: Strings.ID, values: students!) {
             res in
             completion(res)
         }

@@ -27,15 +27,23 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         AuthCommands.signOutWithErrorCatch()
         
-        //var tempuser = Parent()
+        /*var tempuser = Parent()
         //testing getChildren
-        //print(Parent.GetChildren(UserHelper.GetParentByID(id: "p_7777", completion: tempuser -> () )))
+        UserHelper.GetParentByID(id: "p_7777") { res in
+            res.GetChildren() { kids in
+                print(kids)
+            }
+        }*/
         
         passwordField.isSecureTextEntry = true
         
         DatabaseHelper.GetClassroomFromID(classID: "t_gibbsmat_550") { res in
             currentClassroom = res
             currentClassroom.Listen()
+        }
+        
+        UserHelper.GetParentByID(id: "p_7777") { res in
+            print(res)
         }
     }
     
