@@ -40,14 +40,22 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
     
     var curAssign: Assignment!
     
+    //keep track of assignment clicked
     var assignIndex: Int = 0
+    
+    //variable to access classroom class
+    var curClassroom: Classroom!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //create a scroll view based on the number of assignments we have
         //may have to change testClass to myClass later
-        DatabaseHelper.GetAssignmentsFromClassID(classID: "testClass") { (res) in
+        /*DatabaseHelper.GetAssignmentsFromClassID(classID: "testClass") { (res) in
+            self.makeScrollView(newList: res)
+        }*/
+        
+        curClassroom?.GetAssignmentObjects { (res) in
             self.makeScrollView(newList: res)
         }
         
