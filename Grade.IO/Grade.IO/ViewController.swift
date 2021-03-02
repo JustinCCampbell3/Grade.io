@@ -27,7 +27,11 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         AuthCommands.signOutWithErrorCatch()
         passwordField.isSecureTextEntry = true
-    
+        
+        DatabaseHelper.GetClassroomFromID(classID: "t_gibbsmat_550") { res in
+            currentClassroom = res
+            currentClassroom.Listen()
+        }
     }
     
     //this function handles input on the login screen

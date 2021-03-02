@@ -42,7 +42,7 @@ public class Classroom : Encodable, Decodable, IListenable {
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: Strings.ASSIGNMENT_IDS, key: Strings.ASSIGNMENT, value: newAssignments)
     }
     public func SetName(newName: String) {
-        DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: Strings.NAME, key: Strings.NAME, value: newName)
+        DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: id!, key: Strings.NAME, value: newName)
     }
     public func setMeetingInfo(newMeetingInfo: [String]){
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: Strings.MEETING_INFO, key: Strings.TEACHER_ID, value: newMeetingInfo)
@@ -50,21 +50,37 @@ public class Classroom : Encodable, Decodable, IListenable {
     public func AddAssignment(newAssignment:String)
     {
         self.assignmentIDs!.append(newAssignment)
-        setAssignments(newAssignments: assignmentIDs!)
+        let washingtonRef = DatabaseHelper.GetDBReference().collection(Strings.CLASS).document(id!)
+        washingtonRef.setData([
+            Strings.ASSIGNMENT_IDS : FieldValue.arrayUnion([newAssignment])
+        ], merge: true)
     }
     public func AddStudent(newStudent:String)
     {
         self.studentIDs!.append(newStudent)
         setStudents(newStudents: studentIDs!)
+        DatabaseHelper.SavePropertyToDatabase(collection: Strings.STUDENT, document: newStudent, key:Strings.CLASS_ID, value: id)
+        
+        let washingtonRef = DatabaseHelper.GetDBReference().collection(Strings.CLASS).document(id!)
+
+        washingtonRef.setData([
+            Strings.STUDENT_IDS : FieldValue.arrayUnion([newStudent])
+        ], merge: true)
     }
+    
     public func GetStudentObjects(completion:@escaping ([Student]) -> ()) {
-        DatabaseHelper.StudentsFromKeyValue(key: Strings.CLASS_ID, value: self.id!) { res in
+        DatabaseHelper.StudentsFromKeyValue(key: Strings.CLASS_ID, values: studentIDs!) { res in
             completion(res)
         }
     }
     public func GetAssignmentObjects(completion:@escaping ([Assignment]) -> ()) {
-        DatabaseHelper.AssignmentsFromKeyValue(key: Strings.CLASS_ID, value: self.id!) { res in
+        DatabaseHelper.AssignmentsFromKeyValue(key: Strings.ID, values: assignmentIDs!) { res in
             completion(res)
+        }
+    }
+    public func GetTeacherObject(completion:@escaping (Teacher)->()) {
+        UserHelper.GetUserByID(id: teacherID!) { res in
+             completion(res as! Teacher)
         }
     }
     public func Listen() {

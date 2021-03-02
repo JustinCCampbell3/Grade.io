@@ -37,7 +37,8 @@ public class BaseUser : IUser, Encodable, Decodable {
             bio = try container.decodeIfPresent(String.self, forKey: .bio)
             photoPath = try container.decodeIfPresent(String.self, forKey: .photoPath)
             pronouns = try container.decodeIfPresent(String.self, forKey: .pronouns)
-        }
+            userType = try container.decodeIfPresent(String.self, forKey: .userType)
+    }
         
         public func encode(to encoder: Encoder) throws {
             var container = encoder.container(keyedBy: CodingKeys.self)
@@ -82,8 +83,12 @@ public class BaseUser : IUser, Encodable, Decodable {
     
     public func SetPropertiesFromDoc(doc:DocumentSnapshot)
     {
-        self.firstName = doc.get(Strings.FIRST_NAME) as! String
-        self.lastName = doc.get(Strings.LAST_NAME) as! String
+        if let fName = doc.get(Strings.FIRST_NAME) {
+            self.firstName = doc.get(Strings.FIRST_NAME) as! String
+        }
+        if let lName = doc.get(Strings.LAST_NAME) {
+            self.lastName = doc.get(Strings.LAST_NAME) as! String
+        }
         if let tempEmail = doc.get(Strings.EMAIL) {
             self.email = tempEmail as! String
         }
@@ -98,6 +103,6 @@ public class BaseUser : IUser, Encodable, Decodable {
         }
     }
     private enum CodingKeys : String, CodingKey {
-        case firstName, lastName, email, bio, photoPath, pronouns, id
+        case firstName, lastName, email, bio, photoPath, pronouns, id, userType
     }
 }
