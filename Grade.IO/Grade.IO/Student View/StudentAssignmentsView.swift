@@ -40,7 +40,7 @@ class StudentAssignmentsView: UIViewController {
         
         //create a scroll view based on the number of assignments we have
         //may have to change testClass to myClass later
-        DatabaseHelper.GetAssignmentsFromClassID(classID: "testClass") { (res) in
+        currentClassroom.GetAssignmentObjects { (res) in
             self.makeScrollView(newList: res)
         }
         
@@ -147,9 +147,9 @@ class StudentAssignmentsView: UIViewController {
             
             
             //lines that allow the view to be tapped
-            //let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(sender:)))
-            //gesture.assignIndex = curIndex
-            //i.addGestureRecognizer(gesture)
+            let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(_:)))
+            gesture.givenIndex = curIndex
+            i.addGestureRecognizer(gesture)
             
             
             curIndex+=1
@@ -158,11 +158,19 @@ class StudentAssignmentsView: UIViewController {
     
     
     //send the user to the assignment page when they click a UIView
-    @objc func sendToAssignment(sender:UITapGestureRecognizer){
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc: UIViewController = storyBoard.instantiateViewController(withIdentifier: "TAssignSpec") as! UIViewController
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated:true, completion: nil)
+    @objc func sendToAssignment(_ sender:TapGesture){
+        clickedAssignment = sender.givenIndex
+        print("Clicked assignment is: ", clickedAssignment)
+        //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //let vc = storyBoard.instantiateViewController(withIdentifier: "TAssignSpec") as! UIViewController
+        let vc = storyboard?.instantiateViewController(identifier: "SAssignOviewPage") as! StudentAssignmentOverview
+        //let vc = TeacherAssignmentOverview()
+        
+        //vc.modalPresentationStyle =
+        vc.assignIndex = clickedAssignment
+        //self.present(vc, animated:true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
+
