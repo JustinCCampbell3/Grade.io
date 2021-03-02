@@ -235,6 +235,7 @@
 		4FE698C9256A8ADB00E1AC7A /* Grade.IO */ = {
 			isa = PBXGroup;
 			children = (
+				6D0D237B25EEE57C00166A23 /* Student View */,
 				6D0FBFAC25EECC6D004E3818 /* Teacher View */,
 				4F7701C725B50BE800A48652 /* ClassroomClasses */,
 				4FC8DB2325AA71AD000DED98 /* FireStore */,
@@ -248,18 +249,13 @@
 				4FE698D5256A8ADC00E1AC7A /* LaunchScreen.storyboard */,
 				4FE698D8256A8ADC00E1AC7A /* Info.plist */,
 				6DCDAC72256C6A560033DFB3 /* GradientView.swift */,
-				6D6FF5FA2574E4F900A427E7 /* Homepage.swift */,
 				4F95AF42257B158300B8DA37 /* CreateAccount.swift */,
-				6D2A142325A53AAF00C8288E /* ZoomViewController.swift */,
 				4F7701BD25B4E8BF00A48652 /* Strings.swift */,
 				4F7701C225B4FC4800A48652 /* Enums.swift */,
 				4F70E1B625B561E600189C7F /* CreateAccountTeacher.swift */,
 				4F70E1BB25B561F200189C7F /* CreateAccountStudent.swift */,
 				4F70E1C025B5620600189C7F /* CreateAccountParent.swift */,
 				4F7D099925B7C7F6005A0C22 /* Alert.swift */,
-				6DD7CD0C25C13A9C00A59BAB /* CreateAssignmentViewController.swift */,
-				6DF5B56725CBC4C900412491 /* StudentAssignmentsView.swift */,
-				6DDF867F25D31ADC0063B444 /* PopupAddZoomRoom.swift */,
 				4FF0DE5625CE579400106D07 /* IListenable.swift */,
 			);
 			path = Grade.IO;
@@ -273,6 +269,16 @@
 			path = Grade.IOUITests;
 			sourceTree = "<group>";
 		};
+		6D0D237B25EEE57C00166A23 /* Student View */ = {
+			isa = PBXGroup;
+			children = (
+				6DF5B56725CBC4C900412491 /* StudentAssignmentsView.swift */,
+				6D6FF5FA2574E4F900A427E7 /* Homepage.swift */,
+				6D2A142325A53AAF00C8288E /* ZoomViewController.swift */,
+			);
+			path = "Student View";
+			sourceTree = "<group>";
+		};
 		6D0FBFAC25EECC6D004E3818 /* Teacher View */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +287,8 @@
 				6DEC896325E589A70063E544 /* TeacherAssignmentOverview.swift */,
 				6D0FBFA225EEC026004E3818 /* TeacherStudentListPage.swift */,
 				6D0FBFA725EEC9B3004E3818 /* TeacherOverviewStudentList.swift */,
+				6DD7CD0C25C13A9C00A59BAB /* CreateAssignmentViewController.swift */,
+				6DDF867F25D31ADC0063B444 /* PopupAddZoomRoom.swift */,
 			);
 			path = "Teacher View";
 			sourceTree = "<group>";
