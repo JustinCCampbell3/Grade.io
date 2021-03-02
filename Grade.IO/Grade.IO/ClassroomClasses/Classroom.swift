@@ -93,10 +93,10 @@ public class Classroom : Encodable, Decodable, IListenable {
         if let teacherID = doc.get(Strings.TEACHER_ID) {
             self.teacherID = teacherID as! String
         }
-        if let students = doc.get(Strings.STUDENTS) {
+        if let students = doc.get(Strings.STUDENT_IDS) {
             self.studentIDs = students as! [String]
         }
-        if let assignments = doc.get(Strings.ASSIGNMENT) {
+        if let assignments = doc.get(Strings.ASSIGNMENT_IDS) {
             self.assignmentIDs = assignments as! [String]
         }
         if let name = doc.get(Strings.NAME) {
