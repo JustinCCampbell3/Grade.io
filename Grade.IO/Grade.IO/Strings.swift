@@ -24,6 +24,7 @@ final class Strings {
     public static var ID:String = "id"
     public static var PHONE:String = "phone"
     public static var STUDENT_ID:String = "studentID"
+    public static var STUDENT_IDS:String = "studentIDs"
     public static var CLASS_ID:String = "classID"
     public static var TEACHER_ID:String = "teacherID"
     public static var GPA:String = "gpa"
@@ -31,10 +32,12 @@ final class Strings {
     public static var PHOTO_PATH:String = "photoPath"
     public static var PRONOUNS:String = "pronouns"
     public static var ASSIGNMENT_ID:String = "assignmentID"
+    public static var ASSIGNMENT_IDS:String = "assignmentIDs"
     public static var COMPLETION_TIME:String = "completionTime"
     public static var GRADE:String = "grade"
     public static var HELP_REQUIRED:String = "helpRequired"
     public static var PDF_LINK:String = "pdfLink"
+    
 
     
     //adding additional strings for meeting info

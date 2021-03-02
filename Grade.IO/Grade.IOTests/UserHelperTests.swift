@@ -14,10 +14,10 @@ var user = BaseUser()
 class DBHelperTests: XCTestCase {
 
     override class func setUp() {
-        user.FirstName = "Matt"
-        user.LastName = "Gibbs"
-        user.Bio = "I was born on a freight train"
-        user.Email = "mattgibbs19@gmail.com"
+        user.firstName = "Matt"
+        user.lastName = "Gibbs"
+        user.bio = "I was born on a freight train"
+        user.email = "mattgibbs19@gmail.com"
         UserHelper.SetCurrentUser(newUser:user)
     }
     

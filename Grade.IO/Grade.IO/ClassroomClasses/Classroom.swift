@@ -8,77 +8,105 @@
 import Foundation
 import FirebaseFirestore
 
-public class Classroom : IListenable {
+var currentClassroom = Classroom()
+
+public class Classroom : Encodable, Decodable, IListenable {
     
-    public var ID: String
-    public var TeacherID: String
+    public var id: String?
+    public var teacherID: String?
     //list of Student ID's.
-    public var Students: [String]
+    public var studentIDs: [String]?
     //list of AssignmentID's
-    public var Assignments: [String]
-    public var Name: String
+    public var assignmentIDs: [String]?
+    public var name: String?
     //tuple to keep the zoom link and the corresponding image.
     //public var MeetingInfo: [(Zoom: String, Image: String)]
-    public var MeetingInfo: [String:String]
+    public var meetingInfo: [String:String]?
 
     public init() {
-        ID = ""
-        TeacherID = ""
-        Students = []
-        Assignments = []
-        Name = ""
-        MeetingInfo = [:]
+        id = ""
+        teacherID = ""
+        studentIDs = []
+        assignmentIDs = []
+        name = ""
+        meetingInfo = [:]
     }
     
     public func SetTeacherID(newTeacherID: String) {
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: Strings.TEACHER_ID, key: Strings.TEACHER_ID, value: newTeacherID)
     }
     public func setStudents(newStudents: [String]){
-        DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: Strings.TEACHER_ID, key: Strings.STUDENTS, value: newStudents)
+        DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: Strings.STUDENT_IDS, key: Strings.STUDENTS, value: newStudents)
     }
     public func setAssignments(newAssignments: [String]){
-        DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: Strings.TEACHER_ID, key: Strings.ASSIGNMENT, value: newAssignments)
+        DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: Strings.ASSIGNMENT_IDS, key: Strings.ASSIGNMENT, value: newAssignments)
     }
     public func SetName(newName: String) {
-        DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: Strings.TEACHER_ID, key: Strings.NAME, value: newName)
+        DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: id!, key: Strings.NAME, value: newName)
     }
     public func setMeetingInfo(newMeetingInfo: [String]){
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: Strings.MEETING_INFO, key: Strings.TEACHER_ID, value: newMeetingInfo)
     }
     public func AddAssignment(newAssignment:String)
     {
-        self.Assignments.append(newAssignment)
-        setAssignments(newAssignments: Assignments)
+        self.assignmentIDs!.append(newAssignment)
+        let washingtonRef = DatabaseHelper.GetDBReference().collection(Strings.CLASS).document(id!)
+        washingtonRef.setData([
+            Strings.ASSIGNMENT_IDS : FieldValue.arrayUnion([newAssignment])
+        ], merge: true)
     }
     public func AddStudent(newStudent:String)
     {
-        self.Students.append(newStudent)
-        setStudents(newStudents: Students)
+        self.studentIDs!.append(newStudent)
+        setStudents(newStudents: studentIDs!)
+        DatabaseHelper.SavePropertyToDatabase(collection: Strings.STUDENT, document: newStudent, key:Strings.CLASS_ID, value: id)
+        
+        let washingtonRef = DatabaseHelper.GetDBReference().collection(Strings.CLASS).document(id!)
+
+        washingtonRef.setData([
+            Strings.STUDENT_IDS : FieldValue.arrayUnion([newStudent])
+        ], merge: true)
+    }
+    
+    public func GetStudentObjects(completion:@escaping ([Student]) -> ()) {
+        DatabaseHelper.StudentsFromKeyValue(key: Strings.CLASS_ID, values: studentIDs!) { res in
+            completion(res)
+        }
+    }
+    public func GetAssignmentObjects(completion:@escaping ([Assignment]) -> ()) {
+        DatabaseHelper.AssignmentsFromKeyValue(key: Strings.ID, values: assignmentIDs!) { res in
+            completion(res)
+        }
+    }
+    public func GetTeacherObject(completion:@escaping (Teacher)->()) {
+        UserHelper.GetUserByID(id: teacherID!) { res in
+             completion(res as! Teacher)
+        }
     }
     public func Listen() {
-        DatabaseHelper.GetDBReference().collection(Strings.CLASS).document(ID).addSnapshotListener(){
+        DatabaseHelper.GetDBReference().collection(Strings.CLASS).document(id!).addSnapshotListener(){
                 (snapshot, error) in self.SetPropertiesFromDoc(doc: snapshot!)
             }
     }
     public func SetPropertiesFromDoc(doc:DocumentSnapshot)
     {
         if let teacherID = doc.get(Strings.TEACHER_ID) {
-            self.TeacherID = teacherID as! String
+            self.teacherID = teacherID as! String
         }
         if let students = doc.get(Strings.STUDENTS) {
-            self.Students = students as! [String]
+            self.studentIDs = students as! [String]
         }
         if let assignments = doc.get(Strings.ASSIGNMENT) {
-            self.Assignments = assignments as! [String]
+            self.assignmentIDs = assignments as! [String]
         }
         if let name = doc.get(Strings.NAME) {
-            self.Name = name as! String
+            self.name = name as! String
         }
         if let name = doc.get(Strings.NAME) {
-            self.Name = name as! String
+            self.name = name as! String
         }
         if let meetingInfo = doc.get(Strings.MEETING_INFO) {
-            self.MeetingInfo = meetingInfo as! [String:String]
+            self.meetingInfo = meetingInfo as! [String:String]
         }
     }
 }

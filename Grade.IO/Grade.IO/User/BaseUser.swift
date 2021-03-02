@@ -7,26 +7,49 @@
 
 import FirebaseFirestore
 
-public class BaseUser : IUser {
-    public var ID: String
-    public var FirstName: String
-    public var LastName: String
-    public var Email: String
-    public var Bio: String
-    public var PhotoPath: String
-    public var Pronouns: String
-    public var UserType: EUserType
+public class BaseUser : IUser, Encodable, Decodable {
+    public var id: String?
+    public var firstName: String?
+    public var lastName: String?
+    public var email: String?
+    public var bio: String?
+    public var photoPath: String?
+    public var pronouns: String?
+    public var userType: String?
     
     public init() {
-        ID = ""
-        FirstName = ""
-        LastName = ""
-        Email = ""
-        Bio = ""
-        PhotoPath = ""
-        Pronouns = ""
-        UserType = EUserType.NULL
+        id = ""
+        firstName = ""
+        lastName = ""
+        email = ""
+        bio = ""
+        photoPath = ""
+        pronouns = ""
+        userType = ""
     }
+    
+    required public init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            id = try container.decodeIfPresent(String.self, forKey: .id)
+            firstName = try container.decodeIfPresent(String.self, forKey: .firstName)
+            lastName = try container.decodeIfPresent(String.self, forKey: .lastName)
+            email = try container.decodeIfPresent(String.self, forKey: .email)
+            bio = try container.decodeIfPresent(String.self, forKey: .bio)
+            photoPath = try container.decodeIfPresent(String.self, forKey: .photoPath)
+            pronouns = try container.decodeIfPresent(String.self, forKey: .pronouns)
+            userType = try container.decodeIfPresent(String.self, forKey: .userType)
+    }
+        
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(id, forKey: .id)
+            try container.encode(firstName, forKey: .firstName)
+            try container.encode(lastName, forKey: .lastName)
+            try container.encode(email, forKey: .email)
+            try container.encode(bio, forKey: .bio)
+            try container.encode(photoPath, forKey: .photoPath)
+            try container.encode(pronouns, forKey: .pronouns)
+        }
     
     public func SetFirstName(newFirstName: String) {
         DatabaseHelper.SaveUserPropertyToDoc(user: self, key:Strings.FIRST_NAME, value: newFirstName)
@@ -51,40 +74,35 @@ public class BaseUser : IUser {
     public func SetPronouns(newPronouns: String) {
         DatabaseHelper.SaveUserPropertyToDoc(user: self, key:Strings.PRONOUNS, value: newPronouns)
     }
-    public func GetUserType() -> EUserType {
-        switch ID.first {
-        case "s", "x":
-            return EUserType.Student
-        case "p" :
-            return EUserType.Parent
-        case "t" :
-            return EUserType.Teacher
-        default:
-            return EUserType.NULL
-        }
-    }
     
     public func Listen() {
-        DatabaseHelper.GetDBReference().collection(String(describing: GetUserType())).document(ID).addSnapshotListener() { (snapshot, error) in
+        DatabaseHelper.GetDBReference().collection(userType!).document(id!).addSnapshotListener() { (snapshot, error) in
             self.SetPropertiesFromDoc(doc: snapshot!)
         }
     }
     
     public func SetPropertiesFromDoc(doc:DocumentSnapshot)
     {
-        self.FirstName = doc.get(Strings.FIRST_NAME) as! String
-        self.LastName = doc.get(Strings.LAST_NAME) as! String
+        if let fName = doc.get(Strings.FIRST_NAME) {
+            self.firstName = doc.get(Strings.FIRST_NAME) as! String
+        }
+        if let lName = doc.get(Strings.LAST_NAME) {
+            self.lastName = doc.get(Strings.LAST_NAME) as! String
+        }
         if let tempEmail = doc.get(Strings.EMAIL) {
-            self.Email = tempEmail as! String
+            self.email = tempEmail as! String
         }
         if let tempBio = doc.get(Strings.BIO) {
-            self.Bio = tempBio as! String
+            self.bio = tempBio as! String
         }
         if let tempPhotoPath = doc.get(Strings.PHOTO_PATH) {
-            self.PhotoPath = tempPhotoPath as! String
+            self.photoPath = tempPhotoPath as! String
         }
         if let tempPronouns = doc.get(Strings.PRONOUNS) {
-            self.Pronouns = tempPronouns as! String
+            self.pronouns = tempPronouns as! String
         }
+    }
+    private enum CodingKeys : String, CodingKey {
+        case firstName, lastName, email, bio, photoPath, pronouns, id, userType
     }
 }

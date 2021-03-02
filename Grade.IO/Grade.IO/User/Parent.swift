@@ -8,26 +8,51 @@
 import FirebaseFirestore
 public class Parent : BaseAdult {
 
-    public var Students:[String] = []
+    public var students:[String]?
+    public var studentObjects:[Student]?
 
     public override init() {
         super.init()
-        self.UserType = EUserType.Parent
+        self.userType = Strings.PARENT
     }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        students = try container.decodeIfPresent([String].self, forKey: .students)
+        try super.init(from: decoder)
+    }
+    
     public func AddStudent(id:String) {
+        if (students == nil)
+        {
+            students = []
+        }
         UserHelper.GetUserByID(id:id) { res in
             if (res != nil) {
-                self.Students.append(id)
+                self.students!.append(id)
+                //DatabaseHelper.SavePropertyToDatabase(collection: Strings.[are], document: <#T##String#>, key: <#T##String#>, value: <#T##T#>)
             }
             else {
                 print("error")
             }
         }
     }
+    
+    //get all of the children of each unique parent. using StudentsFromKeyValue
+    public func GetChildren(completion:@escaping ([Student]) -> ()) {
+        DatabaseHelper.StudentsFromKeyValue(key: Strings.PARENT, values: students!) {
+            res in
+            completion(res)
+        }
+    }
+    
     public override func SetPropertiesFromDoc(doc: DocumentSnapshot) {
         super.SetPropertiesFromDoc(doc: doc)
         if let temp = doc.get(Strings.STUDENTS) {
-            self.Students = temp as! [String]
+            self.students = temp as! [String]
         }
+    }
+    private enum CodingKeys : String, CodingKey {
+        case students
     }
 }

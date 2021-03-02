@@ -26,6 +26,17 @@ class ViewController: UIViewController{
         passwordField.delegate = self
         super.viewDidLoad()
         AuthCommands.signOutWithErrorCatch()
+        
+        //var tempuser = Parent()
+        //testing getChildren
+        //print(Parent.GetChildren(UserHelper.GetParentByID(id: "p_7777", completion: tempuser -> () )))
+        
+        passwordField.isSecureTextEntry = true
+        
+        DatabaseHelper.GetClassroomFromID(classID: "t_gibbsmat_550") { res in
+            currentClassroom = res
+            currentClassroom.Listen()
+        }
     }
     
     //this function handles input on the login screen
@@ -50,7 +61,7 @@ class ViewController: UIViewController{
     }
     
     func PerformSignInSegue() {
-        switch CurrentUser.ID.first {
+        switch CurrentUser.id?.first {
         case "s" :
             performSegue(withIdentifier: "signInToHomeScreen_STUDENT", sender: self)
         case "t" :

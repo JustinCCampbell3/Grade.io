@@ -9,44 +9,54 @@ import Foundation
 import FirebaseFirestore
 
 public class Student : BaseUser {
-    public var GPA:Float
-    public var ClassID:String
-    public var Class:Classroom
+    public var gpa:Float?
+    public var classID:String?
+    public var parentID:String?
     
     public override init () {
-        GPA = 0.0
-        ClassID = ""
-        self.Class = Classroom()
+        gpa = 0.0
+        classID = ""
         super.init()
-        UserType = EUserType.Student
+        userType = Strings.STUDENT
     }
     
     public init(givenCode:String, completion:@escaping (Student)->()) {
-        self.GPA = 0.0 // should be init'd to GPAHelper.CalculateGPA(user.ID, user.Classroom)
-        self.ClassID = ""
-        self.Class = Classroom()
+        self.gpa = 0.0 // should be init'd to GPAHelper.CalculateGPA(user.ID, user.Classroom)
+        self.classID = ""
         super.init()
-        self.UserType = EUserType.Student
+        self.userType = Strings.STUDENT
         UserHelper.GetUserByID(id: givenCode) { res in
             completion(res as! Student)
         }
     }
     
-            
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        gpa = try container.decodeIfPresent(Float.self, forKey: .gpa)
+        classID = try container.decodeIfPresent(String.self, forKey: .classID)
+        try super.init(from: decoder)
+    }
+    
     public func SetGPA(newGPA:Float) {
         DatabaseHelper.SaveUserPropertyToDoc(user: self, key: Strings.GPA, value: newGPA.description)
     }
     public func SetClassroom(newClass:String) {
         DatabaseHelper.SaveUserPropertyToDoc(user: self, key: Strings.CLASS_ID, value: newClass.description)
     }
+    public func SetParentID(newParentID:String) {
+        DatabaseHelper.SaveUserPropertyToDoc(user: self, key: Strings.CLASS_ID, value: newParentID)
+    }
     public override func SetPropertiesFromDoc(doc:DocumentSnapshot) {
         super.SetPropertiesFromDoc(doc: doc)
         if let temp = doc.get(Strings.GPA) {
-            self.GPA = Float(temp as! String) as! Float
+            self.gpa = Float(temp as! String) as! Float
         }
         if let temp = doc.get(Strings.CLASS_ID) {
-            self.ClassID = temp as! String
+            self.classID = temp as! String
             
         }
+    }
+    private enum CodingKeys : String, CodingKey {
+        case gpa, classID
     }
 }
