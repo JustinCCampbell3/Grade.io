@@ -179,9 +179,10 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
         let vc = storyboard?.instantiateViewController(identifier: "TAssignSpec") as! TeacherAssignmentOverview
         //let vc = TeacherAssignmentOverview()
         
-        vc.modalPresentationStyle = .fullScreen
+        //vc.modalPresentationStyle =
         vc.assignIndex = clickedAssignment
-        self.present(vc, animated:true, completion: nil)
+        //self.present(vc, animated:true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBOutlet weak var name: UILabel!
