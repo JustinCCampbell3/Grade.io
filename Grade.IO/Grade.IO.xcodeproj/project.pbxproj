@@ -45,6 +45,7 @@
 		4FF0DE5725CE579400106D07 /* IListenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0DE5625CE579400106D07 /* IListenable.swift */; };
 		66ED802B1517B0F6C22FE74C /* Pods_Grade_IOTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82CF2B41FAE841DD5C5D3D7 /* Pods_Grade_IOTests.framework */; };
 		6D0FBFA325EEC026004E3818 /* TeacherStudentListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0FBFA225EEC026004E3818 /* TeacherStudentListPage.swift */; };
+		6D0FBFA825EEC9B3004E3818 /* TeacherOverviewStudentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0FBFA725EEC9B3004E3818 /* TeacherOverviewStudentList.swift */; };
 		6D137B9125DCD76300D7E2B5 /* TeacherAssignmentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D137B9025DCD76300D7E2B5 /* TeacherAssignmentPage.swift */; };
 		6D2A142425A53AAF00C8288E /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A142325A53AAF00C8288E /* ZoomViewController.swift */; };
 		6D6FF5FB2574E4F900A427E7 /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FF5FA2574E4F900A427E7 /* Homepage.swift */; };
@@ -111,6 +112,7 @@
 		4FF0DE5025CE4B3900106D07 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		4FF0DE5625CE579400106D07 /* IListenable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IListenable.swift; sourceTree = "<group>"; };
 		6D0FBFA225EEC026004E3818 /* TeacherStudentListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherStudentListPage.swift; sourceTree = "<group>"; };
+		6D0FBFA725EEC9B3004E3818 /* TeacherOverviewStudentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherOverviewStudentList.swift; sourceTree = "<group>"; };
 		6D137B9025DCD76300D7E2B5 /* TeacherAssignmentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAssignmentPage.swift; sourceTree = "<group>"; };
 		6D2A142325A53AAF00C8288E /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		6D6FF5FA2574E4F900A427E7 /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 		4FE698C9256A8ADB00E1AC7A /* Grade.IO */ = {
 			isa = PBXGroup;
 			children = (
+				6D0FBFAC25EECC6D004E3818 /* Teacher View */,
 				4F7701C725B50BE800A48652 /* ClassroomClasses */,
 				4FC8DB2325AA71AD000DED98 /* FireStore */,
 				4FC8DB1A25AA5B87000DED98 /* User */,
@@ -248,7 +251,6 @@
 				6D6FF5FA2574E4F900A427E7 /* Homepage.swift */,
 				4F95AF42257B158300B8DA37 /* CreateAccount.swift */,
 				6D2A142325A53AAF00C8288E /* ZoomViewController.swift */,
-				6D8C951825ACDD3B00833043 /* TeacherViewController.swift */,
 				4F7701BD25B4E8BF00A48652 /* Strings.swift */,
 				4F7701C225B4FC4800A48652 /* Enums.swift */,
 				4F70E1B625B561E600189C7F /* CreateAccountTeacher.swift */,
@@ -259,9 +261,6 @@
 				6DF5B56725CBC4C900412491 /* StudentAssignmentsView.swift */,
 				6DDF867F25D31ADC0063B444 /* PopupAddZoomRoom.swift */,
 				4FF0DE5625CE579400106D07 /* IListenable.swift */,
-				6D137B9025DCD76300D7E2B5 /* TeacherAssignmentPage.swift */,
-				6DEC896325E589A70063E544 /* TeacherAssignmentOverview.swift */,
-				6D0FBFA225EEC026004E3818 /* TeacherStudentListPage.swift */,
 			);
 			path = Grade.IO;
 			sourceTree = "<group>";
@@ -272,6 +271,18 @@
 				4FE698EE256A8ADC00E1AC7A /* Info.plist */,
 			);
 			path = Grade.IOUITests;
+			sourceTree = "<group>";
+		};
+		6D0FBFAC25EECC6D004E3818 /* Teacher View */ = {
+			isa = PBXGroup;
+			children = (
+				6D8C951825ACDD3B00833043 /* TeacherViewController.swift */,
+				6D137B9025DCD76300D7E2B5 /* TeacherAssignmentPage.swift */,
+				6DEC896325E589A70063E544 /* TeacherAssignmentOverview.swift */,
+				6D0FBFA225EEC026004E3818 /* TeacherStudentListPage.swift */,
+				6D0FBFA725EEC9B3004E3818 /* TeacherOverviewStudentList.swift */,
+			);
+			path = "Teacher View";
 			sourceTree = "<group>";
 		};
 		C924D9239CF22D7C45FC1F07 /* Frameworks */ = {
@@ -599,6 +610,7 @@
 				4FC8DB1625AA5AF0000DED98 /* UserHelper.swift in Sources */,
 				6D6FF5FB2574E4F900A427E7 /* Homepage.swift in Sources */,
 				6DD7CD0D25C13A9C00A59BAB /* CreateAssignmentViewController.swift in Sources */,
+				6D0FBFA825EEC9B3004E3818 /* TeacherOverviewStudentList.swift in Sources */,
 				4FE698CD256A8ADB00E1AC7A /* SceneDelegate.swift in Sources */,
 				6D2A142425A53AAF00C8288E /* ZoomViewController.swift in Sources */,
 				4FE8B9E725B2522B000126CA /* Parent.swift in Sources */,

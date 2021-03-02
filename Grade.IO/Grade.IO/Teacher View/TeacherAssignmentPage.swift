@@ -55,7 +55,7 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
             self.makeScrollView(newList: res)
         }*/
         
-        curClassroom?.GetAssignmentObjects { (res) in
+        currentClassroom.GetAssignmentObjects { (res) in
             self.makeScrollView(newList: res)
         }
         
@@ -169,7 +169,7 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
             
             //lines that allow the view to be tapped
             let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(_:)))
-            gesture.assignIndex = curIndex
+            gesture.givenIndex = curIndex
             i.addGestureRecognizer(gesture)
             
             
@@ -179,8 +179,7 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
     
     //send the user to the assignment page when they click a UIView
     @objc func sendToAssignment(_ sender:TapGesture){
-        clickedAssignment = sender.assignIndex
-        curAssign = listAssignments[sender.assignIndex]
+        clickedAssignment = sender.givenIndex
         print("Clicked assignment is: ", clickedAssignment)
         //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         //let vc = storyBoard.instantiateViewController(withIdentifier: "TAssignSpec") as! UIViewController
@@ -250,7 +249,7 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
 }
 
 class TapGesture: UITapGestureRecognizer{
-    var assignIndex = Int()
+    var givenIndex = Int()
 }
 
 
