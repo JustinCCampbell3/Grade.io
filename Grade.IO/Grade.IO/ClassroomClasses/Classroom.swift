@@ -69,7 +69,7 @@ public class Classroom : Encodable, Decodable, IListenable {
     }
     
     public func GetStudentObjects(completion:@escaping ([Student]) -> ()) {
-        DatabaseHelper.StudentsFromKeyValue(key: Strings.CLASS_ID, values: studentIDs!) { res in
+        DatabaseHelper.StudentsFromKeyValue(key: Strings.ID, values: studentIDs!) { res in
             completion(res)
         }
     }
