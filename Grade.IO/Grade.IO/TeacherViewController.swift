@@ -39,6 +39,17 @@ class TeacherViewController: UIViewController, MenuControllerDelegate {
             name.lineBreakMode = .byClipping
             name.text = CurrentUser.id
         }
+        currentClassroom.GetAssignmentObjects() {
+            res in
+            print(res)
+        }
+       // room.AddAssignment(newAssignment: "t_gibbsmat355_601")
+        currentClassroom.GetStudentObjects() { res in
+            print(res)
+        }
+        currentClassroom.GetTeacherObject() { res in
+            print(res)
+        }
     }
     
     @IBOutlet weak var name: UILabel!
