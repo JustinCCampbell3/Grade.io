@@ -50,7 +50,6 @@ public class UserHelper {
     
     // TODO: There is a way to deserialize to custom class instances
     public static func GetStudentByID(id:String, isTempCode:Bool = false, completion: @escaping (Student) -> ()) {
-        
         var tempuser = Student()
         DatabaseHelper.GetDocument(collectionName: Strings.STUDENT, documentName: id) { res in
             if (isTempCode && (id.first != "x")) {
@@ -66,12 +65,14 @@ public class UserHelper {
     // btw: we can have a function that calls like, three functions that each take a
     // res, and builds it in each function (base user properties + extra properties from given class)
     public static func GetParentByID(id:String, completion: @escaping (Parent) -> ()) {
-        var tempuser = Parent()
-        DatabaseHelper.GetDocument(collectionName: Strings.PARENT, documentName: id) { res in
-            GetUserHelper(res: res as! [String:Any], tempuser: tempuser)
-            GetAdultHelper(res: res as! [String:Any], tempuser: tempuser)
-            tempuser.id = id
-            completion(tempuser)
+        DatabaseHelper.GetDocsFromKeyValues(collection: Strings.PARENT, key: Strings.ID, values: [id]) {
+            res in
+            if (!res.isEmpty)
+            {
+                var parent = Parent(dictionary: res[0].data())
+                completion(parent!)
+            }
+            completion(Parent())
         }
     }
     public static func GetAdultHelper(res:[String:Any], tempuser:BaseAdult) {

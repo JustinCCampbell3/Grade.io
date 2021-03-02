@@ -110,7 +110,7 @@ public class DatabaseHelper {
         DatabaseHelper.GetDBReference().collection(Strings.ASSIGNMENT).whereField(Strings.CLASS_ID, isEqualTo: classID).getDocuments { (snapshot, error) in
             if let error = error {
                 // There aint no assignments that have a 'classID' equal to the parameter classID
-                print("Error getting documents: \(error)")
+                print("Error getting documents")
             } else {
                 // Convert documents from snapshot into Assignments, call listen to keep them up to date, and add them to the return array.
                 var assignments:[Assignment] = []
