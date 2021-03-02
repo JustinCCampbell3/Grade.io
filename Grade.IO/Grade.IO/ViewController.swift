@@ -26,6 +26,11 @@ class ViewController: UIViewController{
         passwordField.delegate = self
         super.viewDidLoad()
         AuthCommands.signOutWithErrorCatch()
+        
+        //var tempuser = Parent()
+        //testing getChildren
+        //print(Parent.GetChildren(UserHelper.GetParentByID(id: "p_7777", completion: tempuser -> () )))
+        
         passwordField.isSecureTextEntry = true
         
         DatabaseHelper.GetClassroomFromID(classID: "t_gibbsmat_550") { res in
