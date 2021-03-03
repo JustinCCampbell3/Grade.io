@@ -72,9 +72,9 @@ class TeacherOverviewStudentList: UIViewController {
         pronouns.text = student.pronouns
         //gradePercent.text = String(student.gpa!)
         //get student's parent
-        UserHelper.GetUserByID(id: student.parentID!) { (res) in
+        /*UserHelper.GetUserByID(id: student.parentID!) { (res) in
             self.popStudentParent(parent: (res as! Parent))
-        }
+        }*/
         
         
         
