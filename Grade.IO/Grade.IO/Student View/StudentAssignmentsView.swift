@@ -144,7 +144,19 @@ class StudentAssignmentsView: UIViewController {
             dueDateLabel.left(to: i, offset: 30)
             dueDateLabel.top(to: i, offset: (i.frame.height/2)-nameLabel.frame.height) //halfway down the view
             
+            //to hold results
+            /*var results:[Result] = listAssignments[curIndex].results!
             
+            //label for grade the student got
+            let gradeLabel: UILabel = {
+                let label = UILabel()
+                label.text = String(results[curIndex].Grade)
+                return label
+            }()
+            i.addSubview(nameLabel)
+            gradeLabel.left(to: i, offset: -30)
+            gradeLabel.top(to: i, offset: (i.frame.height/4)-nameLabel.frame.height)
+            */
             
             //lines that allow the view to be tapped
             let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(_:)))

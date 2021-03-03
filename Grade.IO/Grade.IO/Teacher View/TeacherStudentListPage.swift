@@ -25,7 +25,7 @@ class TeacherStudentListPage: UIViewController, MenuControllerDelegate{
 
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (searchBtn.frame.origin.y * 2)  + (searchBtn.frame.height), width: self.view.frame.width, height: self.view.frame.height))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (searchBtn.frame.origin.y)  + (searchBtn.frame.height * 2), width: self.view.frame.width, height: self.view.frame.height))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true
@@ -171,9 +171,6 @@ class TeacherStudentListPage: UIViewController, MenuControllerDelegate{
         //self.present(vc, animated:true, completion: nil)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
-    @IBOutlet weak var name: UILabel!
     
     @IBAction func didTapMenu(){
         present(sideMenu!, animated: true)

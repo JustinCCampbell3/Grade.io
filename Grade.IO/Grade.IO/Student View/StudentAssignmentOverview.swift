@@ -46,7 +46,12 @@ class StudentAssignmentOverview: UIViewController {
         print("the assignIndex we got: ", assignIndex)
         
         //to get the assignment we need and then to do what we need to do
-        DatabaseHelper.GetAssignmentsFromClassID(classID: "testClass") { (res) in
+        /*DatabaseHelper.GetAssignmentsFromClassID(classID: "testClass") { (res) in
+            self.getAssignment(assignArray: res)
+            self.populateAssignPageLabels()
+        }*/
+        
+        currentClassroom.GetAssignmentObjects { (res) in
             self.getAssignment(assignArray: res)
             self.populateAssignPageLabels()
         }
