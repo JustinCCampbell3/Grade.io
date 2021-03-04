@@ -57,7 +57,6 @@ public class UserHelper {
                 var student = Student(dictionary: res[0].data())
                 completion(student!)
             }
-            completion(Student())
         }
     }
 
@@ -69,7 +68,6 @@ public class UserHelper {
                 var parent = Parent(dictionary: res[0].data())
                 completion(parent!)
             }
-            completion(Parent())
         }
     }
     public static func GetTeacherByID(id:String, completion: @escaping (Teacher) -> ()) {
@@ -80,7 +78,6 @@ public class UserHelper {
                 var teacher = Teacher(dictionary: res[0].data())
                 completion(teacher!)
             }
-            completion(Teacher())
         }
     }
     public static func GetAdultHelper(res:[String:Any], tempuser:BaseAdult) {
