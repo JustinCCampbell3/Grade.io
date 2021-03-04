@@ -51,6 +51,11 @@ public class BaseUser : IUser, Encodable, Decodable {
             try container.encode(pronouns, forKey: .pronouns)
         }
     
+    public func SetID(newID:String)
+    {
+        id = newID
+        DatabaseHelper.SaveUserPropertyToDoc(user: self, key:Strings.ID, value: newID)
+    }
     public func SetFirstName(newFirstName: String) {
         DatabaseHelper.SaveUserPropertyToDoc(user: self, key:Strings.FIRST_NAME, value: newFirstName)
     }

@@ -13,11 +13,12 @@ public class Student : BaseUser {
     public var classID:String?
     public var parentID:String?
     
-    public override init () {
+    public init (id:String) {
         gpa = 0.0
         classID = ""
         super.init()
         userType = Strings.STUDENT
+        SetID(newID: id)
     }
     
     public init(givenCode:String, completion:@escaping (Student)->()) {
@@ -26,6 +27,9 @@ public class Student : BaseUser {
         super.init()
         self.userType = Strings.STUDENT
         UserHelper.GetUserByID(id: givenCode) { res in
+            self.id = givenCode
+            self.id?.removeFirst()
+            self.id = "s" + self.id!
             completion(res as! Student)
         }
     }

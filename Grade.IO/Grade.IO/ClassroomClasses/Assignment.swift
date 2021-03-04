@@ -22,15 +22,16 @@ public class Assignment : Decodable, Encodable, IListenable {
     public var description:String?
     public var name:String?
     
-    public init() {
+    public init(newID:String) {
         results = []
         problems = []
         dueDate = Timestamp.init()
-        id = ""
         classID = ""
         filePath = ""
         description = ""
         name = ""
+        
+        SetID(newID: newID)
     }
     
     /// Given string, set due date of  assignment, with return value being success

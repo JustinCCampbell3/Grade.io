@@ -76,7 +76,7 @@ public class DatabaseHelper {
                 print("Error getting documents: \(error)")
             } else {
                 let classR = Classroom(dictionary: doc!.data()!)
-                completion(classR ?? Classroom())
+                completion(classR ?? Classroom(newID:"."))
             }
         }
     }

@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-var currentClassroom = Classroom()
+var currentClassroom = Classroom(newID:".")
 
 public class Classroom : Encodable, Decodable, IListenable {
     
@@ -23,15 +23,20 @@ public class Classroom : Encodable, Decodable, IListenable {
     //public var MeetingInfo: [(Zoom: String, Image: String)]
     public var meetingInfo: [String:String]?
 
-    public init() {
+    public init(newID:String) {
         id = ""
         teacherID = ""
         studentIDs = []
         assignmentIDs = []
         name = ""
         meetingInfo = [:]
+        SetID(newID: newID)
     }
     
+    public func SetID(newID:String) {
+        id = newID
+        DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: id!, key: Strings.ID, value: newID)
+    }
     public func SetTeacherID(newTeacherID: String) {
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.CLASS, document: Strings.TEACHER_ID, key: Strings.TEACHER_ID, value: newTeacherID)
     }

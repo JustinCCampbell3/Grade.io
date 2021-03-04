@@ -19,7 +19,7 @@ class CreateAssignmentViewController: UIViewController, UIDocumentPickerDelegate
     //variable for the label that will hold the name of the file uploaded
     @IBOutlet weak var fileNameLabel: UILabel!
     
-    var assignment = Assignment()
+    var assignment = Assignment(newID:".")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,12 +94,12 @@ class CreateAssignmentViewController: UIViewController, UIDocumentPickerDelegate
             assignment.SetName(newName: assignName.text!)
             assignment.SetDescription(newDescription: assignInstructions.text!)
             assignment.SetFilePath(newPath: fileNameLabel.text!)
-            assignment = Assignment()
+            assignment = Assignment(newID:".")
             return true
         }
         else {
             DoAlert(title: "Incorrect Date Format", body: "Incorrect date format. Correct format is mm/dd/yyyy", vc: self)
-            assignment = Assignment()
+            assignment = Assignment(newID:".")
             return false
         }
     }

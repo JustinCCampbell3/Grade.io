@@ -11,9 +11,10 @@ public class Parent : BaseAdult {
     public var students:[String]?
     public var studentObjects:[Student]?
 
-    public override init() {
+    public init(id:String) {
         super.init()
         self.userType = Strings.PARENT
+        SetID(newID: id)
     }
     
     required init(from decoder: Decoder) throws {

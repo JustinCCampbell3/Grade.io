@@ -29,15 +29,13 @@ class CreateAccountParent : UIViewController {
             }
         }
         else {
-            CurrentUser = Parent()
             UserHelper.GenerateUserName(firstName:fFirstName.text!, lastName:fLastName.text!, type: Strings.PARENT) { newUserName in
                 AuthCommands.createUserWithEmail(email:newUserName + Strings.ARBITRARY_EMAIL, password:self.fPassword.text!) { success in
                     if (!success) {
                         DoAlert(title: "error", body: "Could not create account. Contact support", vc: self)
                     }
                     else {
-                        CurrentUser = Parent()
-                        CurrentUser.id = newUserName
+                        CurrentUser = Parent(id:newUserName)
                         CurrentUser.SetEmail(newEmail: self.fEmail.text!)
                         CurrentUser.SetFirstName(newFirstName: self.fFirstName.text!)
                         CurrentUser.SetLastName(newLastName: self.fLastName.text!)

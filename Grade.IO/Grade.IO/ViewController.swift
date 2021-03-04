@@ -42,6 +42,8 @@ class ViewController: UIViewController{
             currentClassroom.Listen()
         }
         
+        var stuff = Classroom(newID:"HELLO")
+        
         UserHelper.GetParentByID(id: "p_7777") { res in
             print(res)
         }
