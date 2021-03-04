@@ -192,7 +192,7 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBOutlet weak var name: UILabel!
+    //@IBOutlet weak var name: UILabel!
     
     @IBAction func didTapMenu(){
         present(sideMenu!, animated: true)
