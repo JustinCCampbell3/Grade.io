@@ -55,12 +55,20 @@ class TeacherAccount: UIViewController, MenuControllerDelegate{
     }
     
     private func populateTeacherLabels(teacher: Teacher){
-        teacherFirstName.text = teacher.firstName
+        /*teacherFirstName.text = teacher.firstName
         teacherLastName.text = teacher.lastName
         teacherPronouns.text = teacher.pronouns
         teacherEmail.text = teacher.email
         teacherNum.text = teacher.phoneNumber
         teacherBio.text = teacher.bio
+         */
+        
+        teacherFirstName.text = CurrentUser.firstName
+        teacherLastName.text = CurrentUser.lastName
+        teacherPronouns.text = CurrentUser.pronouns
+        teacherEmail.text = CurrentUser.email
+        teacherNum.text = CurrentUser.pronouns
+        teacherBio.text = CurrentUser.bio
     }
     
     @IBAction func didTapMenu(){

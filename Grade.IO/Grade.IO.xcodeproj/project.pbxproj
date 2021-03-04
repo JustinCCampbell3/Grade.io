@@ -49,6 +49,7 @@
 		6D0FBFA825EEC9B3004E3818 /* TeacherOverviewStudentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0FBFA725EEC9B3004E3818 /* TeacherOverviewStudentList.swift */; };
 		6D137B9125DCD76300D7E2B5 /* TeacherAssignmentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D137B9025DCD76300D7E2B5 /* TeacherAssignmentPage.swift */; };
 		6D2A142425A53AAF00C8288E /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A142325A53AAF00C8288E /* ZoomViewController.swift */; };
+		6D2E8C1D25F09658005C0363 /* ParentHomepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E8C1C25F09658005C0363 /* ParentHomepage.swift */; };
 		6D490CD625EF753F007EBB49 /* TeacherAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D490CD525EF753F007EBB49 /* TeacherAccount.swift */; };
 		6D6FF5FB2574E4F900A427E7 /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FF5FA2574E4F900A427E7 /* Homepage.swift */; };
 		6D8C951925ACDD3B00833043 /* TeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C951825ACDD3B00833043 /* TeacherViewController.swift */; };
@@ -118,6 +119,7 @@
 		6D0FBFA725EEC9B3004E3818 /* TeacherOverviewStudentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherOverviewStudentList.swift; sourceTree = "<group>"; };
 		6D137B9025DCD76300D7E2B5 /* TeacherAssignmentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAssignmentPage.swift; sourceTree = "<group>"; };
 		6D2A142325A53AAF00C8288E /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
+		6D2E8C1C25F09658005C0363 /* ParentHomepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentHomepage.swift; sourceTree = "<group>"; };
 		6D490CD525EF753F007EBB49 /* TeacherAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAccount.swift; sourceTree = "<group>"; };
 		6D6FF5FA2574E4F900A427E7 /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 		6D8C951825ACDD3B00833043 /* TeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		4FE698C9256A8ADB00E1AC7A /* Grade.IO */ = {
 			isa = PBXGroup;
 			children = (
+				6D2E8C1B25F0961F005C0363 /* Parent View */,
 				6D0D237B25EEE57C00166A23 /* Student View */,
 				6D0FBFAC25EECC6D004E3818 /* Teacher View */,
 				4F7701C725B50BE800A48652 /* ClassroomClasses */,
@@ -297,6 +300,14 @@
 				6D490CD525EF753F007EBB49 /* TeacherAccount.swift */,
 			);
 			path = "Teacher View";
+			sourceTree = "<group>";
+		};
+		6D2E8C1B25F0961F005C0363 /* Parent View */ = {
+			isa = PBXGroup;
+			children = (
+				6D2E8C1C25F09658005C0363 /* ParentHomepage.swift */,
+			);
+			path = "Parent View";
 			sourceTree = "<group>";
 		};
 		C924D9239CF22D7C45FC1F07 /* Frameworks */ = {
@@ -636,6 +647,7 @@
 				6D0D238325EEE87B00166A23 /* StudentAssignmentOverview.swift in Sources */,
 				4F4939CF25DD1575000CA1D1 /* StorageHelper.swift in Sources */,
 				4F7701C925B50C0000A48652 /* Classroom.swift in Sources */,
+				6D2E8C1D25F09658005C0363 /* ParentHomepage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
