@@ -50,20 +50,17 @@ public class UserHelper {
     
     // TODO: There is a way to deserialize to custom class instances
     public static func GetStudentByID(id:String, isTempCode:Bool = false, completion: @escaping (Student) -> ()) {
-        var tempuser = Student()
-        DatabaseHelper.GetDocument(collectionName: Strings.STUDENT, documentName: id) { res in
-            if (isTempCode && (id.first != "x")) {
-                completion(Student())
+        DatabaseHelper.GetDocsFromKeyValues(collection: Strings.STUDENT, key: Strings.ID, values: [id]) {
+            res in
+            if (!res.isEmpty)
+            {
+                var student = Student(dictionary: res[0].data())
+                completion(student!)
             }
-            GetUserHelper(res: res as! [String:Any], tempuser: tempuser)
-            tempuser.id = id
-            completion(tempuser)
+            completion(Student())
         }
     }
-    
-    // TODO Customize this function to more specifically set parent class.
-    // btw: we can have a function that calls like, three functions that each take a
-    // res, and builds it in each function (base user properties + extra properties from given class)
+
     public static func GetParentByID(id:String, completion: @escaping (Parent) -> ()) {
         DatabaseHelper.GetDocsFromKeyValues(collection: Strings.PARENT, key: Strings.ID, values: [id]) {
             res in
@@ -75,6 +72,17 @@ public class UserHelper {
             completion(Parent())
         }
     }
+    public static func GetTeacherByID(id:String, completion: @escaping (Teacher) -> ()) {
+        DatabaseHelper.GetDocsFromKeyValues(collection: Strings.TEACHER, key: Strings.ID, values: [id]) {
+            res in
+            if (!res.isEmpty)
+            {
+                var teacher = Teacher(dictionary: res[0].data())
+                completion(teacher!)
+            }
+            completion(Teacher())
+        }
+    }
     public static func GetAdultHelper(res:[String:Any], tempuser:BaseAdult) {
         tempuser.email = (res as [String:Any])[Strings.EMAIL] as! String
         tempuser.phoneNumber = (res as [String:Any])[Strings.PHONE] as! String
@@ -83,19 +91,7 @@ public class UserHelper {
         tempuser.firstName = (res as [String:Any])[Strings.FIRST_NAME] as! String
         tempuser.lastName = (res as [String:Any])[Strings.LAST_NAME] as! String
     }
-    
-    // same as above
-    public static func GetTeacherByID(id:String, completion: @escaping (Teacher) -> ()) {
-        var tempuser = Teacher()
-        DatabaseHelper.GetDocument(collectionName: Strings.TEACHER, documentName: id) { res in
-            tempuser.firstName = (res as! [String:Any])[Strings.FIRST_NAME] as! String
-            tempuser.lastName = (res as! [String:Any])[Strings.LAST_NAME] as! String
-            tempuser.email = (res as! [String:Any])[Strings.EMAIL] as! String
-            tempuser.phoneNumber = (res as! [String:Any])[Strings.PHONE] as! String
-            tempuser.id = id
-            completion(tempuser)
-        }
-    }
+
     
     public static func GetUserByID(id:String, isTempCode:Bool = false, completion:@escaping(IUser) -> ()) {
         switch id.first {

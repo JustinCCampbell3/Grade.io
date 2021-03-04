@@ -358,12 +358,12 @@
         <scene sceneID="j2U-Ev-bTu">
             <objects>
                 <viewController title="Parent Homepage" id="aAo-mr-2OZ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Wzf-fi-8xr" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Wzf-fi-8xr" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGb-AO-PaW">
-                                <rect key="frame" x="31" y="89" width="115" height="27"/>
+                                <rect key="frame" x="31" y="39" width="115" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="611-jl-dhp"/>
                                     <constraint firstAttribute="width" constant="115" id="r45-Ry-5sH"/>
@@ -373,7 +373,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOo-3K-fTE">
-                                <rect key="frame" x="654" y="77" width="83" height="39"/>
+                                <rect key="frame" x="654" y="27" width="83" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="KOs-94-frp"/>
                                     <constraint firstAttribute="width" constant="83" id="u7f-Ae-frj"/>
@@ -387,7 +387,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="di0-49-rXT">
-                                <rect key="frame" x="241" y="193" width="128" height="36"/>
+                                <rect key="frame" x="241" y="143" width="128" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128" id="O32-9k-icI"/>
                                     <constraint firstAttribute="height" constant="36" id="VTH-8z-Is2"/>
@@ -397,7 +397,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Yn-5q-a9i">
-                                <rect key="frame" x="391" y="193" width="128" height="36"/>
+                                <rect key="frame" x="391" y="143" width="128" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="XAq-4K-WL3"/>
                                 </constraints>
@@ -406,7 +406,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7b-Xu-jIe">
-                                <rect key="frame" x="654" y="273" width="51" height="53"/>
+                                <rect key="frame" x="654" y="223" width="51" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="51" id="2Vg-Lb-Bjj"/>
                                     <constraint firstAttribute="height" constant="53" id="nld-ru-ajt"/>
@@ -419,7 +419,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Student" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="td0-yY-5ze">
-                                <rect key="frame" x="509" y="286" width="120" height="27"/>
+                                <rect key="frame" x="509" y="236" width="120" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="3jG-hs-bfd"/>
                                     <constraint firstAttribute="height" constant="27" id="HV7-ap-U5g"/>
@@ -846,6 +846,7 @@
                         <outlet property="passwordField" destination="WlK-i8-RoI" id="DBG-To-pR4"/>
                         <segue destination="ap2-hu-QAN" kind="presentation" identifier="signInToHomeScreen_STUDENT" modalPresentationStyle="fullScreen" id="H2T-Rs-T5r"/>
                         <segue destination="o4i-3p-87n" kind="presentation" identifier="signInToHomeScreen_TEACHER" modalPresentationStyle="fullScreen" id="QKi-Mw-CgF"/>
+                        <segue destination="aAo-mr-2OZ" kind="presentation" identifier="signInToHomeScreen_PARENT" modalPresentationStyle="fullScreen" id="ThO-4q-MvR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -3896,9 +3897,10 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="H2T-Rs-T5r"/>
-        <segue reference="BcE-Zl-beu"/>
-        <segue reference="Ad8-FV-ptY"/>
-        <segue reference="SLh-HX-15s"/>
+        <segue reference="QKi-Mw-CgF"/>
+        <segue reference="Wyz-vM-ZVi"/>
+        <segue reference="Obe-5Q-XMk"/>
+        <segue reference="ThO-4q-MvR"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AccountButtonImg" width="170.66667175292969" height="170.66667175292969"/>
