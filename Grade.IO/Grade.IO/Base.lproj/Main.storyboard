@@ -358,7 +358,7 @@
         <scene sceneID="j2U-Ev-bTu">
             <objects>
                 <viewController title="Parent Homepage" id="aAo-mr-2OZ" customClass="ParentHomepage" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Wzf-fi-8xr" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Wzf-fi-8xr" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -3906,7 +3906,7 @@
         <segue reference="BcE-Zl-beu"/>
         <segue reference="Zz2-zY-KCZ"/>
         <segue reference="Obe-5Q-XMk"/>
-        <segue reference="1VH-6P-dn2"/>
+        <segue reference="ThO-4q-MvR"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AccountButtonImg" width="170.66667175292969" height="170.66667175292969"/>
