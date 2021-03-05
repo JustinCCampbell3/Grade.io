@@ -26,15 +26,13 @@ class CreateAccountTeacher : UIViewController {
             }
         }
         else {
-            CurrentUser = Teacher()
             UserHelper.GenerateUserName(firstName:fFirstName.text!, lastName:fLastName.text!, type: Strings.TEACHER) { newUserName in
                 AuthCommands.createUserWithEmail(email:newUserName + Strings.ARBITRARY_EMAIL, password:self.fPassword.text!) { success in
                     if (!success) {
                         DoAlert(title: "error", body: "Could not create account. Contact support", vc: self)
                     }
                     else {
-                        CurrentUser = Teacher()
-                        CurrentUser.id = newUserName
+                        CurrentUser = Teacher(id:newUserName)
                         CurrentUser.SetEmail(newEmail: self.fEmail.text!)
                         CurrentUser.SetFirstName(newFirstName: self.fFirstName.text!)
                         CurrentUser.SetLastName(newLastName: self.fLastName.text!)

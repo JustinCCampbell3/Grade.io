@@ -27,8 +27,7 @@ class CreateAccountStudent : UIViewController {
                     DoAlert(title: "error", body: "Could not create account, contact support", vc: self)
                 }
                 else {
-                    CurrentUser = Student();
-                    CurrentUser.id = newUserName
+                    CurrentUser = Student(id:newUserName);
                     CurrentUser.SetFirstName(newFirstName: self.fFirstName.text!)
                     CurrentUser.SetLastName(newLastName: self.fLastName.text!)
                     //userNameAlert(vc: self)

@@ -9,4 +9,5 @@ import FirebaseFirestore
 public protocol IListenable {
     func Listen()
     func SetPropertiesFromDoc(doc:DocumentSnapshot)
+    func SetID(newID:String)
 }

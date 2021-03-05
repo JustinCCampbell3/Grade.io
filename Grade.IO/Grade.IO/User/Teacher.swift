@@ -11,9 +11,10 @@ public class Teacher : BaseAdult
 {
     public var classID:String? = ""
     
-    public override init() {
+    public init(id:String) {
         super.init()
         userType = Strings.TEACHER
+        SetID(newID: id)
     }
     
     required init(from decoder: Decoder) throws {
