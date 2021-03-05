@@ -13,7 +13,7 @@ class ParentAccount: UIViewController {
     
     
     @IBOutlet weak var firstName: UILabel!
-    @IBOutlet weak var astName: UILabel!
+    @IBOutlet weak var lastName: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     //@IBOutlet weak var firstName: UILabel!
@@ -21,15 +21,25 @@ class ParentAccount: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UserHelper.GetUserByID(id: CurrentUser.id!) { (res) in
+       /* UserHelper.GetUserByID(id: CurrentUser.id!) { (res) in
             self.popParentInfo(parent: (res as! Parent))
-        }
+        }*/
         
     }
     
 
-    private func popParentInfo(parent: Parent){
+    private func popParentInfo(){
+        /*
+        lastName.text = parent.lastName
+        firstName.text = parent.firstName
+        email.text = parent.email
+        phoneNumber.text = parent.phoneNumber
+        */
         
+        lastName.text = CurrentUser.lastName
+        firstName.text = CurrentUser.firstName
+        email.text = CurrentUser.email
+        //phoneNumber.text = CurrentUser.phoneNumber
     }
 
 }
