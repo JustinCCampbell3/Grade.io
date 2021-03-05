@@ -80,8 +80,21 @@ public class BaseUser : IUser, Encodable, Decodable {
         DatabaseHelper.SaveUserPropertyToDoc(user: self, key:Strings.PRONOUNS, value: newPronouns)
     }
     
+    private func GetType() -> String {
+        switch id?.first {
+        case "x", "s" :
+            return "Student"
+        case "t" :
+            return "Teacher"
+        case "p" :
+            return "Parent"
+        default:
+            return "ERROR"
+        }
+    }
+    
     public func Listen() {
-        DatabaseHelper.GetDBReference().collection(userType!).document(id!).addSnapshotListener() { (snapshot, error) in
+        DatabaseHelper.GetDBReference().collection(GetType()).document(id!).addSnapshotListener() { (snapshot, error) in
             self.SetPropertiesFromDoc(doc: snapshot!)
         }
     }

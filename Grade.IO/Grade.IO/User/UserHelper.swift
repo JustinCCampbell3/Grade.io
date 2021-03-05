@@ -93,7 +93,7 @@ public class UserHelper {
     public static func GetUserByID(id:String, isTempCode:Bool = false, completion:@escaping(IUser) -> ()) {
         switch id.first {
         case "p":
-            return GetParentByID(id:id) { (res) in
+            return GetParentByID(id:id) { res in
                 completion(res)
             }
         case "s", "x":

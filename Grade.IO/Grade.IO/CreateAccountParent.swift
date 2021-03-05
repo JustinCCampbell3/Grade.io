@@ -41,7 +41,7 @@ class CreateAccountParent : UIViewController {
                         CurrentUser.SetLastName(newLastName: self.fLastName.text!)
                         (CurrentUser as! Parent).SetPhoneNumber(newNumber: self.fPhoneNumber.text!)
                         //userNameAlert(vc: self)
-                        //self.performSegue(withIdentifier:"parentCreateToHome", sender: self)
+                        self.performSegue(withIdentifier:"parentCreateToHome", sender: self)
                     }
                 }
             }
