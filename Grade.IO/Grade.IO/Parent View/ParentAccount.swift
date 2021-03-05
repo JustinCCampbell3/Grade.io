@@ -20,7 +20,7 @@ class ParentAccount: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
        /* UserHelper.GetUserByID(id: CurrentUser.id!) { (res) in
             self.popParentInfo(parent: (res as! Parent))
         }*/
