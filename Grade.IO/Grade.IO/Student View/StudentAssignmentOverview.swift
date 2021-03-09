@@ -73,7 +73,7 @@ class StudentAssignmentOverview: UIViewController {
     private func populateAssignPageLabels(){
         
         assignName.text = assignment.name
-        assignFileName.text = assignment.filePath
+        //assignFileName.text = assignment.filePath
         assignInstructions.text = assignment.description
         assignAvgTime.text = String(assignment.GetAverageTime()) + " min"
     }
