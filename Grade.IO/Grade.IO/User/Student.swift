@@ -38,6 +38,7 @@ public class Student : BaseUser {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         gpa = try container.decodeIfPresent(Float.self, forKey: .gpa)
         classID = try container.decodeIfPresent(String.self, forKey: .classID)
+        parentID = try container.decodeIfPresent(String.self, forKey: .parentID)
         try super.init(from: decoder)
     }
     
@@ -61,6 +62,6 @@ public class Student : BaseUser {
         }
     }
     private enum CodingKeys : String, CodingKey {
-        case gpa, classID
+        case gpa, classID, parentID
     }
 }
