@@ -78,6 +78,9 @@ class StudentAssignmentsView: UIViewController {
             print("y is: ", multiplier)
             let containerView: UIView = {
                 let view = UIView(frame: CGRect(x: 0, y: multiplier, width: self.view.frame.width, height: 100))
+                
+                //if(listAssignments[i].)
+                
                 //this is the color of the scroll view background, not the actual full container
                 if(i == 0){
                     view.backgroundColor = .white

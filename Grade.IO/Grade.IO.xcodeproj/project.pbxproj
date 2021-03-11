@@ -54,10 +54,13 @@
 		6D6FF5FB2574E4F900A427E7 /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FF5FA2574E4F900A427E7 /* Homepage.swift */; };
 		6D73D58A25F1F2BC001CE99B /* ParentAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D73D58925F1F2BC001CE99B /* ParentAccount.swift */; };
 		6D8C951925ACDD3B00833043 /* TeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C951825ACDD3B00833043 /* TeacherViewController.swift */; };
+		6D97B85E25FA9F5D00221F85 /* StudentAccountAddBio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D97B85D25FA9F5D00221F85 /* StudentAccountAddBio.swift */; };
 		6DCDAC73256C6A560033DFB3 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDAC72256C6A560033DFB3 /* GradientView.swift */; };
 		6DD7CD0D25C13A9C00A59BAB /* CreateAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7CD0C25C13A9C00A59BAB /* CreateAssignmentViewController.swift */; };
 		6DDF868025D31ADC0063B444 /* PopupAddZoomRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF867F25D31ADC0063B444 /* PopupAddZoomRoom.swift */; };
 		6DEC896425E589A70063E544 /* TeacherAssignmentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC896325E589A70063E544 /* TeacherAssignmentOverview.swift */; };
+		6DF1A08025F74EA900627C59 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF1A07F25F74EA900627C59 /* Quiz.swift */; };
+		6DF1A08825F74FB500627C59 /* StudentAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF1A08725F74FB500627C59 /* StudentAccount.swift */; };
 		6DF5B56825CBC4C900412491 /* StudentAssignmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5B56725CBC4C900412491 /* StudentAssignmentsView.swift */; };
 		C5303D29726997C378CA1421 /* Pods_Grade_IO_Grade_IOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE39BD6ABEB2D181C89F886 /* Pods_Grade_IO_Grade_IOUITests.framework */; };
 /* End PBXBuildFile section */
@@ -125,10 +128,13 @@
 		6D6FF5FA2574E4F900A427E7 /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 		6D73D58925F1F2BC001CE99B /* ParentAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentAccount.swift; sourceTree = "<group>"; };
 		6D8C951825ACDD3B00833043 /* TeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewController.swift; sourceTree = "<group>"; };
+		6D97B85D25FA9F5D00221F85 /* StudentAccountAddBio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAccountAddBio.swift; sourceTree = "<group>"; };
 		6DCDAC72256C6A560033DFB3 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		6DD7CD0C25C13A9C00A59BAB /* CreateAssignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAssignmentViewController.swift; sourceTree = "<group>"; };
 		6DDF867F25D31ADC0063B444 /* PopupAddZoomRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupAddZoomRoom.swift; sourceTree = "<group>"; };
 		6DEC896325E589A70063E544 /* TeacherAssignmentOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAssignmentOverview.swift; sourceTree = "<group>"; };
+		6DF1A07F25F74EA900627C59 /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		6DF1A08725F74FB500627C59 /* StudentAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAccount.swift; sourceTree = "<group>"; };
 		6DF5B56725CBC4C900412491 /* StudentAssignmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAssignmentsView.swift; sourceTree = "<group>"; };
 		6FEDAFFC774853ED673AD61D /* Pods-Grade.IO-Grade.IOUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade.IO-Grade.IOUITests.debug.xcconfig"; path = "Target Support Files/Pods-Grade.IO-Grade.IOUITests/Pods-Grade.IO-Grade.IOUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		816963BA68929590380896B2 /* Pods-Grade.IO-Grade.IOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade.IO-Grade.IOUITests.release.xcconfig"; path = "Target Support Files/Pods-Grade.IO-Grade.IOUITests/Pods-Grade.IO-Grade.IOUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -281,10 +287,13 @@
 		6D0D237B25EEE57C00166A23 /* Student View */ = {
 			isa = PBXGroup;
 			children = (
+				6DF1A07F25F74EA900627C59 /* Quiz.swift */,
 				6DF5B56725CBC4C900412491 /* StudentAssignmentsView.swift */,
 				6D0D238225EEE87B00166A23 /* StudentAssignmentOverview.swift */,
 				6D6FF5FA2574E4F900A427E7 /* Homepage.swift */,
 				6D2A142325A53AAF00C8288E /* ZoomViewController.swift */,
+				6DF1A08725F74FB500627C59 /* StudentAccount.swift */,
+				6D97B85D25FA9F5D00221F85 /* StudentAccountAddBio.swift */,
 			);
 			path = "Student View";
 			sourceTree = "<group>";
@@ -615,10 +624,12 @@
 			files = (
 				4FF0DE5225CE4B3900106D07 /* Result.swift in Sources */,
 				4F70E1C125B5620600189C7F /* CreateAccountParent.swift in Sources */,
+				6D97B85E25FA9F5D00221F85 /* StudentAccountAddBio.swift in Sources */,
 				4FE8B9EC25B25236000126CA /* Teacher.swift in Sources */,
 				4FE698CF256A8ADB00E1AC7A /* ViewController.swift in Sources */,
 				4F7701BE25B4E8BF00A48652 /* Strings.swift in Sources */,
 				4F70E1BC25B561F200189C7F /* CreateAccountStudent.swift in Sources */,
+				6DF1A08025F74EA900627C59 /* Quiz.swift in Sources */,
 				4F28F7722573A9D800F69695 /* AuthCommands.swift in Sources */,
 				6D0FBFA325EEC026004E3818 /* TeacherStudentListPage.swift in Sources */,
 				4F7D099A25B7C7F6005A0C22 /* Alert.swift in Sources */,
@@ -651,6 +662,7 @@
 				6D0D238325EEE87B00166A23 /* StudentAssignmentOverview.swift in Sources */,
 				4F4939CF25DD1575000CA1D1 /* StorageHelper.swift in Sources */,
 				4F7701C925B50C0000A48652 /* Classroom.swift in Sources */,
+				6DF1A08825F74FB500627C59 /* StudentAccount.swift in Sources */,
 				6D2E8C1D25F09658005C0363 /* ParentHomepage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
