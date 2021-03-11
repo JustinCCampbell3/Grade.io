@@ -82,7 +82,7 @@ public class UserHelper {
     }
     public static func GetAdultHelper(res:[String:Any], tempuser:BaseAdult) {
         tempuser.email = (res as [String:Any])[Strings.EMAIL] as! String
-        tempuser.phoneNumber = (res as [String:Any])[Strings.PHONE] as! String
+        tempuser.phone = (res as [String:Any])[Strings.PHONE] as! String
     }
     public static func GetUserHelper(res:[String:Any], tempuser:BaseUser) {
         tempuser.firstName = (res as [String:Any])[Strings.FIRST_NAME] as! String

@@ -54,8 +54,6 @@ class TeacherOverviewStudentList: UIViewController {
             self.getStudentList(students: res)
             self.populateStudentLabels()
         }
-        
-        
     }
     
     //change listAssignments to have all the assignments
@@ -67,14 +65,14 @@ class TeacherOverviewStudentList: UIViewController {
     }
     
     private func populateStudentLabels(){
-        firstName.text = student.firstName
+        firstName.text = self.student.firstName
         lastName.text = student.lastName
         pronouns.text = student.pronouns
         //gradePercent.text = String(student.gpa!)
         //get student's parent
-        /*UserHelper.GetUserByID(id: student.parentID!) { (res) in
+        UserHelper.GetUserByID(id: student.parentID!) { (res) in
             self.popStudentParent(parent: (res as! Parent))
-        }*/
+        }
         
         
         
@@ -84,7 +82,7 @@ class TeacherOverviewStudentList: UIViewController {
     private func popStudentParent(parent: Parent){
         contactName.text = parent.firstName! + " " + parent.lastName!
         contactEmail.text = parent.email
-        contactNumber.text = parent.phoneNumber
+        contactNumber.text = parent.phone
     }
 
 

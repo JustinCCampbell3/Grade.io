@@ -6,16 +6,16 @@
 //
 
 import Foundation
-public class BaseAdult :BaseUser
+public class BaseAdult : BaseUser
 {
-    public var phoneNumber:String?
+    public var phone:String?
     
     public override init () {
         super.init()
     }
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        phoneNumber = try container.decodeIfPresent(String.self, forKey: .phoneNumber)
+        phone = try container.decodeIfPresent(String.self, forKey: .phone)
         try super.init(from: decoder)
     }
     
@@ -24,7 +24,7 @@ public class BaseAdult :BaseUser
     }
     
     private enum CodingKeys:String, CodingKey {
-        case phoneNumber
+        case phone
     }
 }
 
