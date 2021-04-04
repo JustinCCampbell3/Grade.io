@@ -42,7 +42,14 @@ class StudentAssignmentsView: UIViewController {
         //may have to change testClass to myClass later
         currentClassroom.GetAssignmentObjects { (res) in
             self.makeScrollView(newList: res)
+            
+            
         }
+        
+    }
+    
+    //for the grade of the student
+    private func popGrade(student: Student){
         
     }
     
