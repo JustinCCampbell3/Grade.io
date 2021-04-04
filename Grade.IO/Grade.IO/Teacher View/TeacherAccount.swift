@@ -10,7 +10,7 @@ import SideMenu
 import TinyConstraints
 import Foundation
 
-class TeacherAccount: UIViewController, MenuControllerDelegate{
+class TeacherAccount: UIViewController, MenuControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     //variable for the slide out menu in the teacher view
     private var sideMenu: SideMenuNavigationController?
@@ -27,6 +27,8 @@ class TeacherAccount: UIViewController, MenuControllerDelegate{
     
     @IBOutlet weak var teacherPronouns: UILabel!
     
+    //where the picture will be seen by the teacher. Can replace with the button. Have to grab pic from here
+    @IBOutlet var imageView: UIImageView!
     
     
 
@@ -34,7 +36,7 @@ class TeacherAccount: UIViewController, MenuControllerDelegate{
         super.viewDidLoad()
 
         //get teacher info
-        currentClassroom.GetTeacherObject { (res) in
+        UserHelper.GetTeacherByID(id: CurrentUser.id!) { (res) in
             self.populateTeacherLabels(teacher: res)
         }
         
@@ -55,20 +57,79 @@ class TeacherAccount: UIViewController, MenuControllerDelegate{
     }
     
     private func populateTeacherLabels(teacher: Teacher){
-        /*teacherFirstName.text = teacher.firstName
+        teacherFirstName.text = teacher.firstName
         teacherLastName.text = teacher.lastName
         teacherPronouns.text = teacher.pronouns
         teacherEmail.text = teacher.email
-        teacherNum.text = teacher.phoneNumber
+        teacherNum.text = teacher.phone
         teacherBio.text = teacher.bio
-         */
         
-        teacherFirstName.text = CurrentUser.firstName
-        teacherLastName.text = CurrentUser.lastName
-        teacherPronouns.text = CurrentUser.pronouns
-        teacherEmail.text = CurrentUser.email
-        teacherNum.text = CurrentUser.pronouns
-        teacherBio.text = CurrentUser.bio
+        if checkImage(){
+            imageView.image = readImage()
+        }
+    }
+    
+    @IBAction func addUserPhoto(){
+        let vc = UIImagePickerController()
+         //access photo library
+         vc.sourceType = .photoLibrary
+         vc.delegate = self
+         //when person selects photo, makes person select cropped portion of the photo
+         vc.allowsEditing = true
+         present(vc, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage
+        //if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
+        if image != nil{
+            imageView.image = image
+            print("image: ", image)
+        }
+        
+        self.saveImagePng(image!)
+        
+        /*if let data = image?.pngData(){
+            let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let path = documents.appendingPathComponent(CurrentUser.id! + "Photo.png")
+            try? data.write(to: path)
+            //CurrentUser.SetPhotoPath(newPhotoPath: url)
+        }*/
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func documentDirectoryPath() -> URL? {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return path.first
+    }
+    
+    func saveImagePng(_ image: UIImage){
+        if let png = image.pngData(), let path = documentDirectoryPath()?.appendingPathComponent(CurrentUser.id! + "Photo.png"){
+            try? png.write(to: path)
+        }
+    }
+    
+    func checkImage() -> Bool{
+        if let path = documentDirectoryPath(){
+            let pngUrl = path.appendingPathComponent(CurrentUser.id! + "Photo.png")
+            let pngImage = FileManager.default.contents(atPath: pngUrl.path)
+            if pngImage != nil{
+                return true
+            }
+            else{
+                return false
+            }
+        }
+        return false
+    }
+    
+    func readImage() -> UIImage{
+        let path = documentDirectoryPath()
+        let pngUrl = path!.appendingPathComponent(CurrentUser.id! + "Photo.png")
+        let pngImage = FileManager.default.contents(atPath: pngUrl.path)
+        let uiImage = UIImage(data: pngImage!)
+        return uiImage!
     }
     
     @IBAction func didTapMenu(){
