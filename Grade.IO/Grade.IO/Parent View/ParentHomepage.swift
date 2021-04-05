@@ -30,6 +30,8 @@ class ParentHomepage: UIViewController {
     //var that will hold the children (students)
     var listStudents: [Student] = []
     
+    var studentID: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,14 +40,17 @@ class ParentHomepage: UIViewController {
         print("parent's username is: ", CurrentUser.id)
         
         //get the parent by current user id
-        /*UserHelper.GetParentByID(id: CurrentUser.id!) { (res) in
+        UserHelper.GetParentByID(id: CurrentUser.id!) { (res) in
             //get the children from the current parent
             res.GetChildren { (children) in
                 //go through and make the children pics and stuff
-                self.getParentChildren(children: children)
+                if(children != nil){
+                    self.getParentChildren(children: children)
+                }
+                //self.getParentChildren(children: children)
             }
         }
-        */
+        
         
     }
     
@@ -55,7 +60,7 @@ class ParentHomepage: UIViewController {
         }
     }
     
-   /* private func getParentChildren(children: [Student]){
+    private func getParentChildren(children: [Student]){
         //make a list of assignments
         self.getStudentList(students: children)
         
@@ -111,37 +116,24 @@ class ParentHomepage: UIViewController {
             scrollView.addSubview(i)
 
             //making label here makes sure each view has their own label
-            //label for assignment name
+            
+            //label for picture if want one
+            
+            //label for student name
             let nameLabel: UILabel = {
                 let label = UILabel()
-                label.text = listStudents[curIndex].name
+                label.text = listStudents[curIndex].firstName
                 return label
             }()
             i.addSubview(nameLabel)
             nameLabel.left(to: i, offset: 30)
             nameLabel.top(to: i, offset: (i.frame.height/4)-nameLabel.frame.height)
             
-            //section for changing date to string
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yy"
-            //print("before date: ", listAssignments[curIndex].dueDate!)
-            //print("Date: ", dateFormatter.string(from: listAssignments[curIndex].dueDate!))
-            
-            //label for due date
-            let dueDateLabel: UILabel = {
-                let label = UILabel()
-                label.text = "Date"
-                return label
-            }()
-            i.addSubview(dueDateLabel)
-            dueDateLabel.left(to: i, offset: 30)
-            dueDateLabel.top(to: i, offset: (i.frame.height/2)-nameLabel.frame.height) //halfway down the view
-            
-            
             
             //lines that allow the view to be tapped
-            let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(_:)))
+            let gesture = TapGesture(target: self, action: #selector(self.sendToStudent(_:)))
             gesture.givenIndex = curIndex
+            gesture.givenString = listStudents[curIndex].id!
             i.addGestureRecognizer(gesture)
             
             
@@ -150,18 +142,17 @@ class ParentHomepage: UIViewController {
     }
     
     //send the user to the assignment page when they click a UIView
-    @objc func sendToAssignment(_ sender:TapGesture){
-        clickedAssignment = sender.givenIndex
-        print("Clicked assignment is: ", clickedAssignment)
+    @objc func sendToStudent(_ sender:TapGesture){
+        studentID = sender.givenString
+        print("Clicked student is: ", studentID)
         //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         //let vc = storyBoard.instantiateViewController(withIdentifier: "TAssignSpec") as! UIViewController
-        let vc = storyboard?.instantiateViewController(identifier: "TAssignSpec") as! TeacherAssignmentOverview
-        //let vc = TeacherAssignmentOverview()
+        let vc = storyboard?.instantiateViewController(identifier: "PStudentAccount") as! ParentStudentOverview
         
         //vc.modalPresentationStyle =
-        vc.assignIndex = clickedAssignment
+        vc.studentID = studentID
         //self.present(vc, animated:true, completion: nil)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    */
+    
 }

@@ -24,6 +24,9 @@ class StudentAssignmentOverview: UIViewController {
     //label for instructions
     @IBOutlet weak var assignInstructions: UILabel!
     
+    //for the questions label on only the completed assignment page
+    @IBOutlet weak var assignQuestions: UILabel!
+    
     //var to access variables in the TeacherAssignmentPage
     var teacherAssignmentClicked = TeacherAssignmentPage()
     
@@ -76,6 +79,10 @@ class StudentAssignmentOverview: UIViewController {
         //assignFileName.text = assignment.filePath
         assignInstructions.text = assignment.description
         assignAvgTime.text = String(assignment.GetAverageTime()) + " min"
+        
+        //if the assignment was completed, then populate the questions of the assignment into a scroll view
+        
+        
     }
 
 }
