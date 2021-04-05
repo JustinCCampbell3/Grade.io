@@ -41,6 +41,7 @@ class StudentAssignmentsView: UIViewController {
         //create a scroll view based on the number of assignments we have
         //may have to change testClass to myClass later
         currentClassroom.GetAssignmentObjects { (res) in
+            self.listAssignments = res
             self.makeScrollView(newList: res)
             
             
@@ -180,9 +181,10 @@ class StudentAssignmentsView: UIViewController {
     
     
     //send the user to the assignment page when they click a UIView
-    @objc func sendToAssignment(_ sender:TapGesture){
+    @objc func sendToAssignment(_ sender:TapGesture) {
         clickedAssignment = sender.givenIndex
         print("Clicked assignment is: ", clickedAssignment)
+        CurrentAssignment = listAssignments[clickedAssignment]
         //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         //let vc = storyBoard.instantiateViewController(withIdentifier: "TAssignSpec") as! UIViewController
         let vc = storyboard?.instantiateViewController(identifier: "SAssignOviewPage") as! StudentAssignmentOverview
@@ -193,6 +195,5 @@ class StudentAssignmentsView: UIViewController {
         //self.present(vc, animated:true, completion: nil)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 

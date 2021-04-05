@@ -74,18 +74,30 @@ public class Classroom : Encodable, Decodable, IListenable {
     }
     
     public func GetStudentObjects(completion:@escaping ([Student]) -> ()) {
-        DatabaseHelper.StudentsFromKeyValue(key: Strings.ID, values: studentIDs!) { res in
-            completion(res)
+        DatabaseHelper.GetDocumentsFromIDs(collection:Strings.STUDENT, ids:studentIDs ?? []) { res in
+            var tempList:[Student] = []
+            for document in res {
+                let tempStudent = Student(dictionary: document.data()!)
+                tempStudent?.Listen()
+                tempList.append(tempStudent!)
+            }
+            completion(tempList)
         }
     }
     public func GetAssignmentObjects(completion:@escaping ([Assignment]) -> ()) {
-        DatabaseHelper.AssignmentsFromKeyValue(key: Strings.ID, values: assignmentIDs!) { res in
-            completion(res)
+        DatabaseHelper.GetDocumentsFromIDs(collection:Strings.ASSIGNMENT, ids:assignmentIDs ?? []) { res in
+            var tempList:[Assignment] = []
+            for document in res {
+                let tempAssignment = Assignment(dictionary: document.data()!)
+                tempAssignment?.Listen()
+                tempList.append(tempAssignment ?? Assignment(newID:"NULL"))
+            }
+            completion(tempList)
         }
     }
     public func GetTeacherObject(completion:@escaping (Teacher)->()) {
         UserHelper.GetUserByID(id: teacherID!) { res in
-             completion(res as! Teacher)
+            completion(res as? Teacher ?? Teacher(id:"NULL"))
         }
     }
     public func Listen() {

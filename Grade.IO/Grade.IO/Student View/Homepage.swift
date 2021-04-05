@@ -21,6 +21,10 @@ class Homepage : UIViewController {
         setupCalendar()
         name.text = CurrentUser.id
         
+        DatabaseHelper.GetClassroomFromID(classID: (CurrentUser as! Student).classID ?? "NULL") { res in
+            currentClassroom = res
+        }
+        
     }
 
     func setupCalendar(){
