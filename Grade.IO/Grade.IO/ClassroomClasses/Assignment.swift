@@ -110,6 +110,10 @@ public class Assignment : Decodable, Encodable, IListenable {
         return 0  // nothing found
     }
     
+    public func GetResultByID(id:String) -> Result {
+        return (results?.first(where: { $0.StudentID == id})) ?? Result()
+    }
+    
     /// Call this once to automatically keep object up to date with DB
     
     public func Listen() {

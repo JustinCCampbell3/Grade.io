@@ -46,7 +46,7 @@ class TeacherAssignmentOverview: UIViewController {
         print("the assignIndex we got: ", assignIndex)
         
         //to get the assignment we need and then to do what we need to do
-        DatabaseHelper.GetAssignmentsFromClassID(classID: "testClass") { (res) in
+        currentClassroom.GetAssignmentObjects() { (res) in
             self.getAssignment(assignArray: res)
             self.populateAssignPageLabels()
         }

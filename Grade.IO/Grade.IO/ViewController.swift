@@ -29,10 +29,6 @@ class ViewController: UIViewController{
         
         passwordField.isSecureTextEntry = true
         
-        DatabaseHelper.GetClassroomFromID(classID: "t_gibbsmat_550") { res in
-            currentClassroom = res
-            currentClassroom.Listen()
-        }
     }
     
     //this function handles input on the login screen
@@ -59,16 +55,25 @@ class ViewController: UIViewController{
     func PerformSignInSegue() {
         switch CurrentUser.id?.first {
         case "s" :
-            performSegue(withIdentifier: "signInToHomeScreen_STUDENT", sender: self)
+            self.performSegue(identifier: "signInToHomeScreen_STUDENT")
+
         case "t" :
-            performSegue(withIdentifier: "signInToHomeScreen_TEACHER", sender: self)
+            self.performSegue(identifier: "signInToHomeScreen_TEACHER")
+
         case "p" :
-            performSegue(withIdentifier: "signInToHomeScreen_PARENT", sender: self)
+            self.performSegue(identifier: "signInToHomeScreen_PARENT")
         default:
             break
         }
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
 
+    func performSegue(identifier:String){
+        self.performSegue(withIdentifier: identifier, sender: self)
+    }
+    
     // TO SIGN IN  WITH EMAIL
    func signInWithEmail(email: String, password: String) {
         Auth.auth().signIn(withEmail:  email, password: password) { [weak self] authResult, error in
