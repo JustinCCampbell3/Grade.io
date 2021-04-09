@@ -174,8 +174,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRK-OV-dif">
-                                <rect key="frame" x="446" y="117" width="60" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRK-OV-dif">
+                                <rect key="frame" x="446" y="117" width="112" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -280,7 +280,6 @@
                             <constraint firstItem="cQm-nW-gEk" firstAttribute="top" secondItem="TKJ-o5-359" secondAttribute="bottom" constant="8" symbolic="YES" id="8Qg-DM-HtJ"/>
                             <constraint firstItem="Wjj-DP-ecY" firstAttribute="trailing" secondItem="9AW-7j-HpF" secondAttribute="trailing" constant="20" id="9Tk-0v-2Gw"/>
                             <constraint firstItem="cQm-nW-gEk" firstAttribute="leading" secondItem="Wjj-DP-ecY" secondAttribute="leading" constant="20" id="9hg-vH-XbG"/>
-                            <constraint firstItem="Wjj-DP-ecY" firstAttribute="trailing" secondItem="mRK-OV-dif" secondAttribute="trailing" constant="262" id="AYO-sy-2MV"/>
                             <constraint firstItem="Kbn-5a-zZd" firstAttribute="top" secondItem="IZV-Qr-9fK" secondAttribute="bottom" constant="104" id="B8X-eA-TAT"/>
                             <constraint firstItem="2JG-do-fe3" firstAttribute="centerX" secondItem="HFk-ST-tHq" secondAttribute="centerX" constant="-89.5" id="Gpb-dq-Cvj"/>
                             <constraint firstItem="Wjj-DP-ecY" firstAttribute="trailing" secondItem="TKJ-o5-359" secondAttribute="trailing" constant="566" id="H13-5Z-AXh"/>
@@ -292,7 +291,7 @@
                             <constraint firstItem="suF-2A-um9" firstAttribute="centerX" secondItem="HFk-ST-tHq" secondAttribute="centerX" id="ORX-zE-C07"/>
                             <constraint firstItem="2JG-do-fe3" firstAttribute="top" secondItem="suF-2A-um9" secondAttribute="bottom" constant="22" id="PdG-Q9-hLF"/>
                             <constraint firstItem="cQm-nW-gEk" firstAttribute="centerX" secondItem="HFk-ST-tHq" secondAttribute="centerX" id="Wf0-fe-1BP"/>
-                            <constraint firstItem="mRK-OV-dif" firstAttribute="centerX" secondItem="HFk-ST-tHq" secondAttribute="centerX" constant="92" id="Zlj-Mh-Krx"/>
+                            <constraint firstItem="mRK-OV-dif" firstAttribute="centerX" secondItem="HFk-ST-tHq" secondAttribute="centerX" constant="118" id="Zlj-Mh-Krx"/>
                             <constraint firstItem="NZq-9Y-4K5" firstAttribute="top" secondItem="cQm-nW-gEk" secondAttribute="bottom" constant="43" id="fIi-gm-I5g"/>
                             <constraint firstItem="suF-2A-um9" firstAttribute="top" secondItem="Wjj-DP-ecY" secondAttribute="top" constant="67" id="fVS-QE-EAL"/>
                             <constraint firstItem="IZV-Qr-9fK" firstAttribute="leading" secondItem="NZq-9Y-4K5" secondAttribute="trailing" constant="8" symbolic="YES" id="fz7-HJ-ymu"/>
@@ -320,6 +319,14 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="assignName" destination="suF-2A-um9" id="LJM-qa-ww7"/>
+                        <outlet property="dueDate" destination="mRK-OV-dif" id="lBl-bw-4hp"/>
+                        <outlet property="grade" destination="2JG-do-fe3" id="f9I-bv-CiB"/>
+                        <outlet property="instructions" destination="cQm-nW-gEk" id="jXx-Zc-3Ij"/>
+                        <outlet property="overallAvgTime" destination="IZV-Qr-9fK" id="BJc-1f-ZKR"/>
+                        <outlet property="questionList" destination="V2b-pB-Tcn" id="cQX-QY-ZJh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0uZ-TN-TLP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4400,7 +4407,7 @@
         <segue reference="Xqs-vj-6BH"/>
         <segue reference="QKi-Mw-CgF"/>
         <segue reference="Wyz-vM-ZVi"/>
-        <segue reference="N2x-sO-DOJ"/>
+        <segue reference="Cuc-ZE-TdR"/>
         <segue reference="HjD-fx-abA"/>
     </inferredMetricsTieBreakers>
     <resources>
