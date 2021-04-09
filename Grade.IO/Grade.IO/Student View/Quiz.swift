@@ -69,19 +69,21 @@ class Quiz: UIViewController {
         return  Float(tempGrade) / Float(totalPossibleGrade!)
     }
     func createResult(grade:Float) -> Result {
-        var result = Result()
         result.Grade = grade
         result.AssignmentID = CurrentAssignment.id!
         result.IsSubmitted = true
         result.StopTime()
+        print(result.stringFromTimeInterval(interval: result.TimeTaken))
         result.StudentID = CurrentUser.id!
         return result
     }
     func insertResult(result:Result) {
         if existingResult != nil {
-            
+            // put something here, probably 0_o
         }
-        CurrentAssignment.AddResult(newResult: result)
+        else {
+            CurrentAssignment.AddResult(newResult: result)
+        }
     }
     @IBAction func NextButtonPressed(_ sender: Any) {
         if (qIndex < CurrentAssignment.problems!.count - 1) {
