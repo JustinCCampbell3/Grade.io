@@ -9,26 +9,34 @@ import FirebaseFirestore
 
 public struct Result : Encodable, Decodable {
     var StartTime:Date
-    var TimeTaken:Double
+    var TimeTaken:TimeInterval
     var StudentID:String
     var AssignmentID:String
     var Grade:Float
     var IsSubmitted:Bool
     
     public init() {
-        StartTime = Date()
         Grade = 0.0
         IsSubmitted = false
         StudentID = ""
         AssignmentID = ""
         TimeTaken = 0
+        StartTime = Date()
     }
     
     public mutating func StartTimer() {
         self.StartTime = Date()
     }
     public mutating func StopTime() {
-        TimeTaken += StartTime.timeIntervalSinceNow
+        TimeTaken += Date().timeIntervalSince(StartTime)
+        StartTime = Date()
+    }
+    public func stringFromTimeInterval(interval: TimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
 }
 extension Encodable {
