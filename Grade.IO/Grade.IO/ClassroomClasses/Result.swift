@@ -8,6 +8,7 @@
 import FirebaseFirestore
 
 public struct Result : Encodable, Decodable {
+    var StudentAnswers:[String]?
     var StartTime:Date
     var TimeTaken:TimeInterval
     var StudentID:String
@@ -22,6 +23,7 @@ public struct Result : Encodable, Decodable {
         AssignmentID = ""
         TimeTaken = 0
         StartTime = Date()
+        StudentAnswers = []
     }
     
     public mutating func StartTimer() {
