@@ -103,8 +103,10 @@ class StudentAssignmentOverview: UIViewController {
         assignAvgTime.text = String(assignment.GetAverageTime()) + " min"
         
         //if the assignment was completed, then populate the questions of the assignment into a scroll view
-        let assignSubmitted = assignment.GetResultByID(id: CurrentUser.id!).IsSubmitted
-        if(assignSubmitted){
+        let resultIndex = assignment.GetResultIndexByID(id: CurrentUser.id!) //get the index of the current student's assignment results
+        let assignSubmitted = assignment.results?[resultIndex].IsSubmitted //get whether the student has submitted their assignment
+        //if the user has submitted the assignment
+        if(assignSubmitted!){
             //get all of the problems on the assignment
             getAssignProblems(assign: assignment)
             
