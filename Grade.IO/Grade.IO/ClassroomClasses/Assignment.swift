@@ -72,8 +72,8 @@ public class Assignment : Decodable, Encodable, IListenable {
     public func SetFilePath(newPath:String) {
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: id!, key: Strings.FILE_PATH, value: newPath)
     }
-    public func SetResults(newResults:[Result]) {
-        DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: id!, key: Strings.RESULTS, value: newResults)
+    public func ClearResults() {
+        DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: id!, key: Strings.RESULTS, value: [])
     }
     public func SetProblems(newProblems:[Problem]) {
         DatabaseHelper.SavePropertyToDatabase(collection: Strings.ASSIGNMENT, document: id!, key: Strings.PROBLEMS, value: newProblems)
@@ -110,8 +110,15 @@ public class Assignment : Decodable, Encodable, IListenable {
         return 0  // nothing found
     }
     
-    public func GetResultByID(id:String) -> Result {
-        return (results?.first(where: { $0.StudentID == id})) ?? Result()
+    public func GetResultIndexByID(id:String) -> Int {
+        var count = 0
+        for r in results! {
+            if (r.StudentID == id) {
+                return count
+            }
+        }
+        
+        return -1
     }
     
     /// Call this once to automatically keep object up to date with DB

@@ -17,7 +17,7 @@ class Quiz: UIViewController {
     
     @IBOutlet weak var StudentInput: UITextField!
     
-    var StudentsAnswers: Array<String?> = Array(repeating: "", count: CurrentAssignment.problems!.count)
+    var StudentsAnswers: [String] = Array(repeating: "", count: CurrentAssignment.problems!.count)
 
     var qIndex:Int = 0
     var currentProblem:Problem = Problem()
@@ -75,11 +75,24 @@ class Quiz: UIViewController {
         result.StopTime()
         print(result.stringFromTimeInterval(interval: result.TimeTaken))
         result.StudentID = CurrentUser.id!
+        result.StudentAnswers = StudentsAnswers
         return result
     }
     func insertResult(result:Result) {
-        if existingResult != nil {
-            // put something here, probably 0_o
+        existingResult = (CurrentAssignment.results?.first(where:{$0.StudentID == CurrentUser.id})) ?? Result()
+        if !existingResult.StudentID.isEmpty {
+            let index = CurrentAssignment.GetResultIndexByID(id: CurrentUser.id!)
+            CurrentAssignment.results?.remove(at: index)
+            let temp = CurrentAssignment.results
+            CurrentAssignment.ClearResults()
+            if (temp != nil) {
+                CurrentAssignment.AddResult(newResult: result)
+            }
+            else {
+                for r in temp! {
+                    CurrentAssignment.AddResult(newResult: r)
+                }
+            }
         }
         else {
             CurrentAssignment.AddResult(newResult: result)
