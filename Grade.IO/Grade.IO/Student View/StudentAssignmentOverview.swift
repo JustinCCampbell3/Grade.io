@@ -25,7 +25,10 @@ class StudentAssignmentOverview: UIViewController {
     @IBOutlet weak var assignInstructions: UILabel!
     
     //for the questions label on only the completed assignment page
-    @IBOutlet weak var assignQuestions: UILabel!
+    @IBOutlet weak var assignQuestLabel: UILabel!
+    
+    //button to start assignment
+    @IBOutlet weak var startButton: UIButton!
     
     //array of views
     var viewArray:[UIView] = []
@@ -41,7 +44,7 @@ class StudentAssignmentOverview: UIViewController {
     //section for scroll view of students' grade and total time
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (assignQuestions.frame.origin.y)  + (assignQuestions.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (assignQuestLabel.frame.origin.y)  + (assignQuestLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true
@@ -53,7 +56,7 @@ class StudentAssignmentOverview: UIViewController {
     var listQuestions: [Problem] = []
     
     //var that will hold a student's answers to the specific assignment
-    
+    var studentAns: [String] = []
     
     //var that will hold the student's metrics (time) for each question
     
@@ -93,31 +96,56 @@ class StudentAssignmentOverview: UIViewController {
             listQuestions.append(i)
         }
     }
+    //get the student's answers to the problems
+    private func getStudentAns(result: Result){
+        for i in result.StudentAnswers!{
+            studentAns.append(i)
+        }
+    }
     
     //using the assignment to populate the necessary labels
     private func populateAssignPageLabels(){
+        startButton.isHidden = false
+        assignQuestLabel.isHidden = true
         
         assignName.text = assignment.name
         //assignFileName.text = assignment.filePath
         assignInstructions.text = assignment.description
-        assignAvgTime.text = String(assignment.GetAverageTime()) + " min"
+        assignAvgTime.text = "Assignment not started"
         
         //if the assignment was completed, then populate the questions of the assignment into a scroll view
         let resultIndex = assignment.GetResultIndexByID(id: CurrentUser.id!) //get the index of the current student's assignment results
-        let assignSubmitted = assignment.results?[resultIndex].IsSubmitted //get whether the student has submitted their assignment
-        //if the user has submitted the assignment
-        if(assignSubmitted!){
-            //get all of the problems on the assignment
-            getAssignProblems(assign: assignment)
+        print("resultIndex: ", resultIndex)
+        
+        //resultIndex will be -1 if the student hasn't completed it yet
+        if(resultIndex != -1){
+            //hide the start assignment button
+            startButton.isHidden = true
+            //unhide the questions thing
+            assignQuestLabel.isHidden = false
             
-            //get all of the current student's answers to those problems
-            
-            //display both of them in the scroll view
+            //get the result of the student for the assignment
+            let studentResult = assignment.results?[resultIndex]
+            let assignSubmitted = studentResult!.IsSubmitted //get whether the student has submitted their assignment
+            //if the user has submitted the assignment
+            if(assignSubmitted){
+                //can now set the average time
+                assignAvgTime.text = studentResult?.stringFromTimeInterval(interval: studentResult!.TimeTaken)
+                
+                //get all of the problems on the assignment
+                getAssignProblems(assign: assignment)
+                
+                //get all of the current student's answers to those problems
+                getStudentAns(result: studentResult!)
+                
+                //make a scroll view for the questions and answers
+                makeScrollView()
+            }
         }
         
     }
     
-    private func makeScrollView(newList: [Problem], studentAns: [Result]){
+    private func makeScrollView(){
         
         //size of the content needed
         var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.size.height)
@@ -181,16 +209,10 @@ class StudentAssignmentOverview: UIViewController {
             questionLabel.left(to: i, offset: 30)
             questionLabel.top(to: i, offset: (i.frame.height/4)-questionLabel.frame.height)
             
-            //section for changing date to string
-            //let dateFormatter = DateFormatter()
-            //dateFormatter.dateFormat = "MM/dd/yy"
-            //print("before date: ", listAssignments[curIndex].dueDate!)
-            //print("Date: ", dateFormatter.string(from: listAssignments[curIndex].dueDate!))
-            
             //label for student's answer to the question
             let sAnswerLabel: UILabel = {
                 let label = UILabel()
-                label.text = "Student Answer: "
+                label.text = "Student Answer: " + studentAns[curIndex]
                 return label
             }()
             i.addSubview(sAnswerLabel)
@@ -200,12 +222,22 @@ class StudentAssignmentOverview: UIViewController {
             //label for Actual answer to the question
             let actAnswerLabel: UILabel = {
                 let label = UILabel()
-                label.text = "Correct Answer: " + listQuestions[curIndex].Question
+                label.text = "Correct Answer: "
                 return label
             }()
             i.addSubview(actAnswerLabel)
             actAnswerLabel.left(to: i, offset: 30)
             actAnswerLabel.top(to: i, offset: (i.frame.height/2)-questionLabel.frame.height) //halfway down the view
+            
+            //label for question specific time it took
+            let questMetricLabel:UILabel = {
+                let label = UILabel()
+                label.text = ""
+                return label
+            }()
+            i.addSubview(questMetricLabel)
+            actAnswerLabel.right(to: i, offset: -30)
+            actAnswerLabel.top(to: i, offset: (i.frame.height/4)-questionLabel.frame.height) //quarter down the view on the right
             
             curIndex+=1
         }

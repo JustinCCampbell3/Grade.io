@@ -87,20 +87,28 @@ class StudentAssignmentsView: UIViewController {
             let containerView: UIView = {
                 let view = UIView(frame: CGRect(x: 0, y: multiplier, width: self.view.frame.width, height: 100))
                 
-                //if(listAssignments[i].)
-                
-                //this is the color of the scroll view background, not the actual full container
-                if(i == 0){
-                    view.backgroundColor = .white
-                }
-                else if(i == 1){
-                    view.backgroundColor = .init(red: 255/255.0, green: 78/255.0, blue: 78/255.0, alpha: 1)
+                //get the index of the current student's assignment results
+                let resultIndex = listAssignments[i].GetResultIndexByID(id: CurrentUser.id!)
+                //check to make sure the result isn't -1, which means they haven't submitted
+                if(resultIndex != -1){
+                    //make the backgroun green if the user has completed it
+                    
+                    //make the background red if the assignment is overdue (need due date as string and actual date as a string)
+                    //this is the color of the scroll view background, not the actual full container
+                    if(i == 0){
+                        view.backgroundColor = .white
+                    }
+                    else if(i == 1){
+                        view.backgroundColor = .init(red: 255/255.0, green: 78/255.0, blue: 78/255.0, alpha: 1)
+                    }
+                    else{
+                        view.backgroundColor = .init(red: 120/255.0, green: 228/255.0, blue: 101/255.0, alpha: 1)
+                    }
                 }
                 else{
-                    view.backgroundColor = .init(red: 120/255.0, green: 228/255.0, blue: 101/255.0, alpha: 1)
+                    view.backgroundColor = .white
                 }
-                //view.backgroundColor = .white
-                //view.frame.size = contentViewSize
+
                 return view
             }()
             viewArray.append(containerView)
@@ -152,8 +160,8 @@ class StudentAssignmentsView: UIViewController {
                 return label
             }()
             i.addSubview(dueDateLabel)
-            dueDateLabel.left(to: i, offset: 30)
-            dueDateLabel.top(to: i, offset: (i.frame.height/2)-nameLabel.frame.height) //halfway down the view
+            dueDateLabel.right(to: i, offset: -30)
+            dueDateLabel.top(to: i, offset: (i.frame.height/4)-nameLabel.frame.height) //halfway down the view
             
             //to hold results
             /*var results:[Result] = listAssignments[curIndex].results!
