@@ -30,6 +30,9 @@ class StudentAssignmentOverview: UIViewController {
     //button to start assignment
     @IBOutlet weak var startButton: UIButton!
     
+    //grade for the assignment
+    @IBOutlet weak var assignGrade: UILabel!
+    
     //array of views
     var viewArray:[UIView] = []
     
@@ -107,6 +110,7 @@ class StudentAssignmentOverview: UIViewController {
     private func populateAssignPageLabels(){
         startButton.isHidden = false
         assignQuestLabel.isHidden = true
+        assignGrade.isHidden = true
         
         assignName.text = assignment.name
         //assignFileName.text = assignment.filePath
@@ -131,6 +135,9 @@ class StudentAssignmentOverview: UIViewController {
             if(assignSubmitted){
                 //can now set the average time
                 assignAvgTime.text = studentResult?.stringFromTimeInterval(interval: studentResult!.TimeTaken)
+                //unhide and put in the grade
+                assignGrade.isHidden = false
+                assignGrade.text = String(studentResult!.Grade)
                 
                 //get all of the problems on the assignment
                 getAssignProblems(assign: assignment)
@@ -222,7 +229,7 @@ class StudentAssignmentOverview: UIViewController {
             //label for Actual answer to the question
             let actAnswerLabel: UILabel = {
                 let label = UILabel()
-                label.text = "Correct Answer: "
+                label.text = "Correct Answer: " + listQuestions[curIndex].Answer
                 return label
             }()
             i.addSubview(actAnswerLabel)
