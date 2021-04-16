@@ -110,7 +110,7 @@ class StudentAssignmentOverview: UIViewController {
     private func populateAssignPageLabels(){
         startButton.isHidden = false
         assignQuestLabel.isHidden = true
-        assignGrade.isHidden = true
+        //assignGrade.isHidden = true
         
         assignName.text = assignment.name
         //assignFileName.text = assignment.filePath
@@ -136,8 +136,8 @@ class StudentAssignmentOverview: UIViewController {
                 //can now set the average time
                 assignAvgTime.text = studentResult?.stringFromTimeInterval(interval: studentResult!.TimeTaken)
                 //unhide and put in the grade
-                assignGrade.isHidden = false
-                assignGrade.text = String(studentResult!.Grade)
+                //assignGrade.isHidden = false
+                //assignGrade.text = String(studentResult!.Grade)
                 
                 //get all of the problems on the assignment
                 getAssignProblems(assign: assignment)
