@@ -9,6 +9,8 @@ import UIKit
 
 import Foundation
 
+var finalQuizGrade = ""
+
 var CurrentAssignment:Assignment = Assignment(newID:"NULL")
 
 class Quiz: UIViewController {
@@ -26,7 +28,7 @@ class Quiz: UIViewController {
     var totalPossibleGrade = CurrentAssignment.problems?.count
     var existingResult:Result = Result()
     
-    @IBOutlet weak var StudentScore: UILabel!
+    
     
     override func viewDidLoad() {
         if CurrentAssignment.problems!.count <= 0 {
@@ -51,6 +53,7 @@ class Quiz: UIViewController {
         StudentsAnswers[qIndex] = self.StudentInput.text ?? StudentsAnswers[qIndex]
         let grade = doGrading()
         let result = createResult(grade:grade)
+        finalQuizGrade = "\(grade)"
         insertResult(result:result)
         
         
