@@ -2036,7 +2036,7 @@
         <scene sceneID="6RK-6q-0Yi">
             <objects>
                 <viewController storyboardIdentifier="TStudentOview" id="RHj-Hi-tcg" customClass="TeacherOverviewStudentList" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="T4g-Pu-m3E" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="T4g-Pu-m3E" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
