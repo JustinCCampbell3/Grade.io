@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D319B12262A149000443E22 /* QuizResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D319B11262A149000443E22 /* QuizResults.swift */; };
+		1D319B17262A1C0600443E22 /* vars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D319B16262A1C0600443E22 /* vars.swift */; };
 		44F479CD21FC752A99D10B1F /* Pods_Grade_IO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B247ACFAFA2093FC7882BE05 /* Pods_Grade_IO.framework */; };
 		4F28F7722573A9D800F69695 /* AuthCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28F7712573A9D800F69695 /* AuthCommands.swift */; };
 		4F4939CF25DD1575000CA1D1 /* StorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4939CE25DD1575000CA1D1 /* StorageHelper.swift */; };
@@ -88,6 +90,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D319B11262A149000443E22 /* QuizResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResults.swift; sourceTree = "<group>"; };
+		1D319B16262A1C0600443E22 /* vars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vars.swift; sourceTree = "<group>"; };
 		2BBA089776B2A8DFA1B39E3B /* Pods-Grade.IO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade.IO.release.xcconfig"; path = "Target Support Files/Pods-Grade.IO/Pods-Grade.IO.release.xcconfig"; sourceTree = "<group>"; };
 		4F28F7712573A9D800F69695 /* AuthCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCommands.swift; sourceTree = "<group>"; };
 		4F4939CE25DD1575000CA1D1 /* StorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHelper.swift; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 				6D9C5A78262E2FAF0053B8EC /* vars.swift */,
 				6D9C5A73262E2F9B0053B8EC /* QuizResults.swift */,
 				6DF1A07F25F74EA900627C59 /* Quiz.swift */,
+				1D319B16262A1C0600443E22 /* vars.swift */,
+				1D319B11262A149000443E22 /* QuizResults.swift */,
 				6DF5B56725CBC4C900412491 /* StudentAssignmentsView.swift */,
 				6D0D238225EEE87B00166A23 /* StudentAssignmentOverview.swift */,
 				6D6FF5FA2574E4F900A427E7 /* Homepage.swift */,
