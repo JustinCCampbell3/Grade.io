@@ -41,7 +41,7 @@ class StudentAssignmentsView: UIViewController {
         //create a scroll view based on the number of assignments we have
         //may have to change testClass to myClass later
         currentClassroom.GetAssignmentObjects { (res) in
-            self.listAssignments = res
+            //self.listAssignments = res
             self.makeScrollView(newList: res)
             
             
@@ -90,11 +90,13 @@ class StudentAssignmentsView: UIViewController {
                 //get the index of the current student's assignment results
                 let resultIndex = listAssignments[i].GetResultIndexByID(id: CurrentUser.id!)
                 //check to make sure the result isn't -1, which means they haven't submitted
+                print("resultIndex: ", resultIndex)
                 if(resultIndex != -1){
                     //make the backgroun green if the user has completed it
                     
                     //make the background red if the assignment is overdue (need due date as string and actual date as a string)
                     //this is the color of the scroll view background, not the actual full container
+                    
                     if(i == 0){
                         view.backgroundColor = .white
                     }

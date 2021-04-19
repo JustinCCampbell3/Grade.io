@@ -4001,9 +4001,9 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 min" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1F-Z7-KDS">
-                                <rect key="frame" x="587" y="134" width="60" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 min" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1F-Z7-KDS">
+                                <rect key="frame" x="521" y="133" width="60" height="24"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -4023,16 +4023,16 @@
                             <constraint firstItem="csa-pW-gjG" firstAttribute="leading" secondItem="ZlR-bS-E4R" secondAttribute="leading" constant="20" id="KiX-8E-9dV"/>
                             <constraint firstItem="abF-LX-Ni6" firstAttribute="leading" secondItem="ZlR-bS-E4R" secondAttribute="leading" constant="20" id="MYL-KA-D0f"/>
                             <constraint firstItem="abF-LX-Ni6" firstAttribute="centerX" secondItem="1Iz-rc-ys9" secondAttribute="centerX" id="MlO-6u-tZ5"/>
-                            <constraint firstItem="O1F-Z7-KDS" firstAttribute="baseline" secondItem="Nrb-fW-6uj" secondAttribute="baseline" constant="1" id="PHR-1k-TPB"/>
+                            <constraint firstItem="O1F-Z7-KDS" firstAttribute="baseline" secondItem="Nrb-fW-6uj" secondAttribute="baseline" id="PHR-1k-TPB"/>
                             <constraint firstItem="Pgc-bW-7Uj" firstAttribute="centerX" secondItem="1Iz-rc-ys9" secondAttribute="centerX" constant="-288" id="R77-kA-fzs"/>
                             <constraint firstItem="ZlR-bS-E4R" firstAttribute="trailing" secondItem="abF-LX-Ni6" secondAttribute="trailing" constant="20" id="X4q-tO-bhp"/>
-                            <constraint firstItem="abF-LX-Ni6" firstAttribute="top" secondItem="O1F-Z7-KDS" secondAttribute="bottom" constant="74" id="bJz-IW-p3P"/>
+                            <constraint firstItem="abF-LX-Ni6" firstAttribute="top" secondItem="O1F-Z7-KDS" secondAttribute="bottom" constant="75" id="bJz-IW-p3P"/>
                             <constraint firstItem="JyC-IL-VJq" firstAttribute="top" secondItem="ZlR-bS-E4R" secondAttribute="top" constant="60" id="dzv-X2-ejQ"/>
                             <constraint firstItem="9bM-BR-7QW" firstAttribute="centerX" secondItem="1Iz-rc-ys9" secondAttribute="centerX" constant="326" id="fMh-wQ-0Ad"/>
                             <constraint firstItem="nMO-kq-Lhw" firstAttribute="top" secondItem="abF-LX-Ni6" secondAttribute="bottom" constant="102" id="fUK-8A-w2e"/>
                             <constraint firstItem="abF-LX-Ni6" firstAttribute="top" secondItem="Pgc-bW-7Uj" secondAttribute="bottom" constant="8" id="kQx-JH-D9N"/>
                             <constraint firstItem="JyC-IL-VJq" firstAttribute="centerX" secondItem="1Iz-rc-ys9" secondAttribute="centerX" id="kU9-Z1-j19"/>
-                            <constraint firstItem="O1F-Z7-KDS" firstAttribute="centerX" secondItem="1Iz-rc-ys9" secondAttribute="centerX" constant="233" id="p3w-Vu-qpj"/>
+                            <constraint firstItem="O1F-Z7-KDS" firstAttribute="centerX" secondItem="1Iz-rc-ys9" secondAttribute="centerX" constant="167" id="p3w-Vu-qpj"/>
                             <constraint firstItem="csa-pW-gjG" firstAttribute="top" secondItem="abF-LX-Ni6" secondAttribute="bottom" constant="39" id="p7X-Oj-FS5"/>
                             <constraint firstItem="Nrb-fW-6uj" firstAttribute="leading" secondItem="ZlR-bS-E4R" secondAttribute="leading" constant="336" id="pEF-5T-fPB"/>
                             <constraint firstItem="Nrb-fW-6uj" firstAttribute="centerX" secondItem="1Iz-rc-ys9" secondAttribute="centerX" constant="40.5" id="qQ9-gy-CnZ"/>
@@ -4215,7 +4215,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cLu-rI-uYW"/>
                     <connections>
-                        <outlet property="TotalScore" destination="FdR-9n-ZM7" id="VUS-J8-NAK"/>
+                        <outlet property="TotalScore" destination="FdR-9n-ZM7" id="oZS-5a-e8B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ByB-0S-yjB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4289,7 +4289,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="42q-0O-4hI"/>
+        <segue reference="csm-fj-bya"/>
         <segue reference="Sv4-GY-Cnh"/>
         <segue reference="QKi-Mw-CgF"/>
         <segue reference="O3g-Zm-5en"/>

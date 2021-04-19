@@ -56,6 +56,8 @@
 		6D73D58A25F1F2BC001CE99B /* ParentAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D73D58925F1F2BC001CE99B /* ParentAccount.swift */; };
 		6D8C951925ACDD3B00833043 /* TeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C951825ACDD3B00833043 /* TeacherViewController.swift */; };
 		6D97B85E25FA9F5D00221F85 /* StudentAccountAddBio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D97B85D25FA9F5D00221F85 /* StudentAccountAddBio.swift */; };
+		6D9C5A74262E2F9B0053B8EC /* QuizResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9C5A73262E2F9B0053B8EC /* QuizResults.swift */; };
+		6D9C5A79262E2FAF0053B8EC /* vars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9C5A78262E2FAF0053B8EC /* vars.swift */; };
 		6DAC015B26193D590049DB37 /* ParentStudentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC015A26193D590049DB37 /* ParentStudentOverview.swift */; };
 		6DAC016026193E220049DB37 /* ParentStudentAssignmentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC015F26193E220049DB37 /* ParentStudentAssignmentOverview.swift */; };
 		6DCDAC73256C6A560033DFB3 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDAC72256C6A560033DFB3 /* GradientView.swift */; };
@@ -133,6 +135,8 @@
 		6D73D58925F1F2BC001CE99B /* ParentAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentAccount.swift; sourceTree = "<group>"; };
 		6D8C951825ACDD3B00833043 /* TeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewController.swift; sourceTree = "<group>"; };
 		6D97B85D25FA9F5D00221F85 /* StudentAccountAddBio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAccountAddBio.swift; sourceTree = "<group>"; };
+		6D9C5A73262E2F9B0053B8EC /* QuizResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizResults.swift; sourceTree = "<group>"; };
+		6D9C5A78262E2FAF0053B8EC /* vars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vars.swift; sourceTree = "<group>"; };
 		6DAC015A26193D590049DB37 /* ParentStudentOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentStudentOverview.swift; sourceTree = "<group>"; };
 		6DAC015F26193E220049DB37 /* ParentStudentAssignmentOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentStudentAssignmentOverview.swift; sourceTree = "<group>"; };
 		6DCDAC72256C6A560033DFB3 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -293,6 +297,8 @@
 		6D0D237B25EEE57C00166A23 /* Student View */ = {
 			isa = PBXGroup;
 			children = (
+				6D9C5A78262E2FAF0053B8EC /* vars.swift */,
+				6D9C5A73262E2F9B0053B8EC /* QuizResults.swift */,
 				6DF1A07F25F74EA900627C59 /* Quiz.swift */,
 				6DF5B56725CBC4C900412491 /* StudentAssignmentsView.swift */,
 				6D0D238225EEE87B00166A23 /* StudentAssignmentOverview.swift */,
@@ -653,6 +659,7 @@
 				6D0E4FDF2613EB3A00D4EF4D /* TeacherAddAccountBio.swift in Sources */,
 				6DCDAC73256C6A560033DFB3 /* GradientView.swift in Sources */,
 				4F95AF43257B158300B8DA37 /* CreateAccount.swift in Sources */,
+				6D9C5A79262E2FAF0053B8EC /* vars.swift in Sources */,
 				6DAC015B26193D590049DB37 /* ParentStudentOverview.swift in Sources */,
 				4FF0DE5725CE579400106D07 /* IListenable.swift in Sources */,
 				6D490CD625EF753F007EBB49 /* TeacherAccount.swift in Sources */,
@@ -660,6 +667,7 @@
 				6DF5B56825CBC4C900412491 /* StudentAssignmentsView.swift in Sources */,
 				4F70E1B725B561E600189C7F /* CreateAccountTeacher.swift in Sources */,
 				4FC8DB1625AA5AF0000DED98 /* UserHelper.swift in Sources */,
+				6D9C5A74262E2F9B0053B8EC /* QuizResults.swift in Sources */,
 				6D6FF5FB2574E4F900A427E7 /* Homepage.swift in Sources */,
 				6DD7CD0D25C13A9C00A59BAB /* CreateAssignmentViewController.swift in Sources */,
 				6D0FBFA825EEC9B3004E3818 /* TeacherOverviewStudentList.swift in Sources */,

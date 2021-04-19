@@ -214,7 +214,7 @@ class StudentAssignmentOverview: UIViewController {
             }()
             i.addSubview(questionLabel)
             questionLabel.left(to: i, offset: 30)
-            questionLabel.top(to: i, offset: (i.frame.height/4)-questionLabel.frame.height)
+            questionLabel.top(to: i, offset: (i.frame.height/5)-questionLabel.frame.height)
             
             //label for student's answer to the question
             let sAnswerLabel: UILabel = {
@@ -224,7 +224,7 @@ class StudentAssignmentOverview: UIViewController {
             }()
             i.addSubview(sAnswerLabel)
             sAnswerLabel.left(to: i, offset: 30)
-            sAnswerLabel.top(to: i, offset: (i.frame.height/2)-questionLabel.frame.height) //halfway down the view
+            sAnswerLabel.top(to: i, offset: (i.frame.height/2) + questionLabel.frame.height*2) //halfway down the view
             
             //label for Actual answer to the question
             let actAnswerLabel: UILabel = {
@@ -234,16 +234,16 @@ class StudentAssignmentOverview: UIViewController {
             }()
             i.addSubview(actAnswerLabel)
             actAnswerLabel.left(to: i, offset: 30)
-            actAnswerLabel.top(to: i, offset: (i.frame.height/2)-questionLabel.frame.height) //halfway down the view
+            actAnswerLabel.top(to: i, offset: (i.frame.height/2) + questionLabel.frame.height*2) //halfway down the view
             
             //label for question specific time it took
             let questMetricLabel:UILabel = {
                 let label = UILabel()
-                label.text = ""
+                label.text = "Metric"
                 return label
             }()
             i.addSubview(questMetricLabel)
-            actAnswerLabel.right(to: i, offset: -30)
+            actAnswerLabel.right(to: i, offset: 30)
             actAnswerLabel.top(to: i, offset: (i.frame.height/4)-questionLabel.frame.height) //quarter down the view on the right
             
             curIndex+=1
