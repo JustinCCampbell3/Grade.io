@@ -97,12 +97,18 @@ class StudentAssignmentsView: UIViewController {
                     //make the background red if the assignment is overdue (need due date as string and actual date as a string)
                     //this is the color of the scroll view background, not the actual full container
                     
-                    if(i == 0){
+                    let studentResult = listAssignments[i].results?[resultIndex]
+                    let assignSubmitted = studentResult!.IsSubmitted //get whether the student has submitted their assignment
+                    
+                    //white if the assignment hasn't been submitted but its before the due date
+                    if(!assignSubmitted){
                         view.backgroundColor = .white
                     }
-                    else if(i == 1){
+                    //red if the assignment hasn't been submitted and its late
+                  /*  else if(i == 1){
                         view.backgroundColor = .init(red: 255/255.0, green: 78/255.0, blue: 78/255.0, alpha: 1)
-                    }
+                    } */
+                    //green if the assignment has been submitted
                     else{
                         view.backgroundColor = .init(red: 120/255.0, green: 228/255.0, blue: 101/255.0, alpha: 1)
                     }
@@ -202,8 +208,10 @@ class StudentAssignmentsView: UIViewController {
         
         //vc.modalPresentationStyle =
         vc.assignIndex = clickedAssignment
-        //self.present(vc, animated:true, completion: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated:true, completion: nil)
+        //self.navigationController?.pushViewController(vc, animated: true)
+        
     }
 }
 
