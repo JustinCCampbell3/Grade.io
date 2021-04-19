@@ -15,11 +15,13 @@ class Homepage : UIViewController {
     @IBOutlet var calendarView:FSCalendar!
     @IBOutlet weak var signOutButton:UIButton!
     @IBOutlet weak var name:UILabel!
+    @IBOutlet weak var grade: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCalendar()
         name.text = CurrentUser.id
+        //grade.text = CurrentUser.
         
         DatabaseHelper.GetClassroomFromID(classID: (CurrentUser as! Student).classID ?? "NULL") { res in
             currentClassroom = res

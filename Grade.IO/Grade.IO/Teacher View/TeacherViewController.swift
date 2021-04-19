@@ -40,6 +40,7 @@ class TeacherViewController: UIViewController, MenuControllerDelegate {
             name.text = CurrentUser.id
         }
         
+        //throwing an error upon sign in
         DatabaseHelper.GetClassroomFromID(classID: (CurrentUser as! Teacher).classID!) { res in
             currentClassroom = res
         }

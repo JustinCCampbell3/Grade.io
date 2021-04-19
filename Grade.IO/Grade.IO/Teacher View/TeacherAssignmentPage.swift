@@ -250,6 +250,7 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
 
 class TapGesture: UITapGestureRecognizer{
     var givenIndex = Int()
+    var givenString = String()
 }
 
 
