@@ -178,6 +178,7 @@ class ParentStudentOverview: UIViewController {
         
         //vc.modalPresentationStyle =
         vc.assignIndex = clickedAssignment
+        vc.studentID = studentID
         //self.present(vc, animated:true, completion: nil)
         self.navigationController?.pushViewController(vc, animated: true)
     }

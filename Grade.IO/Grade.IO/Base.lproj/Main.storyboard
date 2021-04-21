@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Parent Student Account Page-->
+        <!--Student Overview-->
         <scene sceneID="plh-Bn-Hde">
             <objects>
-                <viewController storyboardIdentifier="PStudentAccount" title="Parent Student Account Page" id="ZWl-QO-Fot" customClass="ParentStudentOverview" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PStudentAccount" title="Student Overview" id="ZWl-QO-Fot" customClass="ParentStudentOverview" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kT2-S6-JUd" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,10 +154,10 @@
             </objects>
             <point key="canvasLocation" x="1255" y="-2374"/>
         </scene>
-        <!--Parent Student Assignment Details-->
+        <!--Assignment Details-->
         <scene sceneID="zrQ-tF-7i0">
             <objects>
-                <viewController storyboardIdentifier="PStudentAssign" title="Parent Student Assignment Details" id="GQT-nX-IPg" customClass="ParentStudentAssignmentOverview" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PStudentAssign" title="Assignment Details" id="GQT-nX-IPg" customClass="ParentStudentAssignmentOverview" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HFk-ST-tHq" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,7 +191,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall Average Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZq-9Y-4K5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Average Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZq-9Y-4K5">
                                 <rect key="frame" x="20" y="427" width="207" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="FiM-mk-SCx"/>
@@ -280,7 +280,6 @@
                             <constraint firstItem="cQm-nW-gEk" firstAttribute="top" secondItem="TKJ-o5-359" secondAttribute="bottom" constant="8" symbolic="YES" id="8Qg-DM-HtJ"/>
                             <constraint firstItem="Wjj-DP-ecY" firstAttribute="trailing" secondItem="9AW-7j-HpF" secondAttribute="trailing" constant="20" id="9Tk-0v-2Gw"/>
                             <constraint firstItem="cQm-nW-gEk" firstAttribute="leading" secondItem="Wjj-DP-ecY" secondAttribute="leading" constant="20" id="9hg-vH-XbG"/>
-                            <constraint firstItem="Wjj-DP-ecY" firstAttribute="trailing" secondItem="mRK-OV-dif" secondAttribute="trailing" constant="262" id="AYO-sy-2MV"/>
                             <constraint firstItem="Kbn-5a-zZd" firstAttribute="top" secondItem="IZV-Qr-9fK" secondAttribute="bottom" constant="104" id="B8X-eA-TAT"/>
                             <constraint firstItem="2JG-do-fe3" firstAttribute="centerX" secondItem="HFk-ST-tHq" secondAttribute="centerX" constant="-89.5" id="Gpb-dq-Cvj"/>
                             <constraint firstItem="Wjj-DP-ecY" firstAttribute="trailing" secondItem="TKJ-o5-359" secondAttribute="trailing" constant="566" id="H13-5Z-AXh"/>
@@ -322,7 +321,7 @@
                     </view>
                     <connections>
                         <outlet property="assignName" destination="suF-2A-um9" id="2wd-V4-0ZG"/>
-                        <outlet property="assignQuestions" destination="V2b-pB-Tcn" id="3tV-Gn-g2o"/>
+                        <outlet property="assignQuestLabel" destination="V2b-pB-Tcn" id="w5n-Ag-X11"/>
                         <outlet property="grade" destination="2JG-do-fe3" id="edn-5z-oZS"/>
                         <outlet property="instructions" destination="cQm-nW-gEk" id="dPF-YE-hCq"/>
                         <outlet property="overallAvgTime" destination="mRK-OV-dif" id="r24-Mv-wZH"/>
@@ -4318,7 +4317,7 @@
         <segue reference="Xqs-vj-6BH"/>
         <segue reference="BcE-Zl-beu"/>
         <segue reference="Ad8-FV-ptY"/>
-        <segue reference="s2R-v7-LJn"/>
+        <segue reference="muj-9v-ZXY"/>
         <segue reference="HjD-fx-abA"/>
     </inferredMetricsTieBreakers>
     <resources>
