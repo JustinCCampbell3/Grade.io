@@ -59,7 +59,7 @@ class ParentStudentAssignmentOverview: UIViewController {
             DatabaseHelper.GetClassroomFromID(classID: student.classID!) { (classroom) in
                 classroom.GetAssignmentObjects { (res) in
                     self.getAssignment(assignArray: res)
-                    self.makeScrollView()
+                    self.populateAssignPageLabels()
                 }
             }
         }
@@ -104,7 +104,7 @@ class ParentStudentAssignmentOverview: UIViewController {
         overallAvgTime.text = "Assignment not started"
         
         //if the assignment was completed, then populate the questions of the assignment into a scroll view
-        let resultIndex = assignment.GetResultIndexByID(id: CurrentUser.id!) //get the index of the current student's assignment results
+        let resultIndex = assignment.GetResultIndexByID(id: studentID) //get the index of the current student's assignment results
         print("resultIndex: ", resultIndex)
         
         //resultIndex will be -1 if the student hasn't completed it yet

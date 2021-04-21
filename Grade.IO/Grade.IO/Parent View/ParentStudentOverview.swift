@@ -98,9 +98,37 @@ class ParentStudentOverview: UIViewController {
             print("y is: ", multiplier)
             let containerView: UIView = {
                 let view = UIView(frame: CGRect(x: 0, y: multiplier, width: self.view.frame.width, height: 100))
-                //this is the color of the scroll view background, not the actual full container
-                view.backgroundColor = .white
-                //view.frame.size = contentViewSize
+                
+                //get the index of the current student's assignment results
+                let resultIndex = listAssignments[i].GetResultIndexByID(id: studentID)
+                //check to make sure the result isn't -1, which means they haven't submitted
+                print("resultIndex: ", resultIndex)
+                if(resultIndex != -1){
+                    //make the backgroun green if the user has completed it
+                    
+                    //make the background red if the assignment is overdue (need due date as string and actual date as a string)
+                    //this is the color of the scroll view background, not the actual full container
+                    
+                    let studentResult = listAssignments[i].results?[resultIndex]
+                    let assignSubmitted = studentResult!.IsSubmitted //get whether the student has submitted their assignment
+                    
+                    //white if the assignment hasn't been submitted but its before the due date
+                    if(!assignSubmitted){
+                        view.backgroundColor = .white
+                    }
+                    //red if the assignment hasn't been submitted and its late
+                  /*  else if(i == 1){
+                        view.backgroundColor = .init(red: 255/255.0, green: 78/255.0, blue: 78/255.0, alpha: 1)
+                    } */
+                    //green if the assignment has been submitted
+                    else{
+                        view.backgroundColor = .init(red: 120/255.0, green: 228/255.0, blue: 101/255.0, alpha: 1)
+                    }
+                }
+                else{
+                    view.backgroundColor = .white
+                }
+                
                 return view
             }()
             viewArray.append(containerView)
@@ -143,7 +171,7 @@ class ParentStudentOverview: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
             //print("before date: ", listAssignments[curIndex].dueDate!)
-            //print("Date: ", dateFormatter.string(from: listAssignments[curIndex].dueDate!))
+            //print("Date: ", dateFormatter.string(from: listAssignments[curIndex].GetDate()!))
             
             //label for due date
             let dueDateLabel: UILabel = {
