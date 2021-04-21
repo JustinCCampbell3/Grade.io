@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TinyConstraints
 
 class ParentStudentOverview: UIViewController {
 
@@ -18,7 +19,7 @@ class ParentStudentOverview: UIViewController {
     var viewArray:[UIView] = []
     
     
-    //add assignment button that will be used for the upper boundary
+    // assignment label that will be used for the upper boundary
     @IBOutlet var assignOverview: UILabel!
     
 
@@ -50,7 +51,12 @@ class ParentStudentOverview: UIViewController {
         UserHelper.GetStudentByID(id: studentID) { (student) in
             //populate labels
             self.studentName.text = (student.firstName! + " " + student.lastName!)
-            self.studentNumberGrade.text = String(student.gpa!)
+            if(student.gpa != nil){
+                self.studentNumberGrade.text = String(student.gpa!)
+            }
+            else{
+                self.studentNumberGrade.text = "N/A"
+            }
             
             DatabaseHelper.GetClassroomFromID(classID: student.classID!) { (classroom) in
                 classroom.GetAssignmentObjects { (res) in
@@ -166,8 +172,8 @@ class ParentStudentOverview: UIViewController {
         clickedAssignment = sender.givenIndex
         print("Clicked assignment is: ", clickedAssignment)
         //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        //let vc = storyBoard.instantiateViewController(withIdentifier: "TAssignSpec") as! UIViewController
-        let vc = storyboard?.instantiateViewController(identifier: "TAssignSpec") as! TeacherAssignmentOverview
+        //let vc = storyBoard.instantiateViewController(withIdentifier: "PStudentAssign") as! ParentStudentAssignmentOverview
+        let vc = storyboard?.instantiateViewController(identifier: "PStudentAssign") as! ParentStudentAssignmentOverview
         //let vc = TeacherAssignmentOverview()
         
         //vc.modalPresentationStyle =

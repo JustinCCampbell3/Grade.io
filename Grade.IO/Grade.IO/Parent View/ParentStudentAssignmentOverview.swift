@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TinyConstraints
 
 class ParentStudentAssignmentOverview: UIViewController {
 

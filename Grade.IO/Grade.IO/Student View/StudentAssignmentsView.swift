@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import TinyConstraints
+import Foundation
 
 class StudentAssignmentsView: UIViewController {
     //array of views

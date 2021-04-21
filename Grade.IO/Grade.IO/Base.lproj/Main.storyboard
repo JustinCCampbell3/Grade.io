@@ -11,7 +11,7 @@
         <!--Parent Student Account Page-->
         <scene sceneID="plh-Bn-Hde">
             <objects>
-                <viewController title="Parent Student Account Page" id="ZWl-QO-Fot" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PStudentAccount" title="Parent Student Account Page" id="ZWl-QO-Fot" customClass="ParentStudentOverview" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kT2-S6-JUd" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -143,15 +143,21 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="assignOverview" destination="2CN-2D-utl" id="xvG-fv-8XT"/>
+                        <outlet property="studentLetterGrade" destination="M4e-18-yix" id="2e0-Bb-Nba"/>
+                        <outlet property="studentName" destination="EQ4-Bu-FVc" id="Eub-Ug-rRP"/>
+                        <outlet property="studentNumberGrade" destination="Jsb-ik-slb" id="kAy-8O-G6W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gKN-WL-qFa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1254.6875" y="-2374.21875"/>
+            <point key="canvasLocation" x="1255" y="-2374"/>
         </scene>
         <!--Parent Student Assignment Details-->
         <scene sceneID="zrQ-tF-7i0">
             <objects>
-                <viewController title="Parent Student Assignment Details" id="GQT-nX-IPg" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PStudentAssign" title="Parent Student Assignment Details" id="GQT-nX-IPg" customClass="ParentStudentAssignmentOverview" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HFk-ST-tHq" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -314,10 +320,17 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="assignName" destination="suF-2A-um9" id="2wd-V4-0ZG"/>
+                        <outlet property="assignQuestions" destination="V2b-pB-Tcn" id="3tV-Gn-g2o"/>
+                        <outlet property="grade" destination="2JG-do-fe3" id="edn-5z-oZS"/>
+                        <outlet property="instructions" destination="cQm-nW-gEk" id="dPF-YE-hCq"/>
+                        <outlet property="overallAvgTime" destination="mRK-OV-dif" id="r24-Mv-wZH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0uZ-TN-TLP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2096.09375" y="-2374.21875"/>
+            <point key="canvasLocation" x="2096" y="-2374"/>
         </scene>
         <!--Parent Tab Bar-->
         <scene sceneID="OoP-7s-9Re">
@@ -477,6 +490,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Homepage" id="qZZ-fG-wHf"/>
                     <connections>
+                        <outlet property="addStudentBtn" destination="E7b-Xu-jIe" id="B5j-8G-kHG"/>
                         <outlet property="username" destination="8Yn-5q-a9i" id="zkc-Tj-uVI"/>
                     </connections>
                 </viewController>
@@ -2023,7 +2037,7 @@
         <scene sceneID="6RK-6q-0Yi">
             <objects>
                 <viewController storyboardIdentifier="TStudentOview" id="RHj-Hi-tcg" customClass="TeacherOverviewStudentList" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="T4g-Pu-m3E" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="T4g-Pu-m3E" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -4304,7 +4318,7 @@
         <segue reference="Xqs-vj-6BH"/>
         <segue reference="BcE-Zl-beu"/>
         <segue reference="Ad8-FV-ptY"/>
-        <segue reference="GLo-uI-9uu"/>
+        <segue reference="s2R-v7-LJn"/>
         <segue reference="HjD-fx-abA"/>
     </inferredMetricsTieBreakers>
     <resources>
