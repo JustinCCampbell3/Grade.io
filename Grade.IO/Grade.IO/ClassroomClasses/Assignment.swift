@@ -112,11 +112,14 @@ public class Assignment : Decodable, Encodable, IListenable {
     
     public func GetResultIndexByID(id:String) -> Int {
         var count = 0
-        for r in results! {
-            if (r.StudentID == id) {
-                return count
+        if(results != nil){
+            for r in results! {
+                if (r.StudentID == id) {
+                    return count
+                }
             }
         }
+        
         
         return -1
     }

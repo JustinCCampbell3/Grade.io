@@ -91,6 +91,7 @@ class StudentAssignmentsView: UIViewController {
                 
                 //get the index of the current student's assignment results
                 let resultIndex = listAssignments[i].GetResultIndexByID(id: CurrentUser.id!)
+                
                 //check to make sure the result isn't -1, which means they haven't submitted
                 print("resultIndex: ", resultIndex)
                 if(resultIndex != -1){
