@@ -110,6 +110,27 @@ public class Assignment : Decodable, Encodable, IListenable {
         return 0  // nothing found
     }
     
+    /// Average time over all results of assignment
+    public func GetAveragePerQuestionTime() -> [Double] {
+        if (results?.count ?? 0 > 0) // do we have any results yet?
+        {
+            var sum:[TimeInterval] = Array(repeating: 0, count: CurrentAssignment.problems!.count)
+            var qIndex = 0
+            for result in results! {
+                var questionTimes = result.TimeTakenPerQuestion
+                if (questionTimes != nil) {
+                    sum[qIndex] += questionTimes![qIndex]
+                }
+            }
+            qIndex = 0
+            for i in sum {
+                sum[qIndex] = sum[qIndex]/Double(results!.count)
+            }
+            return sum // return result
+        }
+        return [] // nothing found
+    }
+    
     public func GetResultIndexByID(id:String) -> Int {
         var count = 0
         if(results != nil){

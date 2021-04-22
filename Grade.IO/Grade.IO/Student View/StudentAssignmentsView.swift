@@ -46,7 +46,6 @@ class StudentAssignmentsView: UIViewController {
             //self.listAssignments = res
             self.makeScrollView(newList: res)
             
-            
         }
         
     }

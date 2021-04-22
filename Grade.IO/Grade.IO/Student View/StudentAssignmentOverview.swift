@@ -83,7 +83,6 @@ class StudentAssignmentOverview: UIViewController {
         }
         
         
-        
     }
 
     //getting the assignment we need

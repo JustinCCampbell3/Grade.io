@@ -20,7 +20,7 @@ class Quiz: UIViewController {
     @IBOutlet weak var StudentInput: UITextField!
     
     var StudentsAnswers: [String] = Array(repeating: "", count: CurrentAssignment.problems!.count)
-
+    var TimeTakenPerQuestion: [TimeInterval] = Array(repeating: 0, count: CurrentAssignment.problems!.count)
     var qIndex:Int = 0
     var currentProblem:Problem = Problem()
     var result:Result = Result()
@@ -37,14 +37,20 @@ class Quiz: UIViewController {
         existingResult = (CurrentAssignment.results?.first(where:{$0.StudentID == CurrentUser.id})) ?? Result()
         result = existingResult.Grade != 0.0 ? existingResult : Result()
         result.StartTimer()
+        result.StartIndividualQuestionTimer()
         setCurrentQuestion(index: qIndex)
+        result.TimeTakenPerQuestion = Array(repeating: 0, count: CurrentAssignment.problems!.count)
     }
 
     @IBAction func BackButtonPressed(_ sender: Any) {
         if (qIndex > 0) {
             StudentsAnswers[qIndex] = self.StudentInput.text ?? StudentsAnswers[qIndex]
+            result.StopIndividualTime(ind: qIndex)
+            print(result.stringFromTimeInterval(interval: result.TimeTakenPerQuestion![qIndex]))
+
             qIndex -= 1
             setCurrentQuestion(index: qIndex)
+            result.StartIndividualQuestionTimer()
         }
     }
     
@@ -55,7 +61,7 @@ class Quiz: UIViewController {
         let result = createResult(grade:grade)
         finalQuizGrade = "\(grade)"
         insertResult(result:result)
-        
+        print(TimeTakenPerQuestion)
         
         // segue back to assignment page here
     }
@@ -76,6 +82,7 @@ class Quiz: UIViewController {
         result.AssignmentID = CurrentAssignment.id!
         result.IsSubmitted = true
         result.StopTime()
+        result.StopIndividualTime(ind: qIndex)
         print(result.stringFromTimeInterval(interval: result.TimeTaken))
         result.StudentID = CurrentUser.id!
         result.StudentAnswers = StudentsAnswers
@@ -104,7 +111,10 @@ class Quiz: UIViewController {
     @IBAction func NextButtonPressed(_ sender: Any) {
         if (qIndex < CurrentAssignment.problems!.count - 1) {
             StudentsAnswers[qIndex] = self.StudentInput.text ?? StudentsAnswers[qIndex]
+            result.StopIndividualTime(ind: qIndex)
             qIndex += 1
+            result.StartIndividualQuestionTimer()
+            print(result.stringFromTimeInterval(interval: result.TimeTakenPerQuestion![qIndex-1]))
             setCurrentQuestion(index: qIndex)
         }
     }
