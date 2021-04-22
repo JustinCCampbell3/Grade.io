@@ -64,7 +64,7 @@ class StudentAssignmentOverview: UIViewController {
     var studentAns: [String] = []
     
     //var that will hold the student's metrics (time) for each question
-    
+    var questMetrics: [Double] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +107,11 @@ class StudentAssignmentOverview: UIViewController {
         }
     }
     
+    //get an array of the question metrics
+    private func getQuestionMetrics(assign: Assignment){
+        questMetrics = assign.GetAveragePerQuestionTime()
+    }
+    
     //using the assignment to populate the necessary labels
     private func populateAssignPageLabels(){
         startButton.isHidden = false
@@ -145,6 +150,9 @@ class StudentAssignmentOverview: UIViewController {
                 
                 //get all of the current student's answers to those problems
                 getStudentAns(result: studentResult!)
+                
+                //get the question metrics
+                getQuestionMetrics(assign: assignment)
                 
                 //make a scroll view for the questions and answers
                 makeScrollView()
@@ -241,7 +249,7 @@ class StudentAssignmentOverview: UIViewController {
             //label for question specific time it took
             let questMetricLabel:UILabel = {
                 let label = UILabel()
-                label.text = "Metric"
+                label.text = String(questMetrics[curIndex])
                 return label
             }()
             i.addSubview(questMetricLabel)
