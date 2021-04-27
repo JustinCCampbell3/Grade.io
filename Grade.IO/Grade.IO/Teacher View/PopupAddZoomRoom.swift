@@ -52,7 +52,7 @@ class PopupAddZoomRoom: UIViewController, UIImagePickerControllerDelegate, UINav
     @IBAction func confirmAddZRoom(){
         let roomName: String? = zoomName.text
         let roomURL: String? = zoomURL.text
-        print("Name: ", roomName)
-        print("URL: ", roomURL)
+        print("Name: ", roomName!)
+        print("URL: ", roomURL!)
         
     }}

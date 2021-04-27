@@ -62,7 +62,7 @@ class TeacherStudentListPage: UIViewController, MenuControllerDelegate{
         SideMenuManager.default.leftMenuNavigationController = sideMenu
     }
     
-    //change listAssignments to have all the assignments
+    //get all students in an array
     private func getStudentList(students: [Student]){
         for i in students {
             studentList.append(i)
