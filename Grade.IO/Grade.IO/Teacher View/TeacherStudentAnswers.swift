@@ -1,39 +1,18 @@
 //
-//  TeacherAssignmentOverview.swift
+//  TeacherStudentAnswers.swift
 //  Grade.IO
 //
-//  Created by user183573 on 2/23/21.
+//  Created by user183573 on 4/30/21.
 //
 
 import UIKit
-import TinyConstraints
-import Foundation
 
-class StudentAssignmentOverview: UIViewController {
-
-    //label for name of assignment
+class TeacherStudentAnswers: UIViewController {
     @IBOutlet weak var assignName: UILabel!
-    
-    //label for due date
-    @IBOutlet weak var assignDueDate: UILabel!
-    
-    //label for file name
-    @IBOutlet weak var assignFileName: UILabel!
-    
-    //label for total average time
-    @IBOutlet weak var assignAvgTime: UILabel!
-    
-    //label for instructions
-    @IBOutlet weak var assignInstructions: UILabel!
-    
-    //for the questions label on only the completed assignment page
+    @IBOutlet weak var grade: UILabel!
+    @IBOutlet weak var overallAvgTime: UILabel!
     @IBOutlet weak var assignQuestLabel: UILabel!
-    
-    //button to start assignment
-    @IBOutlet weak var startButton: UIButton!
-    
-    //grade for the assignment
-    @IBOutlet weak var assignGrade: UILabel!
+
     
     //array of views
     var viewArray:[UIView] = []
@@ -66,21 +45,30 @@ class StudentAssignmentOverview: UIViewController {
     //var that will hold the student's metrics (time) for each question
     var questMetrics: [Double] = []
     
+    //for student id number
+    var studentID: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("the assignIndex we got: ", assignIndex)
+        print("the assignIndex we got (answers): ", assignIndex)
         
-        //to get the assignment we need and then to do what we need to do
-        /*DatabaseHelper.GetAssignmentsFromClassID(classID: "testClass") { (res) in
+        UserHelper.GetStudentByID(id: studentID) { (student) in
+            DatabaseHelper.GetClassroomFromID(classID: student.classID!) { (classroom) in
+                classroom.GetAssignmentObjects { (res) in
+                    print("before get assignment");
+                    self.getAssignment(assignArray: res)
+                    print("after get assignment");
+                    self.populateAssignPageLabels()
+                }
+            }
+        }
+        
+        /*currentClassroom.GetAssignmentObjects { (res) in
             self.getAssignment(assignArray: res)
             self.populateAssignPageLabels()
         }*/
         
-        currentClassroom.GetAssignmentObjects { (res) in
-            self.getAssignment(assignArray: res)
-            self.populateAssignPageLabels()
-        }
         
         
     }
@@ -90,7 +78,7 @@ class StudentAssignmentOverview: UIViewController {
         for i in assignArray{
             listAssigns.append(i)
         }
-        assignment = assignArray[assignIndex]
+        assignment = listAssigns[assignIndex]
         print("assignment name after get: ", assignment.name!)
     }
     
@@ -114,36 +102,26 @@ class StudentAssignmentOverview: UIViewController {
     
     //using the assignment to populate the necessary labels
     private func populateAssignPageLabels(){
-        startButton.isHidden = false
-        assignQuestLabel.isHidden = true
-        //assignGrade.isHidden = true
-        
+        print("populating some labels");
         assignName.text = assignment.name
-        //assignFileName.text = assignment.filePath
-        assignInstructions.text = assignment.description
-        assignAvgTime.text = "Assignment not started"
-        
+        grade.text = "N/A"
+        overallAvgTime.text = "Assignment not started"
+        print("before results")
         //if the assignment was completed, then populate the questions of the assignment into a scroll view
-        let resultIndex = assignment.GetResultIndexByID(id: CurrentUser.id!) //get the index of the current student's assignment results
+        let resultIndex = assignment.GetResultIndexByID(id: studentID) //get the index of the current student's assignment results
         print("resultIndex: ", resultIndex)
         
         //resultIndex will be -1 if the student hasn't completed it yet
         if(resultIndex != -1){
-            //hide the start assignment button
-            startButton.isHidden = true
-            //unhide the questions thing
-            assignQuestLabel.isHidden = false
-            
             //get the result of the student for the assignment
             let studentResult = assignment.results?[resultIndex]
             let assignSubmitted = studentResult!.IsSubmitted //get whether the student has submitted their assignment
             //if the user has submitted the assignment
             if(assignSubmitted){
                 //can now set the average time
-                //assignAvgTime.text = studentResult?.stringFromTimeInterval(interval: studentResult!.TimeTaken)
-                //unhide and put in the grade
-                //assignGrade.isHidden = false
-                assignGrade.text = String(studentResult!.Grade)
+                //overallAvgTime.text = studentResult?.stringFromTimeInterval(interval: studentResult!.TimeTaken)
+                //put in the grade
+                //grade.text = String(studentResult!.Grade)
                 
                 //get all of the problems on the assignment
                 getAssignProblems(assign: assignment)
@@ -154,21 +132,21 @@ class StudentAssignmentOverview: UIViewController {
                 //get the question metrics
                 getQuestionMetrics(assign: assignment)
                 
-                var totalTime: Double = 0
+                var totalTime: Double = 0.0
                 for j in questMetrics{
                     totalTime += j
                 }
                 print("Total time found: ", (floor(totalTime*1000)/1000))
-                assignAvgTime.text = String(floor(totalTime*1000)/1000)
-                
+                overallAvgTime.text = String(floor(totalTime*1000)/1000)
+                    
                 //make a scroll view for the questions and answers
-                makeScrollView(sResult: studentResult!)
+                makeScrollView()
             }
         }
         
     }
     
-    private func makeScrollView(sResult: Result){
+    private func makeScrollView(){
         
         //size of the content needed
         var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.size.height)
@@ -232,12 +210,10 @@ class StudentAssignmentOverview: UIViewController {
             questionLabel.left(to: i, offset: 30)
             questionLabel.top(to: i, offset: (i.frame.height/8))
             
-            print("answer from result: " + sResult.StudentAnswers![curIndex])
-            
             //label for student's answer to the question
             let sAnswerLabel: UILabel = {
                 let label = UILabel()
-                label.text = "Student Answer: " + sResult.StudentAnswers![curIndex]
+                label.text = "Student Answer: " + studentAns[curIndex]
                 return label
             }()
             i.addSubview(sAnswerLabel)
@@ -268,5 +244,6 @@ class StudentAssignmentOverview: UIViewController {
             curIndex+=1
         }
     }
+
 
 }

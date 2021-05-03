@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import TinyConstraints
+import Foundation
 
 class TeacherOverviewStudentList: UIViewController {
 
@@ -107,8 +109,6 @@ class TeacherOverviewStudentList: UIViewController {
         
         //somehow figure out if its nil
         //gradePercent.text = String(student.gpa!)
-
-        
         makeScrollView()
         
         //get student's parent
@@ -187,25 +187,20 @@ class TeacherOverviewStudentList: UIViewController {
             newHeight = multiplier
         }
         print("newHeight: ", newHeight)
+        print("CGFloat: ", CGFloat(self.view.frame.size.height))
         
         if(newHeight > CGFloat(self.view.frame.size.height)){
-            print("in if statement")
             contentViewSize = CGSize(width: self.view.frame.width, height: newHeight + 350) //100 height + 150 in between of stuff
             print("newHeight is larger than the current frame size")
         }
-        
-        print("after if statrement")
+
         scrollView.contentSize = contentViewSize
-        print("after setting content size")
+
         //all scroll view stuff down here
         scrollView.layoutIfNeeded()
         scrollView.isScrollEnabled = true
         
-        print("before adding scroll view as a subview")
-        
         view.addSubview(scrollView)
-        
-        print("after adding")
         
         //keep track of the current index
         var curIndex = 0
@@ -213,7 +208,6 @@ class TeacherOverviewStudentList: UIViewController {
         //put the info necessary within the assignment views
         for i in viewArray {
             scrollView.addSubview(i)
-            print("after adding subview to scrollview")
 
             //making label here makes sure each view has their own label
             //label for assignment name
@@ -225,8 +219,6 @@ class TeacherOverviewStudentList: UIViewController {
             i.addSubview(nameLabel)
             nameLabel.left(to: i, offset: 30)
             nameLabel.top(to: i, offset: (i.frame.height/4)-nameLabel.frame.height)
-            
-            print("after name label")
             
             //section for changing date to string
             let dateFormatter = DateFormatter()
@@ -265,12 +257,10 @@ class TeacherOverviewStudentList: UIViewController {
             gradeLabel.left(to: i, offset: 30)
             gradeLabel.top(to: i, offset: (i.frame.height/2)-nameLabel.frame.height)
             
-            print("after grade label")
-            
             //lines that allow the view to be tapped
-            /*let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(_:)))
+            let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(_:)))
             gesture.givenIndex = curIndex
-            i.addGestureRecognizer(gesture)*/
+            i.addGestureRecognizer(gesture)
             
             
             curIndex+=1
@@ -281,17 +271,20 @@ class TeacherOverviewStudentList: UIViewController {
     //send the user to the assignment page when they click a UIView
     @objc func sendToAssignment(_ sender:TapGesture) {
         clickedAssignment = sender.givenIndex
+        
         print("Clicked assignment is: ", clickedAssignment)
         CurrentAssignment = listAssignments[clickedAssignment]
         //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         //let vc = storyBoard.instantiateViewController(withIdentifier: "TAssignSpec") as! UIViewController
-        let vc = storyboard?.instantiateViewController(identifier: "SAssignOviewPage") as! StudentAssignmentOverview
+        let vc = storyboard?.instantiateViewController(identifier: "TStudentAssign") as! TeacherStudentAnswers
         //let vc = TeacherAssignmentOverview()
         
         //vc.modalPresentationStyle =
         vc.assignIndex = clickedAssignment
+        vc.studentID = student.id!
         vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated:true, completion: nil)
+        //self.present(vc, animated:true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
         //self.navigationController?.pushViewController(vc, animated: true)
         
     }

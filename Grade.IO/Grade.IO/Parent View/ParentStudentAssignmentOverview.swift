@@ -14,6 +14,8 @@ class ParentStudentAssignmentOverview: UIViewController {
     @IBOutlet weak var instructions: UILabel!
     @IBOutlet weak var overallAvgTime: UILabel!
     @IBOutlet weak var assignQuestLabel: UILabel!
+    //for the class avg time
+    @IBOutlet weak var classAvgTime: UILabel!
 
     
     //array of views
@@ -45,7 +47,7 @@ class ParentStudentAssignmentOverview: UIViewController {
     var studentAns: [String] = []
     
     //var that will hold the student's metrics (time) for each question
-    
+    var questMetrics: [Double] = []
     
     //for student id number
     var studentID: String = ""
@@ -95,6 +97,11 @@ class ParentStudentAssignmentOverview: UIViewController {
         }
     }
     
+    //get an array of the question metrics
+    private func getQuestionMetrics(assign: Assignment){
+        questMetrics = assign.GetAveragePerQuestionTime()
+    }
+    
     //using the assignment to populate the necessary labels
     private func populateAssignPageLabels(){
         
@@ -114,16 +121,29 @@ class ParentStudentAssignmentOverview: UIViewController {
             let assignSubmitted = studentResult!.IsSubmitted //get whether the student has submitted their assignment
             //if the user has submitted the assignment
             if(assignSubmitted){
-                //can now set the average time
-                overallAvgTime.text = studentResult?.stringFromTimeInterval(interval: studentResult!.TimeTaken)
+                //can now set the average time for the class
+                classAvgTime.text = studentResult?.stringFromTimeInterval(interval: studentResult!.TimeTaken)
+                
                 //put in the grade
-                //grade.text = String(studentResult!.Grade)
+                grade.text = String(studentResult!.Grade)
                 
                 //get all of the problems on the assignment
                 getAssignProblems(assign: assignment)
                 
                 //get all of the current student's answers to those problems
                 getStudentAns(result: studentResult!)
+                
+                //get the question metrics
+                getQuestionMetrics(assign: assignment)
+                
+                //average time for the specific student
+                
+                var totalTime: Double = 0.0
+                for j in questMetrics{
+                    totalTime += j
+                }
+                print("Total time found: ", (floor(totalTime*1000)/1000))
+                overallAvgTime.text = String(floor(totalTime*1000)/1000)
                 
                 //make a scroll view for the questions and answers
                 makeScrollView()
@@ -220,7 +240,7 @@ class ParentStudentAssignmentOverview: UIViewController {
             //label for question specific time it took
             let questMetricLabel:UILabel = {
                 let label = UILabel()
-                label.text = "Metric"
+                label.text = String(questMetrics[curIndex])
                 return label
             }()
             i.addSubview(questMetricLabel)

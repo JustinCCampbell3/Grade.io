@@ -56,6 +56,7 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
         }*/
         
         currentClassroom.GetAssignmentObjects { (res) in
+            //self.getAssignmentList(assignments: res)
             self.makeScrollView(newList: res)
         }
         

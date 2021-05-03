@@ -41,6 +41,12 @@ class TeacherAssignmentOverview: UIViewController {
     //array for students
     var studentList: [Student] = []
     
+    //for student id number
+    var studentID: String = ""
+    
+    //var to send
+    var sendStudentID: String = ""
+    
     //view array
     var viewArray:[UIView] = []
     
@@ -99,7 +105,22 @@ class TeacherAssignmentOverview: UIViewController {
         assignName.text = assignment.name
         assignFileName.text = assignment.filePath
         assignInstructions.text = assignment.description
-        assignAvgTime.text = String(assignment.GetAverageTime()) + " min"
+        //assignAvgTime.text = String(assignment.GetAverageTime()) + " min"
+        
+        //grab a random student's assignment result
+        var ranStudent: String = ""
+        var ranResult: Result = assignment.results![(assignment.GetResultIndexByID(id: studentList[0].id!))]
+        for j in studentList{
+            ranStudent = j.id!
+            let ranResultsById = assignment.GetResultIndexByID(id: ranStudent)
+            
+            if(ranResultsById != -1){
+                ranResult = assignment.results![ranResultsById]
+                break
+            }
+        }
+        let totalAssignTime = ranResult.stringFromTimeInterval(interval: ranResult.TimeTaken)
+        assignAvgTime.text = String(totalAssignTime)
         
         makeScrollView()
     }
@@ -167,6 +188,8 @@ class TeacherAssignmentOverview: UIViewController {
             var sGrade = "N/A"
             var sOverallTime = "N/A"
             
+            sendStudentID = studentList[curIndex].id!
+            
             //resultIndex will be -1 if the student hasn't completed it yet
             if(resultIndex != -1){
                 
@@ -223,8 +246,32 @@ class TeacherAssignmentOverview: UIViewController {
             questMetricLabel.right(to: i, offset: -60)
             questMetricLabel.top(to: i, offset: (i.frame.height/8)-nameLabel.frame.height) //quarter down the view on the right
             
+            //lines that allow the view to be tapped
+            let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(_:)))
+            gesture.givenString = sendStudentID
+            i.addGestureRecognizer(gesture)
+            
             curIndex+=1
         }
+    }
+    
+    //send the user to the assignment page when they click a UIView
+    @objc func sendToAssignment(_ sender:TapGesture) {
+        studentID = sender.givenString
+        print("Clicked student is: ", studentID)
+        //CurrentAssignment = listAssignments[clickedAssignment]
+        //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //let vc = storyBoard.instantiateViewController(withIdentifier: "TAssignSpec") as! UIViewController
+        let vc = storyboard?.instantiateViewController(identifier: "TStudentAssign") as! TeacherStudentAnswers
+        //let vc = TeacherAssignmentOverview()
+        
+        //vc.modalPresentationStyle =
+        vc.studentID = studentID
+        vc.modalPresentationStyle = .fullScreen
+        //self.present(vc, animated:true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+        //self.navigationController?.pushViewController(vc, animated: true)
+        
     }
 
 }

@@ -173,19 +173,29 @@ class StudentAssignmentsView: UIViewController {
             dueDateLabel.right(to: i, offset: -30)
             dueDateLabel.top(to: i, offset: (i.frame.height/4)-nameLabel.frame.height) //halfway down the view
             
-            //to hold results
-            /*var results:[Result] = listAssignments[curIndex].results!
+            var grade = "N/A"
+            
+            //get the index of the current student's assignment results
+            let resultIndex = listAssignments[curIndex].GetResultIndexByID(id: CurrentUser.id!)
+            
+            //check to make sure the result isn't -1, which means they haven't submitted
+            print("resultIndex: ", resultIndex)
+            if(resultIndex != -1){
+                let studentResult = listAssignments[curIndex].results?[resultIndex]
+                grade = String(studentResult!.Grade)
+            }
+            print("grade: ", grade)
             
             //label for grade the student got
             let gradeLabel: UILabel = {
                 let label = UILabel()
-                label.text = String(results[curIndex].Grade)
+                label.text = grade
                 return label
             }()
-            i.addSubview(nameLabel)
-            gradeLabel.left(to: i, offset: -30)
-            gradeLabel.top(to: i, offset: (i.frame.height/4)-nameLabel.frame.height)
-            */
+            i.addSubview(gradeLabel)
+            gradeLabel.left(to: i, offset: 30)
+            gradeLabel.top(to: i, offset: (i.frame.height/2)-nameLabel.frame.height)
+            
             
             //lines that allow the view to be tapped
             let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(_:)))
