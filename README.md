@@ -1,4 +1,5 @@
 # Grade.io
+With the COVID-19 pandemic, a lot of education moved to a remote workspace.  Grade.io is here to help!
 #
 # Vision Statement
 Our vision is to provide full transparency of the daily academic process to parents, students, and teachers, in order to build a productive remote learning environment.
