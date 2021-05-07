@@ -16,4 +16,18 @@ Our vision is to provide full transparency of the daily academic process to pare
 6. Allow up to a few minutes for the appliction to build.  During this time, the progress bar at the top of xcode should keep a running tally of what tasks are currently building.
 
 # Application Structure
-docs here
+
+For each classroom, we have a list of Assignment IDs. We also have an ID for the teacher of that class, and a list of student IDs. 
+The codable protocol, along with some of our helper functions utilized in these individual classes allows us to generate objects from the Database directly from these IDs.
+
+![2_26_21 class diagram for assignment_classroom](https://user-images.githubusercontent.com/37358652/117493788-4d938c00-af28-11eb-8ae6-f5732a78feb4.png)
+
+Below is our user structure.
+
+![classdiagram feb2021 (USER STRUCTURE)](https://user-images.githubusercontent.com/37358652/117494023-9b0ff900-af28-11eb-8e2b-6f128a34362e.png)
+
+# Adding data to our Database
+
+Generally, we should avoid directly manipulating data on the database (which is easier said than done sometimes). The application will respond to these changes, but unintended side effects may occur. Generally, if you want to create a student or any other such object for testing purposes, make it in the app from the perspective of a user.
+
+
