@@ -13,6 +13,7 @@ Our vision is to provide full transparency of the daily academic process to pare
 <img width="139" alt="Screen Shot 2021-05-07 at 11 20 54 AM" src="https://user-images.githubusercontent.com/49224676/117492321-4b303280-af26-11eb-8d8f-46296d70e4d7.png">
 5. Run the application by clicking the Play Button on XCode.
 <img width="304" alt="Screen Shot 2021-05-07 at 11 21 51 AM" src="https://user-images.githubusercontent.com/49224676/117492427-6dc24b80-af26-11eb-995c-f98a983e87ad.png">
+6. Allow up to a few minutes for the appliction to build.  During this time, the progress bar at the top of xcode should keep a running tally of what tasks are currently building.
 
 # Application Structure
 docs here
