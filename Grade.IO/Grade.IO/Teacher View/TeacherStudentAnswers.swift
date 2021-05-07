@@ -52,6 +52,7 @@ class TeacherStudentAnswers: UIViewController {
         super.viewDidLoad()
         
         print("the assignIndex we got (answers): ", assignIndex)
+        print("student id: ", studentID)
         
         UserHelper.GetStudentByID(id: studentID) { (student) in
             DatabaseHelper.GetClassroomFromID(classID: student.classID!) { (classroom) in
@@ -97,6 +98,7 @@ class TeacherStudentAnswers: UIViewController {
     
     //get an array of the question metrics
     private func getQuestionMetrics(assign: Assignment){
+        print("size of assignment problems array: ", assign.problems!.count)
         questMetrics = assign.GetAveragePerQuestionTime()
     }
     
@@ -121,13 +123,15 @@ class TeacherStudentAnswers: UIViewController {
                 //can now set the average time
                 //overallAvgTime.text = studentResult?.stringFromTimeInterval(interval: studentResult!.TimeTaken)
                 //put in the grade
-                //grade.text = String(studentResult!.Grade)
+                grade.text = String(studentResult!.Grade)
                 
                 //get all of the problems on the assignment
                 getAssignProblems(assign: assignment)
+                print("after assign problems")
                 
                 //get all of the current student's answers to those problems
                 getStudentAns(result: studentResult!)
+                print("after get student answers")
                 
                 //get the question metrics
                 getQuestionMetrics(assign: assignment)

@@ -249,6 +249,7 @@ class TeacherAssignmentOverview: UIViewController {
             //lines that allow the view to be tapped
             let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(_:)))
             gesture.givenString = sendStudentID
+            gesture.givenIndex = assignIndex
             i.addGestureRecognizer(gesture)
             
             curIndex+=1
@@ -258,6 +259,7 @@ class TeacherAssignmentOverview: UIViewController {
     //send the user to the assignment page when they click a UIView
     @objc func sendToAssignment(_ sender:TapGesture) {
         studentID = sender.givenString
+        assignIndex = sender.givenIndex
         print("Clicked student is: ", studentID)
         //CurrentAssignment = listAssignments[clickedAssignment]
         //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -267,6 +269,7 @@ class TeacherAssignmentOverview: UIViewController {
         
         //vc.modalPresentationStyle =
         vc.studentID = studentID
+        vc.assignIndex = assignIndex
         vc.modalPresentationStyle = .fullScreen
         //self.present(vc, animated:true, completion: nil)
         self.navigationController?.pushViewController(vc, animated: true)
