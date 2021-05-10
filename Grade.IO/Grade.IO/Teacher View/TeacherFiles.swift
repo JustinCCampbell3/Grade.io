@@ -129,7 +129,7 @@ class TeacherFiles: UIViewController, MenuControllerDelegate  {
             //label for assignment name
             let fileLabel: UILabel = {
                 let label = UILabel()
-                label.text = listAssignments[curIndex].filePath
+                label.text = "Assignment " + String((curIndex+1)) + ": " + listAssignments[curIndex].filePath!
                 return label
             }()
             i.addSubview(fileLabel)
