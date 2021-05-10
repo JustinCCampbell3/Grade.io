@@ -114,7 +114,7 @@ public class Assignment : Decodable, Encodable, IListenable {
     public func GetAveragePerQuestionTime() -> [Double] {
         if (results?.count ?? 0 > 0) // do we have any results yet?
         {
-            var sum:[TimeInterval] = Array(repeating: 0, count: CurrentAssignment.problems!.count)
+            var sum:[TimeInterval] = Array(repeating: 0, count: self.problems!.count)
             var qIndex = 0
             for result in results! {
                 var questionTimes = result.TimeTakenPerQuestion
