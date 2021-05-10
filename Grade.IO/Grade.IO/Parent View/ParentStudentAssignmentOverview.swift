@@ -32,7 +32,7 @@ class ParentStudentAssignmentOverview: UIViewController {
     //section for scroll view of students' grade and total time
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (assignQuestLabel.frame.origin.y)  + (assignQuestLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (assignQuestLabel.frame.origin.y)  + (assignQuestLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height - assignQuestLabel.frame.origin.y))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true
@@ -56,6 +56,7 @@ class ParentStudentAssignmentOverview: UIViewController {
         super.viewDidLoad()
         
         print("the assignIndex we got: ", assignIndex)
+        print("the student id we got: ", studentID)
         
         UserHelper.GetStudentByID(id: studentID) { (student) in
             DatabaseHelper.GetClassroomFromID(classID: student.classID!) { (classroom) in
@@ -128,13 +129,13 @@ class ParentStudentAssignmentOverview: UIViewController {
                 grade.text = String(studentResult!.Grade)
                 
                 //get all of the problems on the assignment
-                getAssignProblems(assign: assignment)
+                self.getAssignProblems(assign: assignment)
                 
                 //get all of the current student's answers to those problems
-                getStudentAns(result: studentResult!)
+                self.getStudentAns(result: studentResult!)
                 
                 //get the question metrics
-                getQuestionMetrics(assign: assignment)
+                self.getQuestionMetrics(assign: assignment)
                 
                 //average time for the specific student
                 

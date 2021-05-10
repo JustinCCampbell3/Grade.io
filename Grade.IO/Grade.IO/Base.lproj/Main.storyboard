@@ -2313,12 +2313,25 @@
         <!--Files-->
         <scene sceneID="yeS-p2-zmO">
             <objects>
-                <viewController storyboardIdentifier="TFiles" id="ZPu-Sy-96A" customClass="TeacherViewController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TFiles" id="ZPu-Sy-96A" customClass="TeacherFiles" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gZi-Kk-vYR" customClass="GradientView" customModule="Grade_IO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uploaded Assignment Files" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTN-RI-VKj">
+                                <rect key="frame" x="237" y="91" width="294" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6vp-4O-6Ch"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kTN-RI-VKj" firstAttribute="centerX" secondItem="gZi-Kk-vYR" secondAttribute="centerX" id="eHx-Ki-RCH"/>
+                            <constraint firstItem="kTN-RI-VKj" firstAttribute="leading" secondItem="6vp-4O-6Ch" secondAttribute="leading" constant="237" id="uoO-J1-M3S"/>
+                            <constraint firstItem="kTN-RI-VKj" firstAttribute="top" secondItem="6vp-4O-6Ch" secondAttribute="top" constant="41" id="wCt-mc-lvV"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="FirstColor">
                                 <color key="value" red="1" green="0.80000000000000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -2335,6 +2348,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="filePageLabel" destination="kTN-RI-VKj" id="5JW-Qq-yta"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EP4-t7-z1Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2352,7 +2368,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="4D1-Mq-r4Z" kind="relationship" relationship="viewControllers" id="ArO-R9-i51"/>
-                        <segue destination="z9K-Sw-znv" kind="relationship" relationship="viewControllers" id="ig2-dc-tJa"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KH-fm-Tzx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4337,7 +4352,7 @@
         <segue reference="H6J-u6-W68"/>
         <segue reference="BcE-Zl-beu"/>
         <segue reference="Zz2-zY-KCZ"/>
-        <segue reference="N2x-sO-DOJ"/>
+        <segue reference="vEe-SO-jmE"/>
         <segue reference="GqA-kv-ZlC"/>
     </inferredMetricsTieBreakers>
     <resources>

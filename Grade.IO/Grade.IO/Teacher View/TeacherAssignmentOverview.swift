@@ -53,7 +53,7 @@ class TeacherAssignmentOverview: UIViewController {
     //section for scroll view of students' grade and total time
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (gradeTotTimeHeader.frame.origin.y)  + (gradeTotTimeHeader.frame.height * 2), width: self.view.frame.width, height: self.view.frame.height))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (gradeTotTimeHeader.frame.origin.y)  + (gradeTotTimeHeader.frame.height * 2), width: self.view.frame.width, height: self.view.frame.height - gradeTotTimeHeader.frame.origin.y))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true

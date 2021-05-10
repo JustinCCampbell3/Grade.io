@@ -51,7 +51,7 @@ class TeacherOverviewStudentList: UIViewController {
     
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (assignLabel.frame.origin.y)  + (assignLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (assignLabel.frame.origin.y)  + (assignLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height - assignLabel.frame.origin.y))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true

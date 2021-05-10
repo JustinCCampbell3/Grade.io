@@ -1,8 +1,8 @@
 //
-//  TeacherStudentListPage.swift
+//  TeacherFiles.swift
 //  Grade.IO
 //
-//  Created by user183573 on 3/2/21.
+//  Created by user183573 on 5/9/21.
 //
 
 import UIKit
@@ -10,23 +10,20 @@ import SideMenu
 import TinyConstraints
 import Foundation
 
-class TeacherStudentListPage: UIViewController, MenuControllerDelegate{
-    
+class TeacherFiles: UIViewController, MenuControllerDelegate  {
     //variable for the slide out menu in the teacher view
     private var sideMenu: SideMenuNavigationController?
     
     //array of views
     var viewArray:[UIView] = []
     
-    
-    //add assignment button that will be used for the upper boundary
-    @IBOutlet var searchBtn: UIButton!
+    //label for all current files
+    @IBOutlet weak var filePageLabel: UILabel!
     
 
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (searchBtn.frame.origin.y)  + (searchBtn.frame.height * 2), width: self.view.frame.width,
-                                              height: self.view.frame.height - searchBtn.frame.origin.y))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (filePageLabel.frame.origin.y * 2)  + (filePageLabel.frame.height), width: self.view.frame.width, height: self.view.frame.height - filePageLabel.frame.origin.y))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true
@@ -34,17 +31,20 @@ class TeacherStudentListPage: UIViewController, MenuControllerDelegate{
         return view
     }()
     
-    //holds the list of students for the current teacher
-    var studentList: [Student] = []
+    //var that will hold the assignments
+    var listAssignments: [Assignment] = []
     
-    //var to hold the clicked student index number in the array
-    var clickedStudent: Int = 0
+    //var curAssign: Assignment!
+    
+    //variable to access classroom class
+    var curClassroom: Classroom!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //create the scroll view for the list of students
-        currentClassroom.GetStudentObjects { (res) in
+        
+        currentClassroom.GetAssignmentObjects { (res) in
+            //self.getAssignmentList(assignments: res)
             self.makeScrollView(newList: res)
         }
         
@@ -58,21 +58,21 @@ class TeacherStudentListPage: UIViewController, MenuControllerDelegate{
         //hide the white bar at the top of the side menu to make it look better
         //sideMenu?.setNavigationBarHidden(true, animated: false)
         
-        
         //tell the manager which side the menu is on
         SideMenuManager.default.leftMenuNavigationController = sideMenu
     }
     
-    //get all students in an array
-    private func getStudentList(students: [Student]){
-        for i in students {
-            studentList.append(i)
+    //change listAssignments to have all the assignments
+    private func getAssignmentList(assignments: [Assignment]){
+        for i in assignments {
+            listAssignments.append(i)
         }
     }
     
-    private func makeScrollView(newList: [Student]){
+    private func makeScrollView(newList: [Assignment]){
         //make a list of assignments
-        self.getStudentList(students: newList)
+        self.getAssignmentList(assignments: newList)
+        //self.getAssignmentList(assignments: newList)
         
         //size of the content needed
         var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.size.height)
@@ -81,7 +81,7 @@ class TeacherStudentListPage: UIViewController, MenuControllerDelegate{
         var newHeight = CGFloat(0)
         
         //add a UIView for all the assignments we have
-        for i in 0..<studentList.count{
+        for i in 0..<listAssignments.count{
             print("in for loop where i is: ", i)
             var multiplier = CGFloat(i)
             if(i == 1){
@@ -127,52 +127,29 @@ class TeacherStudentListPage: UIViewController, MenuControllerDelegate{
 
             //making label here makes sure each view has their own label
             //label for assignment name
-            let firstnameLabel: UILabel = {
+            let fileLabel: UILabel = {
                 let label = UILabel()
-                label.text = studentList[curIndex].firstName
+                label.text = listAssignments[curIndex].filePath
                 return label
             }()
-            i.addSubview(firstnameLabel)
-            firstnameLabel.left(to: i, offset: 30)
-            firstnameLabel.top(to: i, offset: (i.frame.height/4)-firstnameLabel.frame.height)
-            
-            //label for due date
-            let lastnameLabel: UILabel = {
-                let label = UILabel()
-                label.text = studentList[curIndex].lastName
-                return label
-            }()
-            i.addSubview(lastnameLabel)
-            lastnameLabel.left(to: i, offset: 30)
-            lastnameLabel.top(to: i, offset: (i.frame.height/2)-lastnameLabel.frame.height) //halfway down the view
-            
+            i.addSubview(fileLabel)
+            print("view center: ", view.center)
+            //fileLabel.left(to: i, offset: (i.center.x))
+            fileLabel.center(in: i, offset: CGPoint(x: 0, y: 0))
+            //fileLabel.top(to: i, offset: (i.frame.height/2)-fileLabel.frame.height)
             
             
             //lines that allow the view to be tapped
-            let gesture = TapGesture(target: self, action: #selector(self.sendToStudent(_:)))
-            //grab the array index of the student that has been tapped
-            gesture.givenIndex = curIndex
-            i.addGestureRecognizer(gesture)
+            //let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(_:)))
+            //gesture.givenIndex = curIndex
+            //i.addGestureRecognizer(gesture)
             
             
             curIndex+=1
         }
     }
     
-    //send the user to the assignment page when they click a UIView
-    @objc func sendToStudent(_ sender:TapGesture){
-        clickedStudent = sender.givenIndex
-        print("Clicked student is: ", clickedStudent)
-        //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        //let vc = storyBoard.instantiateViewController(withIdentifier: "TAssignSpec") as! UIViewController
-        let vc = storyboard?.instantiateViewController(identifier: "TStudentOview") as! TeacherOverviewStudentList
-        
-        //vc.modalPresentationStyle =
-        vc.studentIndex = clickedStudent
-        //self.present(vc, animated:true, completion: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
+
     @IBAction func didTapMenu(){
         present(sideMenu!, animated: true)
     }

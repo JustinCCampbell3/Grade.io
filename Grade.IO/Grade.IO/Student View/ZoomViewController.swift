@@ -42,10 +42,12 @@ class ZoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
         
         containerView.addSubview(zoomButton1)
         zoomButton1.center(in:  containerView)
+        */
     }
 }

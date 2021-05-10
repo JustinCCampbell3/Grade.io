@@ -24,7 +24,7 @@ class TeacherAssignmentPage: UIViewController, MenuControllerDelegate {
 
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (addAssignBtn.frame.origin.y * 2)  + (addAssignBtn.frame.height), width: self.view.frame.width, height: self.view.frame.height))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (addAssignBtn.frame.origin.y * 2)  + (addAssignBtn.frame.height), width: self.view.frame.width, height: self.view.frame.height - addAssignBtn.frame.origin.y))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true
