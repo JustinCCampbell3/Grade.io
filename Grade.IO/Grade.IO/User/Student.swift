@@ -54,7 +54,7 @@ public class Student : BaseUser {
     public override func SetPropertiesFromDoc(doc:DocumentSnapshot) {
         super.SetPropertiesFromDoc(doc: doc)
         if let temp = doc.get(Strings.GPA) {
-            self.gpa = Float(temp as! String) as! Float
+            self.gpa = (temp as? NSNumber)?.floatValue
         }
         if let temp = doc.get(Strings.CLASS_ID) {
             self.classID = temp as! String
