@@ -39,16 +39,17 @@ public class Parent : BaseAdult {
         }
     }
     
-    //get all of the children of each unique parent. using StudentsFromKeyValue
-    public func GetChildren(completion:@escaping ([Student]) -> ()) {
-        if(students != nil){
-            DatabaseHelper.StudentsFromKeyValue(key: Strings.ID, values: students!) {
-                res in
-                completion(res)
+    public func GetStudentObjects(completion:@escaping ([Student]) -> ()) {
+        DatabaseHelper.GetDocumentsFromIDs(collection:Strings.STUDENT, ids:students ?? []) { res in
+            var tempList:[Student] = []
+            for document in res {
+                let tempStudent = Student(dictionary: document.data()!)
+                tempStudent?.Listen()
+                tempList.append(tempStudent!)
             }
+            completion(tempList)
         }
     }
-    
     public override func SetPropertiesFromDoc(doc: DocumentSnapshot) {
         super.SetPropertiesFromDoc(doc: doc)
         if let temp = doc.get(Strings.STUDENTS) {

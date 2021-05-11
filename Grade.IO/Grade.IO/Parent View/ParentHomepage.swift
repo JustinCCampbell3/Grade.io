@@ -42,15 +42,12 @@ class ParentHomepage: UIViewController {
         print("parent's username is: ", CurrentUser.id)
         
         //get the parent by current user id
-        UserHelper.GetParentByID(id: CurrentUser.id!) { (res) in
-            //get the children from the current parent
-            res.GetChildren { (children) in
+        (CurrentUser as! Parent).GetStudentObjects() { (children) in
                 //go through and make the children pics and stuff
                 if(children != nil){
                     self.getParentChildren(children: children)
                 }
                 //self.getParentChildren(children: children)
-            }
         }
         
         
