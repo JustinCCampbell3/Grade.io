@@ -46,7 +46,7 @@ class StudentAssignmentsView: UIViewController {
             //make a list of assignments
             self.getAssignmentList(assignments: res)
             self.findGrade()
-            self.makeScrollView(newList: res)
+            self.makeScrollView(newList: self.listAssignments)
             
         }
         
@@ -80,6 +80,7 @@ class StudentAssignmentsView: UIViewController {
     private func getAssignmentList(assignments: [Assignment]){
         for i in assignments {
             listAssignments.append(i)
+            print("assignment name: ", i.name)
         }
     }
     
