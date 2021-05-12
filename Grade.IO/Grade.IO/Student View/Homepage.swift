@@ -21,12 +21,44 @@ class Homepage : UIViewController {
         super.viewDidLoad()
         setupCalendar()
         name.text = CurrentUser.id
-        //grade.text = CurrentUser.
         
         DatabaseHelper.GetClassroomFromID(classID: (CurrentUser as! Student).classID ?? "NULL") { res in
             currentClassroom = res
+            currentClassroom.GetAssignmentObjects { (assign) in
+                self.findGrade(assigns: assign)
+            }
         }
         
+    }
+    
+    private func findGrade(assigns: [Assignment]){
+        //var that will hold the assignments
+        var listAssignments: [Assignment] = []
+        
+        for i in assigns {
+            listAssignments.append(i)
+        }
+        
+        var totalGrade: Float = 0
+        var numAssignsTaken: Int = 0
+        
+        for i in listAssignments{
+            let resultIndex = i.GetResultIndexByID(id: CurrentUser.id!)
+            
+            if(resultIndex != -1){
+                let studentResult = i.results?[resultIndex]
+                let percent = studentResult!.Grade
+                totalGrade += percent
+                print("totalGrade now: ", totalGrade)
+                numAssignsTaken += 1
+            }
+        }
+        print("num of assigns taken: ", numAssignsTaken)
+        
+        let avgGrade = totalGrade / Float(numAssignsTaken)
+        let percentGrade = avgGrade * 100.0
+        
+        grade.text = String(format: "%.2f", percentGrade) + "%"
     }
 
     func setupCalendar(){

@@ -85,6 +85,7 @@ class StudentAssignmentOverview: UIViewController {
         
     }
 
+
     //getting the assignment we need
     private func getAssignment(assignArray: [Assignment]){
         for i in assignArray{
@@ -121,7 +122,7 @@ class StudentAssignmentOverview: UIViewController {
         assignName.text = assignment.name
         //assignFileName.text = assignment.filePath
         assignInstructions.text = assignment.description
-        assignAvgTime.text = "Assignment not started"
+        assignAvgTime.text = "N/A"
         
         //if the assignment was completed, then populate the questions of the assignment into a scroll view
         let resultIndex = assignment.GetResultIndexByID(id: CurrentUser.id!) //get the index of the current student's assignment results
@@ -143,7 +144,8 @@ class StudentAssignmentOverview: UIViewController {
                 //assignAvgTime.text = studentResult?.stringFromTimeInterval(interval: studentResult!.TimeTaken)
                 //unhide and put in the grade
                 //assignGrade.isHidden = false
-                assignGrade.text = String(studentResult!.Grade)
+                let percentGrade = studentResult!.Grade * 100.0
+                assignGrade.text = String(format: "%.2f", percentGrade) + "%"
                 
                 //get all of the problems on the assignment
                 getAssignProblems(assign: assignment)
@@ -158,8 +160,7 @@ class StudentAssignmentOverview: UIViewController {
                 for j in questMetrics{
                     totalTime += j
                 }
-                print("Total time found: ", (floor(totalTime*1000)/1000))
-                assignAvgTime.text = String(floor(totalTime*1000)/1000)
+                assignAvgTime.text = String(format: "%.2f", totalTime) + "secs"
                 
                 //make a scroll view for the questions and answers
                 makeScrollView(sResult: studentResult!)
@@ -258,7 +259,7 @@ class StudentAssignmentOverview: UIViewController {
             //label for question specific time it took
             let questMetricLabel:UILabel = {
                 let label = UILabel()
-                label.text = String(questMetrics[curIndex])
+                label.text = String(format: "%.2f", questMetrics[curIndex]) + "secs"
                 return label
             }()
             i.addSubview(questMetricLabel)

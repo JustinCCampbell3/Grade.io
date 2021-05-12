@@ -43,16 +43,37 @@ class StudentAssignmentsView: UIViewController {
         //create a scroll view based on the number of assignments we have
         //may have to change testClass to myClass later
         currentClassroom.GetAssignmentObjects { (res) in
-            //self.listAssignments = res
+            //make a list of assignments
+            self.getAssignmentList(assignments: res)
+            self.findGrade()
             self.makeScrollView(newList: res)
             
         }
         
     }
     
-    //for the grade of the student
-    private func popGrade(student: Student){
+    private func findGrade(){
+
+        var totalGrade: Float = 0
+        var numAssignsTaken: Int = 0
         
+        for i in listAssignments{
+            let resultIndex = i.GetResultIndexByID(id: CurrentUser.id!)
+            
+            if(resultIndex != -1){
+                let studentResult = i.results?[resultIndex]
+                let percent = studentResult!.Grade
+                totalGrade += percent
+                print("totalGrade now: ", totalGrade)
+                numAssignsTaken += 1
+            }
+        }
+        print("num of assigns taken: ", numAssignsTaken)
+        
+        let avgGrade = totalGrade / Float(numAssignsTaken)
+        let percentGrade = avgGrade * 100.0
+        
+        studentGrade.text = String(format: "%.2f", percentGrade) + "%"
     }
     
     //change listAssignments to have all the assignments
@@ -63,8 +84,6 @@ class StudentAssignmentsView: UIViewController {
     }
     
     private func makeScrollView(newList: [Assignment]){
-        //make a list of assignments
-        self.getAssignmentList(assignments: newList)
         
         //size of the content needed
         var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.size.height)
@@ -182,7 +201,8 @@ class StudentAssignmentsView: UIViewController {
             print("resultIndex: ", resultIndex)
             if(resultIndex != -1){
                 let studentResult = listAssignments[curIndex].results?[resultIndex]
-                grade = String(studentResult!.Grade)
+                let percent = studentResult!.Grade * 100.0
+                grade = String(format: "%.2f", percent) + "%"
             }
             print("grade: ", grade)
             
