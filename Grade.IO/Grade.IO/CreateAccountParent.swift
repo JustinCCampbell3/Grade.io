@@ -18,6 +18,10 @@ class CreateAccountParent : UIViewController {
 
     @IBOutlet weak var bSignUp: UIButton!
     
+    override func viewDidLoad() {
+        fPassword.isSecureTextEntry = true
+        fPasswordConfirm.isSecureTextEntry = true
+    }
     
     @IBAction func bSignUpPressed(_ sender: Any) {
         if (!isValid()) {

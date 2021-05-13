@@ -16,6 +16,12 @@ class CreateAccountTeacher : UIViewController {
     
     
     @IBOutlet weak var bSignUp: UIButton!
+    
+    override func viewDidLoad() {
+        fPassword.isSecureTextEntry = true
+        fConfirmPassword.isSecureTextEntry = true
+    }
+    
     @IBAction func signUpPressed(_ sender: Any) {
         if (!isValid()) {
             if (fPassword.text! == fConfirmPassword.text!) {

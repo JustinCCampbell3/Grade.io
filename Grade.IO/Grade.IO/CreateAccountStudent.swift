@@ -20,6 +20,12 @@ class CreateAccountStudent : UIViewController {
     @IBOutlet weak var fParentCode: UITextField!
     
     @IBOutlet weak var bSignUpButton: UIButton!
+    
+    override func viewDidLoad() {
+        fPassword.isSecureTextEntry = true
+        fConfirmPassword.isSecureTextEntry = true
+    }
+    
     @IBAction func signUpPressed(_ sender: Any) {
         UserHelper.GenerateUserName(firstName:fFirstName.text!, lastName:fLastName.text!, type: Strings.STUDENT) { newUserName in
             AuthCommands.createUserWithEmail(email:newUserName + Strings.ARBITRARY_EMAIL, password:self.fPassword.text!) { success in
