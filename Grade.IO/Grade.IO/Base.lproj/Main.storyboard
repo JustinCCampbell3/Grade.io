@@ -468,6 +468,9 @@
                                 <state key="normal" title="Confirm">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="ConfirmPressed:" destination="8h4-56-lLe" eventType="touchUpInside" id="BfH-iC-r36"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WW9-bA-T6l">
                                 <rect key="frame" x="16" y="208" width="288" height="34"/>
@@ -511,6 +514,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAa-1t-D9v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="8h4-56-lLe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1254.6875" y="-1545.1171875"/>
         </scene>
@@ -2160,10 +2164,10 @@
             </objects>
             <point key="canvasLocation" x="6966.40625" y="-526.171875"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Student Popup Controller-->
         <scene sceneID="tWX-HD-R8c">
             <objects>
-                <viewController id="8No-w0-LzV" sceneMemberID="viewController">
+                <viewController id="8No-w0-LzV" customClass="AddStudentPopupController" customModule="Grade_IO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O8X-re-gzQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="493"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2258,6 +2262,9 @@
                                 <state key="normal" title="Confirm">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="SubmitPressed:" destination="8No-w0-LzV" eventType="touchUpInside" id="ZRj-fZ-cKp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y5u-G9-I70"/>
@@ -2305,6 +2312,12 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="jk8-uZ-6hm"/>
+                    <connections>
+                        <outlet property="FirstNameText" destination="RZN-gx-4i1" id="ZDW-eS-RDy"/>
+                        <outlet property="LastNameText" destination="MCO-Kr-ifn" id="aZ6-fe-WiD"/>
+                        <outlet property="ParentEmailText" destination="Bgp-Tn-0zJ" id="kX8-d2-afE"/>
+                        <outlet property="SubmitPressed" destination="PIQ-8b-H7E" id="dgd-fI-PZX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfY-Vl-JRL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4329,7 +4342,11 @@
         <segue reference="H6J-u6-W68"/>
         <segue reference="BcE-Zl-beu"/>
         <segue reference="Zz2-zY-KCZ"/>
+<<<<<<< Updated upstream
         <segue reference="bIg-gQ-QcT"/>
+=======
+        <segue reference="Obe-5Q-XMk"/>
+>>>>>>> Stashed changes
         <segue reference="GqA-kv-ZlC"/>
     </inferredMetricsTieBreakers>
     <resources>

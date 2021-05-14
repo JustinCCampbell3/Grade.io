@@ -25,6 +25,7 @@
 		4F7883CF25AAE8E600FCAF57 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB1525AA5AF0000DED98 /* UserHelper.swift */; };
 		4F7D099A25B7C7F6005A0C22 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D099925B7C7F6005A0C22 /* Alert.swift */; };
 		4F95AF43257B158300B8DA37 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F95AF42257B158300B8DA37 /* CreateAccount.swift */; };
+		4FA57B04264F2E91007EB61A /* AddStudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA57B03264F2E91007EB61A /* AddStudentController.swift */; };
 		4FC8DB1625AA5AF0000DED98 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB1525AA5AF0000DED98 /* UserHelper.swift */; };
 		4FC8DB2525AA71C1000DED98 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8DB2425AA71C1000DED98 /* DatabaseHelper.swift */; };
 		4FE698CB256A8ADB00E1AC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE698CA256A8ADB00E1AC7A /* AppDelegate.swift */; };
@@ -106,6 +107,7 @@
 		4F78838125AAAA2100FCAF57 /* UserHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelperTests.swift; sourceTree = "<group>"; };
 		4F7D099925B7C7F6005A0C22 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		4F95AF42257B158300B8DA37 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
+		4FA57B03264F2E91007EB61A /* AddStudentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentController.swift; sourceTree = "<group>"; };
 		4FC8DB1525AA5AF0000DED98 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		4FC8DB2425AA71C1000DED98 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		4FE698C7256A8ADB00E1AC7A /* Grade.IO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grade.IO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,6 +334,7 @@
 				6D0E4FDE2613EB3A00D4EF4D /* TeacherAddAccountBio.swift */,
 				6D190860263C70C500C5F740 /* TeacherStudentAnswers.swift */,
 				6DB5D197264883F800027D3C /* TeacherFiles.swift */,
+				4FA57B03264F2E91007EB61A /* AddStudentController.swift */,
 			);
 			path = "Teacher View";
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				6D0FBFA325EEC026004E3818 /* TeacherStudentListPage.swift in Sources */,
 				4F7D099A25B7C7F6005A0C22 /* Alert.swift in Sources */,
 				4FE698CB256A8ADB00E1AC7A /* AppDelegate.swift in Sources */,
+				4FA57B04264F2E91007EB61A /* AddStudentController.swift in Sources */,
 				6D190861263C70C500C5F740 /* TeacherStudentAnswers.swift in Sources */,
 				6D73D58A25F1F2BC001CE99B /* ParentAccount.swift in Sources */,
 				4F7701C325B4FC4800A48652 /* Enums.swift in Sources */,

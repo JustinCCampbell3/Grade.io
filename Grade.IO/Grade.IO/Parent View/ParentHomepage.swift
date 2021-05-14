@@ -153,5 +153,10 @@ class ParentHomepage: UIViewController {
         //self.present(vc, animated:true, completion: nil)
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    @IBAction func ConfirmPressed(_ sender: Any) {
+        DatabaseHelper.GetStudentFromID(studentID: studentID) { res in
+            (CurrentUser as! Parent).AddStudent(id: "s_gibbsmat355")
+        }
+    }
     
 }
