@@ -20,6 +20,7 @@ public class AddStudentPopupController:UIViewController
         if (FirstNameText.text != nil) {
             DatabaseHelper.GetStudentFromID(studentID: FirstNameText.text!) { res in
                 res.SetClassroom(newClass: currentClassroom.id!)
+                currentClassroom.AddStudent(newStudent: self.FirstNameText.text!)
             }
         }
     }

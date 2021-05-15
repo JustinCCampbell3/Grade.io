@@ -155,7 +155,7 @@ class ParentHomepage: UIViewController {
     }
     @IBAction func ConfirmPressed(_ sender: Any) {
         DatabaseHelper.GetStudentFromID(studentID: studentID) { res in
-            (CurrentUser as! Parent).AddStudent(id: "s_gibbsmat355")
+            (CurrentUser as! Parent).AddStudent(newStudent: "s_gibbsmat355")
         }
     }
     

@@ -19,8 +19,8 @@ public class DatabaseHelper {
         return GetCollection(collectionName: collectionName).document(documentName)
     }
     
-    public static func SaveUserPropertyToDoc(user:BaseUser, key:String, value:String) {
-        DatabaseHelper.GetDocumentReference(collectionName: String(describing:user.userType), documentName: user.id ?? "").setData([
+    public static func SaveUserPropertyToDoc(user:IUser, key:String, value:String) {
+        DatabaseHelper.GetDocumentReference(collectionName: (String(describing: user).split{$0 == "."})[1].description, documentName: user.id ?? "").setData([
                 key : value
             ], merge: true
         )

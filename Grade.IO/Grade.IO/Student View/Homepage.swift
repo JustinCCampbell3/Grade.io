@@ -29,6 +29,8 @@ class Homepage : UIViewController {
             }
         }
         
+        CurrentUser.SetBio(newBio: "Hello")
+        
     }
     
     private func findGrade(assigns: [Assignment]){

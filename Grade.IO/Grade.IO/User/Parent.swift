@@ -23,18 +23,22 @@ public class Parent : BaseAdult {
         try super.init(from: decoder)
     }
     
-    public func AddStudent(id:String) {
-        if (students == nil)
-        {
+    public func AddStudent(newStudent:String) {
+        if (students == nil) {
             students = []
         }
-        UserHelper.GetUserByID(id:id) { res in
+        
+        self.students!.append(newStudent)
+
+        DatabaseHelper.GetStudentFromID(studentID: newStudent) { res in
             if (res != nil) {
-                self.students!.append(id)
-                //DatabaseHelper.SavePropertyToDatabase(collection: Strings.[are], document: <#T##String#>, key: <#T##String#>, value: <#T##T#>)
-            }
-            else {
-                print("error")
+                let washingtonRef = DatabaseHelper.GetDBReference().collection(Strings.PARENT).document(self.id!)
+
+                washingtonRef.setData([
+                    Strings.STUDENTS : FieldValue.arrayUnion([newStudent])
+                ], merge: true)
+                
+                res.SetParentID(newParentID: self.id!)
             }
         }
     }

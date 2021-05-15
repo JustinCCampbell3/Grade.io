@@ -49,7 +49,7 @@ public class Student : BaseUser {
         DatabaseHelper.SaveUserPropertyToDoc(user: self, key: Strings.CLASS_ID, value: newClass.description)
     }
     public func SetParentID(newParentID:String) {
-        DatabaseHelper.SaveUserPropertyToDoc(user: self, key: Strings.CLASS_ID, value: newParentID)
+        DatabaseHelper.SaveUserPropertyToDoc(user: self, key: Strings.PARENT_ID, value: newParentID)
     }
     public override func SetPropertiesFromDoc(doc:DocumentSnapshot) {
         super.SetPropertiesFromDoc(doc: doc)
