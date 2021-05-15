@@ -27,6 +27,7 @@ final class Strings {
     public static var STUDENT_IDS:String = "studentIDs"
     public static var CLASS_ID:String = "classID"
     public static var TEACHER_ID:String = "teacherID"
+    public static var PARENT_ID:String = "parentID"
     public static var GPA:String = "gpa"
     public static var BIO:String = "bio"
     public static var PHOTO_PATH:String = "photoPath"

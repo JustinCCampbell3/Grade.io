@@ -19,8 +19,8 @@ public class DatabaseHelper {
         return GetCollection(collectionName: collectionName).document(documentName)
     }
     
-    public static func SaveUserPropertyToDoc(user:BaseUser, key:String, value:String) {
-        DatabaseHelper.GetDocumentReference(collectionName: user.userType!, documentName: user.id ?? "").setData([
+    public static func SaveUserPropertyToDoc(user:IUser, key:String, value:String) {
+        DatabaseHelper.GetDocumentReference(collectionName: (String(describing: user).split{$0 == "."})[1].description, documentName: user.id ?? "").setData([
                 key : value
             ], merge: true
         )
@@ -48,6 +48,13 @@ public class DatabaseHelper {
     }
 }
     
+    public static func GetStudentFromID(studentID:String, completion: @escaping (Student)->()) {
+        GetDocumentsFromIDs(collection: Strings.STUDENT, ids: [studentID]) { res in
+            if !res.isEmpty {
+                completion(Student(dictionary: res[0].data()!)!)
+            }
+        }
+    }
 
     public static func GetDocument(collectionName:String, documentName:String, completion:@escaping(([String:Any]?) -> Void)) {
         let docRef = DatabaseHelper.GetDocumentReference(collectionName:collectionName, documentName:documentName)
