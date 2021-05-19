@@ -73,7 +73,12 @@ class StudentAssignmentsView: UIViewController {
         let avgGrade = totalGrade / Float(numAssignsTaken)
         let percentGrade = avgGrade * 100.0
         
-        studentGrade.text = String(format: "%.2f", percentGrade) + "%"
+        if(percentGrade >= 0){
+            studentGrade.text = String(format: "%.2f", percentGrade) + "%"
+        }
+        else{
+            studentGrade.text = "N/A"
+        }
     }
     
     //change listAssignments to have all the assignments

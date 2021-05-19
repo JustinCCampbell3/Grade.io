@@ -51,18 +51,42 @@ class ParentStudentOverview: UIViewController {
         UserHelper.GetStudentByID(id: studentID) { (student) in
             //populate labels
             self.studentName.text = (student.firstName! + " " + student.lastName!)
-            if(student.gpa != nil){
-                self.studentNumberGrade.text = String(student.gpa!)
-            }
-            else{
-                self.studentNumberGrade.text = "N/A"
-            }
             
             DatabaseHelper.GetClassroomFromID(classID: student.classID!) { (classroom) in
                 classroom.GetAssignmentObjects { (res) in
                     self.makeScrollView(newList: res)
                 }
             }
+        }
+    }
+    
+    private func findGrade(){
+
+        var totalGrade: Float = 0
+        var numAssignsTaken: Int = 0
+        
+        for i in listAssignments{
+            let resultIndex = i.GetResultIndexByID(id: studentID)
+            print("resultIndex: ", resultIndex)
+            
+            if(resultIndex != -1){
+                let studentResult = i.results?[resultIndex]
+                let percent = studentResult!.Grade
+                totalGrade += percent
+                print("totalGrade now: ", totalGrade)
+                numAssignsTaken += 1
+            }
+        }
+        print("num of assigns taken: ", numAssignsTaken)
+        
+        let avgGrade = totalGrade / Float(numAssignsTaken)
+        let percentGrade = avgGrade * 100.0
+        
+        if(percentGrade >= 0){
+            studentNumberGrade.text = String(format: "%.2f", percentGrade) + "%"
+        }
+        else{
+            studentNumberGrade.text = "N/A"
         }
     }
     
@@ -76,6 +100,7 @@ class ParentStudentOverview: UIViewController {
     private func makeScrollView(newList: [Assignment]){
         //make a list of assignments
         self.getAssignmentList(assignments: newList)
+        self.findGrade()
         
         //size of the content needed
         var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.size.height)

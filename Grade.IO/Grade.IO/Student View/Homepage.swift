@@ -60,7 +60,13 @@ class Homepage : UIViewController {
         let avgGrade = totalGrade / Float(numAssignsTaken)
         let percentGrade = avgGrade * 100.0
         
-        grade.text = String(format: "%.2f", percentGrade) + "%"
+        if(percentGrade >= 0){
+            grade.text = String(format: "%.2f", percentGrade) + "%"
+        }
+        else{
+            grade.text = "N/A"
+        }
+    
     }
 
     func setupCalendar(){

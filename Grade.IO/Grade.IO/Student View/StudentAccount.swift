@@ -31,14 +31,13 @@ class StudentAccount: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         
         UserHelper.GetStudentByID(id: CurrentUser.id!) { (stu) in
-            self.popStudentAccount(student: stu)
-            /*UserHelper.GetParentByID(id: stu.parentID!) { (par) in
+            UserHelper.GetParentByID(id: stu.parentID!) { (par) in
                 self.popStudentAccount(student: stu, parent: par)
-            }*/
+            }
         }
     }
     
-    private func popStudentAccount(student: Student){
+    private func popStudentAccount(student: Student, parent: Parent){
         firstName.text = student.firstName
         lastName.text = student.lastName
         bio.text = student.bio
@@ -48,9 +47,9 @@ class StudentAccount: UIViewController, UIImagePickerControllerDelegate, UINavig
             imageView.image = readImage()
         }
         
-        //pName.text = parent.firstName! + " " + parent.lastName!
-        //pEmail.text = parent.email
-        //pNumber.text = parent.phoneNumber
+        pName.text = parent.firstName! + " " + parent.lastName!
+        pEmail.text = parent.email
+        //pNumber.text = parent.phone
         
     }
     

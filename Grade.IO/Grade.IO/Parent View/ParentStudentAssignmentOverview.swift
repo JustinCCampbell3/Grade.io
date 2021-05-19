@@ -126,7 +126,8 @@ class ParentStudentAssignmentOverview: UIViewController {
                 classAvgTime.text = studentResult?.stringFromTimeInterval(interval: studentResult!.TimeTaken)
                 
                 //put in the grade
-                grade.text = String(studentResult!.Grade)
+                let percentGrade = studentResult!.Grade * 100.0
+                grade.text = String(format: "%.2f", percentGrade) + "%"
                 
                 //get all of the problems on the assignment
                 self.getAssignProblems(assign: assignment)
@@ -143,8 +144,7 @@ class ParentStudentAssignmentOverview: UIViewController {
                 for j in questMetrics{
                     totalTime += j
                 }
-                print("Total time found: ", (floor(totalTime*1000)/1000))
-                overallAvgTime.text = String(floor(totalTime*1000)/1000)
+                overallAvgTime.text = String(format: "%.2f", totalTime) + "secs"
                 
                 //make a scroll view for the questions and answers
                 makeScrollView()
@@ -152,6 +152,7 @@ class ParentStudentAssignmentOverview: UIViewController {
         }
         
     }
+    
     
     private func makeScrollView(){
         
@@ -241,7 +242,7 @@ class ParentStudentAssignmentOverview: UIViewController {
             //label for question specific time it took
             let questMetricLabel:UILabel = {
                 let label = UILabel()
-                label.text = String(questMetrics[curIndex])
+                label.text = String(format: "%.2f", questMetrics[curIndex]) + "secs"
                 return label
             }()
             i.addSubview(questMetricLabel)

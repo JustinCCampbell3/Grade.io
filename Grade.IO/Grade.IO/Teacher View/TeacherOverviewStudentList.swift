@@ -107,15 +107,47 @@ class TeacherOverviewStudentList: UIViewController {
         lastName.text = student.lastName
         pronouns.text = student.pronouns
         
+        //for the grade
+        self.findGrade()
+        
         //somehow figure out if its nil
         //gradePercent.text = String(student.gpa!)
         makeScrollView()
         
-        //get student's parent
-        UserHelper.GetUserByID(id: student.parentID!) { (res) in
-            self.popStudentParent(parent: (res as! Parent))
+        //make sure there is a parent id
+        
+        if(student.parentID != nil){
+            //get student's parent
+            UserHelper.GetUserByID(id: student.parentID!) { (res) in
+                self.popStudentParent(parent: (res as! Parent))
+            }
         }
         
+        
+    }
+    
+    private func findGrade(){
+
+        var totalGrade: Float = 0
+        var numAssignsTaken: Int = 0
+        
+        for i in listAssignments{
+            let resultIndex = i.GetResultIndexByID(id: student.id!)
+            
+            if(resultIndex != -1){
+                let studentResult = i.results?[resultIndex]
+                let percent = studentResult!.Grade
+                totalGrade += percent
+                print("totalGrade now: ", totalGrade)
+                numAssignsTaken += 1
+            }
+        }
+        print("num of assigns taken: ", numAssignsTaken)
+        
+        let avgGrade = totalGrade / Float(numAssignsTaken)
+        let percentGrade = avgGrade * 100.0
+        
+        gradePercent.text = String(format: "%.2f", percentGrade) + "%"
     }
     
     private func popStudentParent(parent: Parent){
