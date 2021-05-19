@@ -26,7 +26,7 @@ class TeacherStudentListPage: UIViewController, MenuControllerDelegate{
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
         let view = UIScrollView(frame: CGRect(x: 0, y: (searchBtn.frame.origin.y)  + (searchBtn.frame.height * 2), width: self.view.frame.width,
-                                              height: self.view.frame.height - searchBtn.frame.origin.y))
+                                              height: self.view.frame.height - searchBtn.frame.height))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true

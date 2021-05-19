@@ -23,7 +23,7 @@ class TeacherFiles: UIViewController, MenuControllerDelegate  {
 
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (filePageLabel.frame.origin.y * 2)  + (filePageLabel.frame.height), width: self.view.frame.width, height: self.view.frame.height - filePageLabel.frame.origin.y))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (filePageLabel.frame.origin.y * 2)  + (filePageLabel.frame.height), width: self.view.frame.width, height: self.view.frame.height - filePageLabel.frame.height))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true

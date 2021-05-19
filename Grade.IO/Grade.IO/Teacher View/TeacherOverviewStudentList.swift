@@ -51,7 +51,7 @@ class TeacherOverviewStudentList: UIViewController {
     
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (assignLabel.frame.origin.y)  + (assignLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height - assignLabel.frame.origin.y))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (assignLabel.frame.origin.y)  + (assignLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height - assignLabel.frame.height))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true
@@ -105,7 +105,7 @@ class TeacherOverviewStudentList: UIViewController {
     private func populateStudentLabels(){
         firstName.text = self.student.firstName
         lastName.text = student.lastName
-        pronouns.text = student.pronouns
+        //pronouns.text = student.pronouns
         
         //for the grade
         self.findGrade()
@@ -276,7 +276,9 @@ class TeacherOverviewStudentList: UIViewController {
             
             if(resultIndex != -1){
                 let studentResult = listAssignments[curIndex].results?[resultIndex]
-                sGrade = String(studentResult!.Grade)
+                //put in the grade
+                let percentGrade = studentResult!.Grade * 100.0
+                sGrade = String(format: "%.2f", percentGrade) + "%"
             }
             
             //label for grade the student got

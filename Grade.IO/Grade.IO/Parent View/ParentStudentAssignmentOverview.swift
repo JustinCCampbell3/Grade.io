@@ -32,7 +32,7 @@ class ParentStudentAssignmentOverview: UIViewController {
     //section for scroll view of students' grade and total time
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (assignQuestLabel.frame.origin.y)  + (assignQuestLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height - assignQuestLabel.frame.origin.y))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (assignQuestLabel.frame.origin.y)  + (assignQuestLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height - assignQuestLabel.frame.height))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true
@@ -52,6 +52,9 @@ class ParentStudentAssignmentOverview: UIViewController {
     //for student id number
     var studentID: String = ""
     
+    //array for students
+    var studentList: [Student] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,9 +63,12 @@ class ParentStudentAssignmentOverview: UIViewController {
         
         UserHelper.GetStudentByID(id: studentID) { (student) in
             DatabaseHelper.GetClassroomFromID(classID: student.classID!) { (classroom) in
-                classroom.GetAssignmentObjects { (res) in
-                    self.getAssignment(assignArray: res)
-                    self.populateAssignPageLabels()
+                classroom.GetStudentObjects { (students) in
+                    classroom.GetAssignmentObjects { (res) in
+                        self.getAssignment(assignArray: res)
+                        self.getStudentList(students: students)
+                        self.populateAssignPageLabels()
+                    }
                 }
             }
         }
@@ -85,6 +91,14 @@ class ParentStudentAssignmentOverview: UIViewController {
         print("assignment name after get: ", assignment.name!)
     }
     
+    //get all students in an array
+    private func getStudentList(students: [Student]){
+        for i in students {
+            print("student: ", i.id!)
+            studentList.append(i)
+        }
+    }
+    
     //getting the problems
     private func getAssignProblems(assign: Assignment){
         for i in assign.problems!{
@@ -100,7 +114,31 @@ class ParentStudentAssignmentOverview: UIViewController {
     
     //get an array of the question metrics
     private func getQuestionMetrics(assign: Assignment){
-        questMetrics = assign.GetAveragePerQuestionTime()
+        let resultInd = assign.GetResultIndexByID(id: studentID)
+        let result = assign.results![resultInd]
+        questMetrics = result.TimeTakenPerQuestion!
+    }
+    
+    private func getAvgTime() -> String {
+        var totalTime: Double = 0.0
+        var hasTime: Double = 0
+        for i in studentList{
+            let resultInd = assignment.GetResultIndexByID(id: i.id!)
+            print("resultInd: ", resultInd)
+            
+            if(resultInd != -1){
+                let result = assignment.results![resultInd]
+                let sMetrics = result.TimeTakenPerQuestion!
+                
+                for j in sMetrics{
+                    print("totalTime: ", j)
+                    totalTime += j
+                }
+                hasTime+=1
+            }
+        }
+        let avgTime = totalTime / hasTime
+        return String(format: "%.2f", avgTime) + "secs"
     }
     
     //using the assignment to populate the necessary labels
@@ -123,7 +161,7 @@ class ParentStudentAssignmentOverview: UIViewController {
             //if the user has submitted the assignment
             if(assignSubmitted){
                 //can now set the average time for the class
-                classAvgTime.text = studentResult?.stringFromTimeInterval(interval: studentResult!.TimeTaken)
+                classAvgTime.text = self.getAvgTime()
                 
                 //put in the grade
                 let percentGrade = studentResult!.Grade * 100.0
@@ -139,11 +177,11 @@ class ParentStudentAssignmentOverview: UIViewController {
                 self.getQuestionMetrics(assign: assignment)
                 
                 //average time for the specific student
-                
                 var totalTime: Double = 0.0
                 for j in questMetrics{
                     totalTime += j
                 }
+                
                 overallAvgTime.text = String(format: "%.2f", totalTime) + "secs"
                 
                 //make a scroll view for the questions and answers
@@ -211,7 +249,7 @@ class ParentStudentAssignmentOverview: UIViewController {
             //label for assignment name
             let questionLabel: UILabel = {
                 let label = UILabel()
-                label.text = "Question " + String(curIndex) + ": " + listQuestions[curIndex].Question
+                label.text = "Question " + String(curIndex+1) + ": " + listQuestions[curIndex].Question
                 return label
             }()
             i.addSubview(questionLabel)

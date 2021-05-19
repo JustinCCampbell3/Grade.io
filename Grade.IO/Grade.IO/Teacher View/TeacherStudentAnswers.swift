@@ -28,7 +28,7 @@ class TeacherStudentAnswers: UIViewController {
     //section for scroll view of students' grade and total time
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (assignQuestLabel.frame.origin.y)  + (assignQuestLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height - assignQuestLabel.frame.origin.y))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (assignQuestLabel.frame.origin.y)  + (assignQuestLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height - assignQuestLabel.frame.height))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true
@@ -98,8 +98,9 @@ class TeacherStudentAnswers: UIViewController {
     
     //get an array of the question metrics
     private func getQuestionMetrics(assign: Assignment){
-        print("size of assignment problems array: ", assign.problems!.count)
-        questMetrics = assign.GetAveragePerQuestionTime()
+        let resultInd = assign.GetResultIndexByID(id: studentID)
+        let result = assign.results![resultInd]
+        questMetrics = result.TimeTakenPerQuestion!
     }
     
     //using the assignment to populate the necessary labels
@@ -120,10 +121,10 @@ class TeacherStudentAnswers: UIViewController {
             let assignSubmitted = studentResult!.IsSubmitted //get whether the student has submitted their assignment
             //if the user has submitted the assignment
             if(assignSubmitted){
-                //can now set the average time
-                //overallAvgTime.text = studentResult?.stringFromTimeInterval(interval: studentResult!.TimeTaken)
+                
                 //put in the grade
-                grade.text = String(studentResult!.Grade)
+                let percentGrade = studentResult!.Grade * 100.0
+                grade.text = String(format: "%.2f", percentGrade) + "%"
                 
                 //get all of the problems on the assignment
                 getAssignProblems(assign: assignment)
@@ -140,8 +141,7 @@ class TeacherStudentAnswers: UIViewController {
                 for j in questMetrics{
                     totalTime += j
                 }
-                print("Total time found: ", (floor(totalTime*1000)/1000))
-                overallAvgTime.text = String(floor(totalTime*1000)/1000)
+                overallAvgTime.text = String(format: "%.2f", totalTime) + "secs"
                     
                 //make a scroll view for the questions and answers
                 makeScrollView()
@@ -207,7 +207,7 @@ class TeacherStudentAnswers: UIViewController {
             //label for assignment name
             let questionLabel: UILabel = {
                 let label = UILabel()
-                label.text = "Question " + String(curIndex) + ": " + listQuestions[curIndex].Question
+                label.text = "Question " + String(curIndex+1) + ": " + listQuestions[curIndex].Question
                 return label
             }()
             i.addSubview(questionLabel)
@@ -238,7 +238,7 @@ class TeacherStudentAnswers: UIViewController {
             //label for question specific time it took
             let questMetricLabel:UILabel = {
                 let label = UILabel()
-                label.text = String(questMetrics[curIndex])
+                label.text = String(format: "%.2f", questMetrics[curIndex]) + "secs"
                 return label
             }()
             i.addSubview(questMetricLabel)

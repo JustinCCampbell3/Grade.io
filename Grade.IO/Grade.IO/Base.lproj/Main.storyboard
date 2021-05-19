@@ -2037,14 +2037,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pronouns" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl4-qm-xka">
-                                <rect key="frame" x="266" y="151" width="102" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A %" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzj-np-XIH">
-                                <rect key="frame" x="452" y="188" width="59" height="26"/>
+                                <rect key="frame" x="266" y="168" width="59" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2053,13 +2047,12 @@
                         <viewLayoutGuide key="safeArea" id="s10-S9-6LJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="xzj-np-XIH" firstAttribute="top" secondItem="s10-S9-6LJ" secondAttribute="top" constant="188" id="0bJ-kW-nJs"/>
+                            <constraint firstItem="xzj-np-XIH" firstAttribute="top" secondItem="s10-S9-6LJ" secondAttribute="top" constant="168" id="0bJ-kW-nJs"/>
                             <constraint firstItem="s10-S9-6LJ" firstAttribute="trailing" secondItem="ERe-Wk-ZWe" secondAttribute="trailing" constant="41" id="1Me-7W-hwG"/>
                             <constraint firstItem="yih-gW-fyk" firstAttribute="top" secondItem="a24-bl-MdV" secondAttribute="bottom" constant="26" id="3Z2-T2-ptf"/>
-                            <constraint firstItem="xl4-qm-xka" firstAttribute="leading" secondItem="kH3-FA-pkv" secondAttribute="leading" id="4ZO-iN-15W"/>
-                            <constraint firstItem="xl4-qm-xka" firstAttribute="top" secondItem="kH3-FA-pkv" secondAttribute="bottom" constant="8" id="50V-4W-7PB"/>
                             <constraint firstItem="e90-Nw-9hn" firstAttribute="centerX" secondItem="T4g-Pu-m3E" secondAttribute="centerX" constant="-266" id="8D8-dN-cFS"/>
                             <constraint firstItem="kH3-FA-pkv" firstAttribute="leading" secondItem="lfv-n5-wkC" secondAttribute="leading" id="92L-0M-oSE"/>
+                            <constraint firstItem="xzj-np-XIH" firstAttribute="top" secondItem="kH3-FA-pkv" secondAttribute="bottom" constant="25" id="9Kp-N3-05p"/>
                             <constraint firstItem="dnH-lg-Uav" firstAttribute="top" secondItem="ERe-Wk-ZWe" secondAttribute="top" id="Ged-2D-VlI"/>
                             <constraint firstItem="yih-gW-fyk" firstAttribute="leading" secondItem="s10-S9-6LJ" secondAttribute="leading" constant="20" id="GzG-Px-ZIg"/>
                             <constraint firstItem="lfv-n5-wkC" firstAttribute="leading" secondItem="pK7-dG-3je" secondAttribute="trailing" constant="42" id="HOK-qZ-d3Y"/>
@@ -2071,7 +2064,7 @@
                             <constraint firstItem="s10-S9-6LJ" firstAttribute="trailing" secondItem="a24-bl-MdV" secondAttribute="trailing" constant="461" id="RwH-Kn-XrB"/>
                             <constraint firstItem="yih-gW-fyk" firstAttribute="centerX" secondItem="T4g-Pu-m3E" secondAttribute="centerX" constant="-257.5" id="WAB-TO-prb"/>
                             <constraint firstItem="e90-Nw-9hn" firstAttribute="leading" secondItem="s10-S9-6LJ" secondAttribute="leading" constant="20" id="X5d-cr-5xm"/>
-                            <constraint firstItem="s10-S9-6LJ" firstAttribute="trailing" secondItem="xzj-np-XIH" secondAttribute="trailing" constant="257" id="YaM-oi-R91"/>
+                            <constraint firstItem="s10-S9-6LJ" firstAttribute="trailing" secondItem="xzj-np-XIH" secondAttribute="trailing" constant="443" id="YaM-oi-R91"/>
                             <constraint firstItem="ERe-Wk-ZWe" firstAttribute="leading" secondItem="dnH-lg-Uav" secondAttribute="trailing" constant="63" id="Z3c-iN-B50"/>
                             <constraint firstItem="lfv-n5-wkC" firstAttribute="top" secondItem="s10-S9-6LJ" secondAttribute="top" constant="63" id="bRL-Ei-pbB"/>
                             <constraint firstItem="dnH-lg-Uav" firstAttribute="bottom" secondItem="ERe-Wk-ZWe" secondAttribute="bottom" id="bZf-cM-x88"/>
@@ -2105,7 +2098,6 @@
                         <outlet property="firstName" destination="lfv-n5-wkC" id="v95-DF-9Um"/>
                         <outlet property="gradePercent" destination="xzj-np-XIH" id="2U2-uz-bNw"/>
                         <outlet property="lastName" destination="kH3-FA-pkv" id="MAe-mW-8hX"/>
-                        <outlet property="pronouns" destination="xl4-qm-xka" id="q3e-cd-gn4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jXs-NQ-Bld" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4233,7 +4225,7 @@
         <segue reference="Xqs-vj-6BH"/>
         <segue reference="BcE-Zl-beu"/>
         <segue reference="Zz2-zY-KCZ"/>
-        <segue reference="GLo-uI-9uu"/>
+        <segue reference="iko-Vq-2vA"/>
         <segue reference="GqA-kv-ZlC"/>
     </inferredMetricsTieBreakers>
     <resources>

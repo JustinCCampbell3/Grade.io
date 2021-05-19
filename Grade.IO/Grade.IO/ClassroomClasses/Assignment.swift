@@ -142,6 +142,7 @@ public class Assignment : Decodable, Encodable, IListenable {
                 if (r.StudentID == id) {
                     return count
                 }
+                count+=1
             }
         }
         

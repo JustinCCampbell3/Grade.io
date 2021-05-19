@@ -21,7 +21,7 @@ class ParentHomepage: UIViewController {
 
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (addStudentBtn.frame.origin.y * 2)  + (addStudentBtn.frame.height), width: self.view.frame.width, height: self.view.frame.height))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (addStudentBtn.frame.origin.y)  + (addStudentBtn.frame.height) + 50, width: self.view.frame.width, height: self.view.frame.height - addStudentBtn.frame.height))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true
@@ -83,7 +83,8 @@ class ParentHomepage: UIViewController {
             
             print("y is: ", multiplier)
             let containerView: UIView = {
-                let view = UIView(frame: CGRect(x: 0, y: multiplier, width: self.view.frame.width/2 , height: 200))
+                print("possible x: ", self.view.frame.width/2)
+                let view = UIView(frame: CGRect(x: self.view.frame.width/2.7, y: multiplier, width: self.view.frame.width/4 , height: 100))
                 //this is the color of the scroll view background, not the actual full container
                 view.backgroundColor = .white
                 //view.frame.size = contentViewSize
@@ -96,7 +97,7 @@ class ParentHomepage: UIViewController {
         print("newHeight: ", newHeight)
         
         if(newHeight > CGFloat(self.view.frame.size.height)){
-            contentViewSize = CGSize(width: self.view.frame.width, height: newHeight + 450) //100 height + 150 in between of stuff
+            contentViewSize = CGSize(width: self.view.frame.width, height: newHeight + 350) //100 height + 150 in between of stuff
             print("newHeight is larger than the current frame size")
         }
         scrollView.contentSize = contentViewSize
@@ -118,15 +119,25 @@ class ParentHomepage: UIViewController {
             
             //label for picture if want one
             
-            //label for student name
-            let nameLabel: UILabel = {
+            //label for student first name
+            let fNameLabel: UILabel = {
                 let label = UILabel()
                 label.text = listStudents[curIndex].firstName
                 return label
             }()
-            i.addSubview(nameLabel)
-            nameLabel.left(to: i, offset: 30)
-            nameLabel.top(to: i, offset: (i.frame.height/4)-nameLabel.frame.height)
+            i.addSubview(fNameLabel)
+            fNameLabel.left(to: i, offset: i.frame.width/3 - fNameLabel.frame.width)
+            fNameLabel.top(to: i, offset: (i.frame.height/4)-fNameLabel.frame.height)
+            
+            //label for student last name
+            let lNameLabel: UILabel = {
+                let label = UILabel()
+                label.text = listStudents[curIndex].lastName
+                return label
+            }()
+            i.addSubview(lNameLabel)
+            lNameLabel.left(to: i, offset: i.frame.width/3 - fNameLabel.frame.width)
+            lNameLabel.top(to: i, offset: (i.frame.height/2)-lNameLabel.frame.height)
             
             
             //lines that allow the view to be tapped

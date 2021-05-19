@@ -53,7 +53,7 @@ class TeacherAssignmentOverview: UIViewController {
     //section for scroll view of students' grade and total time
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (gradeTotTimeHeader.frame.origin.y)  + (gradeTotTimeHeader.frame.height * 2), width: self.view.frame.width, height: self.view.frame.height - gradeTotTimeHeader.frame.origin.y))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (gradeTotTimeHeader.frame.origin.y)  + (gradeTotTimeHeader.frame.height * 2), width: self.view.frame.width, height: self.view.frame.height - gradeTotTimeHeader.frame.height))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true
@@ -99,6 +99,41 @@ class TeacherAssignmentOverview: UIViewController {
         }
     }
     
+    //to find the total time it took a student to do their assignment
+    private func getTotalTime(student: String) -> String{
+        let resultInd = assignment.GetResultIndexByID(id: student)
+        let result = assignment.results![resultInd]
+        let questMetrics = result.TimeTakenPerQuestion!
+        
+        var totalTime: Double = 0.0
+        for j in questMetrics{
+            print("totalTime: ", j)
+            totalTime += j
+        }
+        return String(format: "%.2f", totalTime) + "secs"
+    }
+    
+    private func getAvgTime() -> String {
+        var totalTime: Double = 0.0
+        var hasTime: Double = 0
+        for i in studentList{
+            let resultInd = assignment.GetResultIndexByID(id: i.id!)
+            
+            if(resultInd != -1){
+                let result = assignment.results![resultInd]
+                let questMetrics = result.TimeTakenPerQuestion!
+                
+                for j in questMetrics{
+                    print("totalTime: ", j)
+                    totalTime += j
+                }
+                hasTime+=1
+            }
+        }
+        let avgTime = totalTime / hasTime
+        return String(format: "%.2f", avgTime) + "secs"
+    }
+    
     //using the assignment to populate the necessary labels
     private func populateAssignPageLabels(){
         
@@ -119,8 +154,7 @@ class TeacherAssignmentOverview: UIViewController {
                 break
             }
         }
-        let totalAssignTime = ranResult.stringFromTimeInterval(interval: ranResult.TimeTaken)
-        assignAvgTime.text = String(totalAssignTime)
+        assignAvgTime.text = self.getAvgTime()
         
         makeScrollView()
     }
@@ -198,7 +232,8 @@ class TeacherAssignmentOverview: UIViewController {
                 let assignSubmitted = studentResult!.IsSubmitted //get whether the student has submitted their assignment
                 
                 if(assignSubmitted){
-                    sGrade = String(studentResult!.Grade)
+                    let percentGrade = studentResult!.Grade * 100.0
+                    sGrade = String(format: "%.2f", percentGrade) + "%"
                     
                     //add up all the times for the overall time for the student
                     var totTime: Double = 0.0
@@ -207,11 +242,12 @@ class TeacherAssignmentOverview: UIViewController {
                     
                     var tIndex = 0
                     for i in timeInt{
+                        print("time at index: ", timeInt[tIndex])
                         totTime += timeInt[tIndex]
                         tIndex+=1
                     }
-                    
-                    sOverallTime = String(totTime)
+                    print("student id: ", sendStudentID)
+                    sOverallTime = self.getTotalTime(student: sendStudentID)
                 }
             }
 

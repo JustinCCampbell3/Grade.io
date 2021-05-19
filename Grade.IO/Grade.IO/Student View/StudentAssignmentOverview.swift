@@ -49,7 +49,7 @@ class StudentAssignmentOverview: UIViewController {
     //section for scroll view of students' grade and total time
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (assignQuestLabel.frame.origin.y)  + (assignQuestLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height - assignQuestLabel.frame.origin.y))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (assignQuestLabel.frame.origin.y)  + (assignQuestLabel.frame.height) + 30, width: self.view.frame.width, height: self.view.frame.height - assignQuestLabel.frame.height))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true
@@ -64,7 +64,7 @@ class StudentAssignmentOverview: UIViewController {
     var studentAns: [String] = []
     
     //var that will hold the student's metrics (time) for each question
-    var questMetrics: [Double] = []
+    var questMetrics: [TimeInterval] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,7 +110,9 @@ class StudentAssignmentOverview: UIViewController {
     
     //get an array of the question metrics
     private func getQuestionMetrics(assign: Assignment){
-        questMetrics = assign.GetAveragePerQuestionTime()
+        let resultInd = assign.GetResultIndexByID(id: CurrentUser.id!)
+        let result = assign.results![resultInd]
+        questMetrics = result.TimeTakenPerQuestion!
     }
     
     //using the assignment to populate the necessary labels
@@ -126,6 +128,7 @@ class StudentAssignmentOverview: UIViewController {
         
         //if the assignment was completed, then populate the questions of the assignment into a scroll view
         let resultIndex = assignment.GetResultIndexByID(id: CurrentUser.id!) //get the index of the current student's assignment results
+        print("current user: ", CurrentUser.id!)
         print("resultIndex: ", resultIndex)
         
         //resultIndex will be -1 if the student hasn't completed it yet
@@ -158,6 +161,7 @@ class StudentAssignmentOverview: UIViewController {
                 
                 var totalTime: Double = 0
                 for j in questMetrics{
+                    print("result time per question: ", j)
                     totalTime += j
                 }
                 assignAvgTime.text = String(format: "%.2f", totalTime) + "secs"

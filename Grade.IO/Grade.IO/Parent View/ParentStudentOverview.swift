@@ -25,7 +25,7 @@ class ParentStudentOverview: UIViewController {
 
     //scroll view to hold everything
     lazy var scrollView: UIScrollView! = {
-        let view = UIScrollView(frame: CGRect(x: 0, y: (assignOverview.frame.origin.y)  + (assignOverview.frame.height) + 20, width: self.view.frame.width, height: self.view.frame.height - assignOverview.frame.origin.y))
+        let view = UIScrollView(frame: CGRect(x: 0, y: (assignOverview.frame.origin.y)  + (assignOverview.frame.height) + 20, width: self.view.frame.width, height: self.view.frame.height - assignOverview.frame.height))
         //view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.bounces = true
