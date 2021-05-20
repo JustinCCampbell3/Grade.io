@@ -1880,7 +1880,7 @@
                                 </constraints>
                                 <state key="normal" image="PlusSign"/>
                                 <connections>
-                                    <segue destination="8No-w0-LzV" kind="popoverPresentation" popoverAnchorView="nga-tZ-dQL" id="eQk-mR-EYk">
+                                    <segue destination="8No-w0-LzV" kind="popoverPresentation" popoverAnchorView="nga-tZ-dQL" id="bVH-tb-rlv">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -2196,7 +2196,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="jk8-uZ-6hm"/>
                     <connections>
-                        <outlet property="FirstNameText" destination="RZN-gx-4i1" id="ZDW-eS-RDy"/>
+                        <outlet property="StudentIDText" destination="RZN-gx-4i1" id="Js6-Qt-cez"/>
                         <outlet property="SubmitPressed" destination="PIQ-8b-H7E" id="dgd-fI-PZX"/>
                     </connections>
                 </viewController>
@@ -4220,12 +4220,12 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="42q-0O-4hI"/>
-        <segue reference="6i3-pN-eRt"/>
+        <segue reference="tCj-Kc-S7e"/>
         <segue reference="o5Z-3t-GE5"/>
         <segue reference="Xqs-vj-6BH"/>
         <segue reference="BcE-Zl-beu"/>
         <segue reference="Zz2-zY-KCZ"/>
-        <segue reference="iko-Vq-2vA"/>
+        <segue reference="CBe-HY-FxU"/>
         <segue reference="GqA-kv-ZlC"/>
     </inferredMetricsTieBreakers>
     <resources>
