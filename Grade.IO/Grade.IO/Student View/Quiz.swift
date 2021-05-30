@@ -19,6 +19,10 @@ class Quiz: UIViewController {
     
     @IBOutlet weak var StudentInput: UITextField!
     
+    @IBOutlet weak var QNumber: UILabel!
+    
+    @IBOutlet weak var AssignName: UILabel!
+    
     var StudentsAnswers: [String] = Array(repeating: "", count: CurrentAssignment.problems!.count)
     var TimeTakenPerQuestion: [TimeInterval] = Array(repeating: 0, count: CurrentAssignment.problems!.count)
     var qIndex:Int = 0
@@ -137,7 +141,8 @@ class Quiz: UIViewController {
         currentProblem = CurrentAssignment.problems?[index] ?? Problem()
         self.StudentInput.text = StudentsAnswers[qIndex]
         self.Qlabel.text = currentProblem.Question
-        
+        self.QNumber.text = "Question " + String((index+1)) + "/" + String((CurrentAssignment.problems!.count))
+        self.AssignName.text = CurrentAssignment.name
     }
     /*
     func PickPreviousQuestion(){

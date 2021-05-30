@@ -222,6 +222,7 @@ class StudentAssignmentsView: UIViewController {
             gradeLabel.left(to: i, offset: 30)
             gradeLabel.top(to: i, offset: (i.frame.height/2)-nameLabel.frame.height)
             
+            //find the number within this 
             
             //lines that allow the view to be tapped
             let gesture = TapGesture(target: self, action: #selector(self.sendToAssignment(_:)))
