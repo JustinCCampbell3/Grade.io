@@ -186,7 +186,17 @@ class StudentAssignmentsView: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
             //print("before date: ", listAssignments[curIndex].dueDate!)
-            //print("Date: ", dateFormatter.string(from: listAssignments[curIndex].dueDate!))
+           // print("Date:", listAssignments[curIndex].dueDate!)
+            //print(dateFormatter.string(from: listAssignments[curIndex].dueDate as! Date))
+            
+            //cant get this warning to go away
+            //this will work eventually i guess
+           //let dateString = listAssignments[curIndex].dueDate as! String
+            //let date = dateFormatter.date(from: dateString)
+            //print("Date: ", date!)
+           
+           
+            
             
             //label for due date
             let dueDateLabel: UILabel = {
